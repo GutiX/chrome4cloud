@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+	<head>
+	  <link rel='stylesheet' href='content.css' />
+	  <link rel='stylesheet' href='popup.css' />
+	  <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' />
+	  <link rel='chrome-webstore-item' href="https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en" />
+  	  <script type='text/javascript' src='lib/jquery-1.9.1.min.js'></script>
+	  <script type='text/javascript' src='popup.js'></script>
+	  <script type='text/javascript' src='background.js'></script>
+	</head>
+	<body>
+	  <!-- Form to insert the token -->
+	  <div id='token-form-container'>
+	  	<img alt="Cloud4all logo" src='/images/icon48.png' id='c4a-logo'>
+	    <h1 id="welcome-message"></h1>
+		<form id='token-form'>
+			<div class='form-group'>
+		  		<label for='token-input' class='sr-only' id='token-input-label'></label>
+		  		<input type='text' name='token' class='form-control' id='token-input' aria-labelled-by='token-input-label' required />
+		  	</div>
+		</form>
+		<div id='results'></div>
+		<div id='options'>
+		  <a id='options-link' href=''></a> | <a href='' id='c4a-website-link' title="link to Cloud4all website"></a>
+		</div>
+	  </div> <!-- token-form-container -->
+	  
+	  <!-- Preferences configurator -->
+	  <div id = 'preferences-container'>
+	  
+	    <header>
+	      <a href="" class="btn btn-danger sign-out-btn" title="Sign out of Cloud4all"></a>
+		  <h1 id='config-title'></h1>
+		  <p><span id="config-description"></span>
+		  	<a id='see-all-prefs' href="" class='seemore'>See all preferences</a>
+		  </p>
+		</header>
+		
+		<form id='preferences-form'>
+  		  
+
+		  <div class='config-option' id="screenreader-div">
+		    <h2 id='screenreader-title'></h3>
+		  	<div class='checkbox' id="CV-installed">
+		  		<input type='checkbox' name='screen reader checkbox' id='screenreader-checkbox' aria-labelled-by='screenreader-label' role='checkbox' />
+		  		<label for='screenreader-checkbox' id='screenreader-checkbox-label'></label>
+			</div>
+			  
+			  <div id='CV-not-installed' style='display: none;'>
+				<p id='CV-not-installed-warning' class='text-warning'></p>
+				<p><button class="btn btn-primary" id='install-CV-btn'></button></p>
+			  </div>
+		  </div>
+			
+		  <div class='config-option' id='high-contrast-options'>
+			<h2 id='high-contrast-title'></h2>
+			<div class='radio'>
+				<input type='radio' name='high-contrast' value='none' id='no-high-contrast' role='radio' />
+				<label for='no-high-contrast' id='no-high-contrast-label'></label>
+			</div>
+			<div class='radio'>
+				<input type='radio' name='high-contrast' value='black-white' role='radio' />
+				<label for='high-contrast-black-white' id='high-contrast-black-white-label' class='black-on-white'></label>
+			</div>
+			<div class='radio'>
+				<input type='radio' name='high-contrast' value='white-black' role='radio' />
+				<label for='high-contrast-white-black' id='high-contrast-white-black-label' class='white-on-black'></label>
+			</div>
+			<div class='radio'>
+				<input type='radio' name='high-contrast' value='yellow-black' role='radio' />
+				<label for='high-contrast-yellow-black' id='high-contrast-yellow-black-label' class='yellow-on-black'></label>
+			</div>
+			<div class='radio'>
+				<input type='radio' name='high-contrast' value='black-yellow' role='radio' />
+				<label for='high-contrast-black-yellow' id='high-contrast-black-yellow-label' class='black-on-yellow'></label>
+			</div>
+		  </div>
+
+
+		  <div class='config-option' id='invert-colour-option'>
+		  	<h2 id='invert-colours-title'></h2>
+		  	<div class='checkbox'>
+				<input type='checkbox' id='invert-colours-checkbox' role='checkbox' />
+				<label for='invert-colours-checkbox' id='invert-colours-checkbox-label'></label>
+			</div>
+		  </div>
+
+		  <div class='config-option'>
+		  	<h2 id='zoom-title'></h2>
+		  	<div class='checkbox'>
+		  		<input type='checkbox' id='zoom-enable-checkbox' role='checkbox' />
+		  		<label for='zoom-enable-checkbox' id='zoom-enable-checkbox-label'></label>
+		  	</div>
+		  	<div class='form-group'>
+		  		<label for='zoom-level' id='zoom-level-label' class='sr-only'></label>
+		  		<input type='number' value='1' min='.5' max='3' step='.1' id='zoom-level' />
+		  	</div>
+		  </div>
+			
+		  <div class='config-option' id='font-size-options'>
+			<h2 id='font-options-title'></h2>
+			<h3 id="font-size-title"></h3>
+			<div class='font-size-radio-group'>
+				<div class='radio'>
+					<input type='radio' name='font-size' id='font-size-normal' value='normal' role='radio' />
+					<label for='font-size-normal'><span class='font-size-normal-span' id='font-size-normal-label'></span></label>
+				</div>
+				<div class='radio'>
+					<input type='radio' name='font-size' id='font-size-large' value='large' role='radio' />
+					<label for='font-size-large'><span class='font-size-large-span' id='font-size-large-label'></span></label>
+				</div>
+				<div class='radio'>
+					<input type='radio' name='font-size' id='font-size-x-large' value='x-large' role='radio' />
+					<label for='font-size-x-large'><span class='font-size-x-large-span' id='font-size-x-large-label'></span></label>
+				</div>
+			</div>
+
+			  <h3 id="font-face-title"></h3>
+			  <select name="select" id="font-face-select">
+			  	<option value="none" id="font-face-original"></option>
+			  	<option value="Arial" id="font-face-Arial">Arial</option>
+			  	<option value="Verdana" id="font-face-Verdana">Verdana</option>
+			  	<option value="Courier" id="font-face-Courier">Courier</option>
+			  	<option value="Comic Sans MS" id="font-face-ComicSans">Comic Sans MS</option>
+			  </select>
+
+		  </div>
+
+		  <div class='config-option'>
+		  	<h2 id='cursor-size-title'></h2>
+		  	<div class='radio'>
+		  		<input type='radio' name='cursor-size' id='cursor-size-normal' value='normal' role='radio' />
+		  		<label for='cursor-size-normal' id='cursor-size-normal-label'></label>
+		  	</div>
+		  	<div class='radio'>
+		  		<input type='radio' name='cursor-size' id='cursor-size-large' value='large' role='radio' />
+		  		<label for='cursor-size-large' id='cursor-size-large-label'></label>
+		  	</div>
+		  	<div class='radio'>
+		  		<input type='radio' name='cursor-size' id='cursor-size-x-large' value='x-large' role='radio' />
+		  		<label for='cursor-size-x-large' id='cursor-size-x-large-label'></label>
+		  	</div>
+
+		  </div>
+
+		  <div class='config-option'>
+		    <h2 id='onscreenkeyboard-title'></h2>
+			  <div class='checkbox' id='onscreenkeyboard-installed'>
+				<input type='checkbox' id='onscreenkeyboard-checkbox' role='checkbox' />
+				<label for='onscreenkeyboard-checkbox' id='onscreenkeyboard-label'></label>
+			  </div>
+			  
+			  <div id='onscreenkeyboard-not-installed' style='display: none;'>
+				<p id="onscreenkeyboard-not-installed-warning"></p>
+				<p><button id='install-onscreenkeyboard-button'></button></p>
+			  </div>
+		  </div>
+			
+		  
+		  <div class='config-option'>
+			<h2 id='simplifier-title'></h2>
+			<div class='checkbox'>
+			  <input type='checkbox' id='simplifier-checkBox' role='checkbox' />
+			  <label for='simplifier-checkBox' id='simplifier-checkbox-label'></label>
+			</div>
+		  </div>
+
+		  <div class='config-option' id='synomyms-en-div' style='display: none;'>
+		  	<h2 id='synomyms-en-title'></h2>
+		  	<p class='text-muted' id='synonyms-en-explanation'></p>
+		  	<div class='checkbox'>
+		  		<input type='checkbox' id='synonyms-en-checkbox' role='checkbox' />
+		  		<label for='synonyms-en-checkbox' id='synonyms-en-checkbox-label'></label>
+		  	</div>
+		  </div>
+
+		  <div class='config-option' id='sinonimos-es-div' style='display: none;'>
+		  	<h2>Mostrar sinónimos</h2>
+		  	<p class='text-muted'>Haz doble click sobre cualquier palabra para obtener una lista de sinónimos</p>
+		  	<div class='checkbox'>
+		  		<input type='checkbox' id='sinonimos-es-checkbox' role='checkbox' />
+		  		<label for='sinonimos-es-checkbox'>Habilitar mostrar sinónimos</label>
+		  	</div>
+		  </div>
+		  
+		  <div class='config-option' id='prefOptions'>
+		  	<a href="" class="btn btn-warning sign-out-btn" title="Sign out of Cloud4all" ></a>
+		  </div>
+		</form>
+	  </div> <!-- prefContainer -->
+	</body>
+</html>

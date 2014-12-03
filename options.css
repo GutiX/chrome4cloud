@@ -1,0 +1,130 @@
+html {
+  background: #CBDEE7;
+}
+
+body {
+  width: 640px;
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+  background: white;
+  margin: 10px auto;
+  font-size: medium;
+}
+
+div#preferencesContainerOP {
+  padding: 1em;
+
+}
+
+div#preferencesContainerOP ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+div#preferencesContainerOP ul li {
+  margin-bottom: 1em;
+}
+
+div#preferencesContainerOP div#header {
+  display: block;
+  clear: both;
+  padding-bottom: 1em;
+  border-bottom: 1px dotted #CCC;
+  margin-bottom: 1em;
+  
+}
+
+div#preferencesContainerOP div#header img {
+  float: right;
+}
+
+div.config_option {
+  display: block;
+  clear: both;
+}
+
+div.formWarning {
+  color: red;
+  display: none;
+}
+
+form#preferencesFormOP input#newTokenInputOP {
+  padding: 0.2em;
+  font-size: 1.1em;
+/*  float: left;
+  margin-right: 1em; */
+}
+
+input[type='submit'] {
+  background: #FF5702;
+  font-size: 1.4em;
+  color: white;
+  border: 0;
+  padding: 0.3em 0.8em;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 1em;
+}
+
+form#preferencesFormOP div#prefOptions {
+  padding: 2em 0 1em 0;
+}
+
+input[type='submit']:hover {
+  background: #E3B969;
+  text-shadow: 1px 1px grey;
+}
+
+span.tooltipToken {
+  font-size: 0.8em;
+}
+
+.blackonwhite {
+  background: white;
+  color: black;
+}
+
+.whiteonblack {
+  background: black;
+  color: white;
+}
+
+.yellowonblack {
+  background: black;
+  color: yellow;
+}
+
+.blackonyellow {
+  background: yellow;
+  color: black;
+}
+
+html[hc = 'bw'] {
+  -webkit-filter: contrast(2) grayscale(100%);
+}
+
+
+html[hc = 'wb'] {
+  background: black;
+}
+
+html[hc = 'wb'] > body {
+  background: black;
+  color: white;
+}
+
+html[hc = 'yb'] {
+  background: black;
+}
+html[hc = 'yb'] > body {
+  background: black;
+  color: yellow;
+}
+
+html[hc = 'by'] {
+  background: yellow;
+}
+html[hc = 'by'] > body{
+  background: yellow;
+  color: black;
+}

@@ -1,0 +1,291 @@
+html[ic="invert"] {
+	-webkit-filter: invert();
+}
+
+html[ts="large"], html[ts="large"] body {
+  font-size: 1.2rem !important;
+}
+
+html[ts="x-large"], html[ts="x-large"] > body {
+  font-size: 1.4rem !important;
+}
+
+html[hc = 'bw'] {
+  -webkit-filter: grayscale(100%);
+}
+
+
+html[hc = 'wb'] {
+  background: black;
+}
+
+div[hc = 'wb'], span[hc = 'wb'], p[hc = 'wb'], ul[hc = 'wb'], li[hc = 'wb'],
+h1[hc = 'wb'], h2[hc = 'wb'], h3[hc = 'wb'], h4[hc = 'wb'], h5[hc = 'wb'],
+table[hc = 'wb'], th[hc = 'wb'], tr[hc = 'wb'], td[hc = 'wb'], pre[hc = 'wb'], code[hc = 'wb'], header[hc='wb'],
+dt[hc='wb'], dl[hc='wb'] {
+  background: black !important;
+  color: white !important;
+  text-shadow: none !important;
+}
+
+a[hc = 'wb'] {
+  background: black !important;
+  background-color: black !important;
+  color: #C2CFFF !important;
+  text-decoration: underline !important;
+  text-shadow: none !important;
+}
+
+a[hc='wb']:visited, a[hc = 'wb']:hover {
+  color: white !important;
+}
+
+input[hc='wb'], input[type='number'][hc='wb'] {
+  color: white;
+  background: black;
+  border: 1px solid white;
+}
+
+button[hc='wb'] {
+  color: #C2CFFF;
+  background: black;
+  border: 1px solid #C2CFFF;
+}
+
+html[hc = 'wb'] > body {
+  background: black !important;
+  color: white;
+}
+
+html[hc = 'yb'] {
+  background: black;
+  color: yellow;
+}
+html[hc = 'yb'] > body {
+  background: black !important;
+  color: yellow;
+}
+
+div[hc = 'yb'], span[hc = 'yb'], p[hc = 'yb'], ul[hc = 'yb'], li[hc = 'yb'],
+h1[hc = 'yb'], h2[hc = 'yb'], h3[hc = 'yb'], h4[hc = 'yb'], h5[hc = 'yb'],
+table[hc = 'yb'], th[hc = 'yb'], tr[hc = 'yb'], td[hc = 'yb'], pre[hc = 'yb'], code[hc = 'yb'],
+article[hc='yb'], nav[hc='yb'], section[hc='yb'], header[hc='by'], 
+dl[hc='yb'], dt[hc='yb'] {
+  background: black !important;
+  color: yellow !important;
+  text-shadow: none !important;
+}
+
+a[hc = 'yb'] {
+  background: black !important;
+  background-color: black !important;
+  color: yellow !important;
+  text-decoration: underline !important;
+  text-shadow: none !important;
+}
+
+a[hc='yb']:visited, a[hc = 'yb']:hover {
+  color: yellow !important;
+}
+
+input[hc='yb'] {
+  color: yellow;
+  background: black;
+  border: 1px solid yellow;
+}
+
+button[hc='yb'] {
+  color: yellow;
+  background: black;
+  border: 1px solid yellow;
+}
+
+html[hc = 'by'] {
+  background: yellow;
+}
+html[hc = 'by'] > body{
+  background: yellow !important;
+  color: black;
+}
+div[hc = 'by'], span[hc = 'by'], p[hc = 'by'], ul[hc = 'by'], li[hc = 'by'],
+h1[hc = 'by'], h2[hc = 'by'], h3[hc = 'by'], h4[hc = 'by'], h5[hc = 'by'],
+table[hc = 'by'], th[hc = 'by'], tr[hc = 'by'], td[hc = 'by'], pre[hc = 'by'], code[hc = 'by'],
+article[hc='by'], nav[hc='by'], section[hc='by'], header[hc='by'],
+dl[hc='by'], dt[hc='by'] {
+  background: yellow !important;
+  color: black !important;
+  text-shadow: none !important;
+}
+
+a[hc = 'by'] {
+  background: yellow !important;
+  background-color: yellow !important;
+  color: black !important;
+  text-decoration: underline !important;
+  text-shadow: none !important;
+}
+
+a[hc='by']:visited, a[hc = 'by']:hover {
+  color: #333 !important;
+}
+
+input[hc='by'] {
+  color: black;
+  background: yellow;
+  border: 1px solid black;
+}
+
+button[hc='by'] {
+  color: black;
+  background: yellow;
+  border: 1px solid yellow;
+}
+
+div[ts='large'], span[ts='large'], p[ts='large'], ul[ts='large'], 
+h5[ts='large'], dt[ts='large'],
+table[ts='large'], th[ts='large'], tr[ts='large'], td[ts='large'], pre[ts='large'], code[ts='large'],
+article[ts='large'], nav[ts='large'], section[ts='large'] {
+  font-size: 1em !important;
+  line-height: 1.3em !important;
+}
+
+li[ts='large'] {
+  font-size: 1em !important;
+  line-height: 1.2em !important;
+}
+
+h1[ts='large'] {
+  font-size: 1.6em !important;
+  line-height: 1.6em !important;
+}
+
+h2[ts='large'] {
+  font-size: 1.5em !important;
+  line-height: 1.5em !important;
+}
+
+h3[ts='large'] {
+  font-size: 1.4em !important;
+  line-height: 1.4em !important;
+}
+
+h4[ts='large'] {
+  font-size: 1.3em !important;
+  line-height: 1.3em !important;
+}
+
+div[ts='x-large'], span[ts='x-large'], p[ts='x-large'], ul[ts='x-large'], 
+h5[ts='x-large'],
+table[ts='x-large'], th[ts='x-large'], tr[ts='x-large'], td[ts='x-large'], pre[ts='x-large'], code[ts='x-large'],
+article[ts='x-large'], nav[ts='x-large'], section[ts='x-large'] {
+  font-size: 1em !important;
+  line-height: 1.3em !important;
+}
+
+li[ts='x-large'] {
+  font-size: 1em !important;
+  line-height: 1.2em !important;
+}
+
+h1[ts='x-large'] {
+  font-size: 1.6em !important;
+  line-height: 1.6em !important;
+}
+
+h2[ts='x-large'] {
+  font-size: 1.5em !important;
+  line-height: 1.5em !important;
+}
+
+h3[ts='x-large'] {
+  font-size: 1.4em !important;
+  line-height: 1.4em !important;
+}
+
+h4[ts='x-large'] {
+  font-size: 1.3em !important;
+  line-height: 1.3em !important;
+}
+
+.simpWarn {
+	position: absolute;
+	top: 0;
+	height: 100px;
+}
+
+body[simp="true"] {
+  background: #EEE;
+}
+
+div#simpleContainer {	
+  background: white;
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 1em;
+}
+
+div#simpleContainer > div.article {
+  display: block;
+  clear: both;
+  overflow: hidden;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #333;
+}
+
+div.article > p {
+  font-size: large;
+  line-height: 120%;
+}
+
+div#simpleContainer img {
+	float: left;
+	clear: left;
+	margin: 0 1em 1em 0; 
+}
+
+html[ff="Arial"], html[ff="Arial"] body, html[ff="Arial"] p, html[ff="Arial"] h1, html[ff="Arial"] h2, 
+html[ff="Arial"] h3, html[ff="Arial"] h4, html[ff="Arial"] h5, html[ff="Arial"] h6, 
+html[ff="Arial"] blockquote, html[ff="Arial"] article, html[ff="Arial"] div, html[ff="Arial"] span, html[ff="Arial"] a {
+  font-family: Arial, sans-serif !important; 
+}
+
+html[ff="Verdana"], html[ff="Verdana"] body, html[ff="Verdana"] p, html[ff="Verdana"] h1, html[ff="Verdana"] h2, 
+html[ff="Verdana"] h3, html[ff="Verdana"] h4, html[ff="Verdana"] h5, html[ff="Verdana"] h6, 
+html[ff="Verdana"] blockquote, html[ff="Verdana"] article, html[ff="Verdana"] div, html[ff="Verdana"] span, html[ff="Verdana"] a {
+  font-family: Verdana, sans-serif !important; 
+}
+
+html[ff="Courier"], html[ff="Courier"] body, html[ff="Courier"] p, html[ff="Courier"] h1, html[ff="Courier"] h2, 
+html[ff="Courier"] h3, html[ff="Courier"] h4, html[ff="Courier"] h5, html[ff="Courier"] h6, 
+html[ff="Courier"] blockquote, html[ff="Courier"] article, html[ff="Courier"] div, html[ff="Courier"] span, html[ff="Courier"] a {
+  font-family: Courier, sans-serif !important; 
+}
+
+html[ff="Comic Sans MS"], html[ff="Comic Sans MS"] body, html[ff="Comic Sans MS"] p, html[ff="Comic Sans MS"] h1, html[ff="Comic Sans MS"] h2, 
+html[ff="Comic Sans MS"] h3, html[ff="Comic Sans MS"] h4, html[ff="Comic Sans MS"] h5, html[ff="Comic Sans MS"] h6, 
+html[ff="Comic Sans MS"] blockquote, html[ff="Comic Sans MS"] article, html[ff="Comic Sans MS"] div, html[ff="Comic Sans MS"] span, html[ff="Comic Sans MS"] a {
+  font-family: "Comic Sans MS", sans-serif !important; 
+}
+
+.tooltip {
+  position: fixed;   
+  background: black;
+  color: white;
+  border-radius: 6px;
+  padding: 1em;
+  font-size: 12px;
+  margin: 20px;
+  width: 300px;
+}
+
+.tooltip .help-paragraph {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.tooltip h1 {
+  color: white;
+  font-size: 1em;
+  font-weight: bold !important;
+  text-decoration: underline;
+}

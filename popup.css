@@ -1,0 +1,178 @@
+/* Personalization options */
+html[hc="invert"] {
+  -webkit-filter: invert();
+}
+			
+html[ts="large"], html[ts="large"] > body {
+  font-size: large;
+}
+
+html[ts="x-large"], html[ts="x-large"] > body {
+ font-size: x-large;
+}
+
+html[hc="bw"] input, html[hc="bw"] select {
+  background: white;
+  color: black;
+}
+
+html[hc="wb"] input, html[hc="wb"] select {
+  background: black;
+  color: white;
+}
+
+html[hc="yb"] input, html[hc="yb"] select {
+  background: black;
+  color: yellow;
+}
+
+html[hc="by"] input, html[hc="by"] select {
+  background: yellow;
+  color: orange;
+}
+
+/* Common options */
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  width: 400px;
+  margin: 0;
+}
+
+/* Token form */
+
+div#token-form-container {
+	display: block;
+	padding: 1em;
+	background: #1b428d;
+}
+
+img#c4a-logo {
+  display: inline-block;
+  float: left;
+  margin-right: .5em;
+}
+
+div#token-form-container h1 {
+	color: white;
+  font-size: 26px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 18px;
+	z-index: 1;
+}
+
+input#token-input {
+  width: 96%;
+	font-size: 1.2em;
+	background: #1b428d;
+	border: 1px solid white;
+	color: white;
+	z-index: 2;
+}
+
+div#token-form-container input[type='submit'] {
+  display: none;
+}
+
+div#token-form-container div#results {
+	display: none;
+  padding-bottom: 1em;
+	color: white;
+}
+
+span.warning {
+  color: yellow;
+}
+
+div#token-form-container div#options {
+	display: block;
+  color: white;
+  padding-bottom: 10px;
+}
+
+div#token-form-container div#options a {
+  color: #DAEEF3;
+  display: inline-block;
+  z-index: 4;
+}
+
+div#token-form-container div#options a#exitbutton {
+  float: right;
+  display: none;
+  z-index: 5;
+}
+
+
+/* Style of preferences form */
+
+div#preferences-container header {
+  padding: 0 1em;
+}
+			
+.config-option {
+  border-top: 1px solid #CCC;
+  padding: 0 1em 1em 1em;
+  margin: 0;
+}
+		
+		
+ul.radiogroup {
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+}
+			
+span.font-size-normal-span {
+  font-size: 1em; 
+}
+			
+span.font-size-large-span {
+  font-size: 1.2em;
+}
+			
+span.font-size-x-large-span {
+  font-size: 1.4em;
+}
+
+div#prefOptions {
+  padding: 1em;
+}
+
+input[type='submit'] {
+  background: #FF5702;
+  font-size: 1.2em;
+  color: white;
+  border: 0;
+  padding: 0.3em 0.8em;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 1em;
+}
+
+a.sign-out-btn {
+  float: right;
+  font-size: 0.9em;
+}
+
+
+.black-on-white {
+  background: white;
+  color: black;
+}
+
+.white-on-black {
+  background: black;
+  color: white;
+}
+
+.yellow-on-black {
+  background: black;
+  color: yellow;
+}
+
+.black-on-yellow {
+  background: yellow;
+  color: black;
+}
+

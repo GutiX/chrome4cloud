@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+	<head>
+	  <link rel='stylesheet' type='text/javascript' href='content.css' />
+	  <link rel='stylesheet' type='text/javascript' href='options.css' />
+	  <script type='text/javascript' src='lib/jquery-1.9.1.min.js'></script>
+	  <script type='text/javascript' src='options.js'></script>
+	  <script type='text/javascript' src='background.js'></script>
+	</head>
+	<body>
+	  <!-- Preferences configurator -->
+	  <div id = 'preferencesContainerOP'>
+	    <div id='header'>
+		  <img src='images/C4a_GPII_logo.png' alt="Cloud4all and the GPII logos" />
+		  <h1 id='optionsPageTitle'></h1>
+		  <p id='optionsPageSubtitle'></p>
+		</div>
+		</header>
+		<form id='preferencesFormOP'>
+		
+		  <div class='formWarning'>
+		    <p id='formTokenWarning'></p>
+		  </div>
+		  
+		  <div class='config_option' id="newTokenInputDivOP">
+		    <h2 id='tokenTitle'>Token *</h2>
+			<input type='text' value='' id='newTokenInputOP' placeholder="write an ID"/>
+		  </div>
+		
+		  <div class='config_option' id="screenReaderDiv">
+		    <h2 tabindex='2' id="screenReaderTitle"></h2>
+			  <div id='screenReaderDivCVInstalled'>
+				<input type='checkbox' name='screen reader checkbox' id='screenReaderCheckBoxOP' role='checkbox' tabindex='3' />
+				<label for='screenReaderCheckBox' id='screenReaderLabel'></label>
+			  </div>
+			  
+			  <div id='screenReaderDivCVNotInstalled' style='display: none;'>
+				<p id='chromeVoxNotInstalledWarning'></p>
+				<p><button id='installCVButton' role='button' tabindex='3'></a></p>
+			  </div>
+		  </div>
+			
+		  <div class='config_option'>
+			<h2 id='highContrastRgTitle' tabindex='4'></h2>
+			  <ul class= 'radiogroup' role='radiogroup' aria-labelledby='highContrastRg'>
+				<li>
+			      <input type='radio' name='highContrast' id='noHighContrastRBOP' value='noHighContrast' role='radio' tabindex="" />
+				  <label for='NoHighContrastRB2' id='noHighContrastLabel'></label>
+				</li>
+				<li>
+					<input type='radio' name='highContrast' id='highContrastBlackWhite' value='highContrastBlackWhite' role='radio' />
+					<label for='highContrastBlackWhite' id='highContrastBlackWhiteLabel' class="blackonwhite"></label>
+				</li>
+				<li>
+					<input type='radio' name='highContrast' id='highContrastWhiteBlack' value='highContrastWhiteBlack' role='radio' />
+					<label for='highContrastWhiteBlack' id='highContrastWhiteBlackLabel' class='whiteonblack'></label>
+				</li>
+				<li>
+					<input type='radio' name='highContrast' id='highContrastYellowBlack' value='highContrastYellowBlack' role='radio' />
+					<label for='highContrastYellowBlack' id='highContrastYellowBlackLabel' class='yellowonblack'></label>
+				</li>
+				<li>
+					<input type='radio' name='highContrast' id='highContrastBlackYellow' value='highContrastBlackYellow' role='radio' />
+					<label for='highContrastBlackYellow' id='highContrastBlackYellowLabel' class='blackonyellow'></label>
+				</li>
+<!-- 				<li>
+				  <input type='radio' name='highContrast' id='invertRBOP' value='invertColors' role='radio' tabindex='5'/>
+				  <label for='invertRB' id='invertLabel'></label>
+				</li> -->
+			  </ul>
+		  </div>
+
+		  <div class='config_option'>
+		  		<h2 id='invertColoursTitle'></h2>
+				<input type='checkbox' name='invertColorsCheckbox' id='invertColorsCheckbox' role='checkbox' />
+				<label for='invertColorsCheckbox' id='invertLabel'></label>
+		  </div>
+			
+		  <div class='config_option'>
+			<h2 id='zoomrg' tabindex='6'></h2>
+			  <ul class='radiogroup' role='radiogroup' aria-labelledby='zoomrg'>
+				<li>
+				  <input type='radio' name='zoom' id='zoom100OP' value='100' tabindex='7' role='radio'>
+				  <label for='zoom100'>100%</label>
+				</li>
+				<li>
+				  <input type='radio' name='zoom' id='zoom200OP' value='200' tabindex='8' role='radio'>
+				  <label for='zoom200'>200%</label>
+				</li>
+				
+				<li>
+				  <input type='radio' name='zoom' id='zoom300OP' value='300' tabindex='9' role='radio'>
+				  <label for='zoom300'>300%</label>
+				</li>
+			  </ul>
+		  </div>
+			
+		  <div class='config_option'>
+			<h2 id='fontsizerg' tabindex='10'></h2>
+		      <ul class='radiogroup' role='radiogroup' aria-labelledby='fontsizerg'>
+				<li>
+				  <input type='radio' name='textSize' id='textSizeNormalOP' value='medium' tabindex='11' role='radio'>
+				  <label for='textSizeMedium'><span class='textSizeMedium' id='textSizeMediumLabel'>Medium</span></label>
+				</li>
+				
+				<li>
+				  <input type='radio' name='textSize' id='textSizeLargeOP' value='large' tabindex="12" role="radio">
+				  <label for='textSizeLarge'><span class='textSizeLarge' id='textSizeLargeLabel'>Large</span></label>
+				</li>
+				
+				<li>
+				  <input type='radio' name='textSize' id='textSizeXLargeOP' value='x-large' tabindex='13' role='radio'>
+				  <label for='textSizeXLarge'><span class="textSizeXLarge" id='textSizeXLargeLabel'>X-Large</span></label>
+				</li>
+			  </ul>
+		  </div>
+		  
+		  <div class='config_option'>
+			<h2 tabindex='14' id='simplifierTitle'>Simplifier (Beta)</h2>
+			  <input type='checkbox' name='simplifier checkbox' id='simplifierCheckBoxOP' role='checkbox' tabindex='15'/>
+			  <label for='simplifierCheckBox' id='simplifierCheckBoxLabel'>Enable simplification</label>
+		  </div>
+		  
+		  <div class='config_option' id='prefOptions'>
+		    <input type='submit' id='savePrefsBtn' />
+			<a href="" id="clearBtn">Clear</a>
+		  </div>
+		</form>
+	  </div> <!-- prefContainer -->
+	</body>
+</html>
