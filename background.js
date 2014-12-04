@@ -1,5 +1,5 @@
 'use strict';
-//branch version
+
 var value,
 	html = document.documentElement,
 	uri = 'org.chrome.cloud4chrome',
@@ -19,6 +19,10 @@ chrome.windows.onCreated.addListener(function() {
 chrome.windows.onRemoved.addListener(function() {
 
 	diconnectServer();
+});
+
+chrome.runtime.onStartup.addListener(function() {
+	console.log("Start up");
 });
 
 // initialization when your extension is installed or upgraded	
@@ -446,16 +450,20 @@ function isEmpty(obj) {
 }	
 
 //SOCKET.IO SERVER
-var socket = io.connect('http://localhost:8000');;
-
-	
+var socket = io.connect('http://localhost:8000', function(){
+	socketListeners();
+});
+//var socket = io.connect('http://localhost:8000');
 
 function connectServer()
 {
 	console.log("windows.onCreated....");
+	if(socket == null) socket = io.connect('http://localhost:8000');
+	
 	if(socket != null && socket.socket.connected)
 	{
 		console.log("--- Connected ---");
+		socket.socket.connect();
 		socketListeners();
 	}
 	else
@@ -481,11 +489,11 @@ function socketListeners()
 		socket.socket.disconnect();
 	});
 	
-	socket.on('disconnect', function(request){
+	/*socket.on('disconnect', function(request){
 		console.log('Disconnect: ' + request);
 		signOut();
 		chrome.tabs.reload();
-	});
+	});*/
 }
 
 function diconnectServer()
