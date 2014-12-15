@@ -478,6 +478,7 @@ function onZoomChanged() {
 }
 
 function fontSizeChanged() {
+	console.log("Cambio de tamaña de letra.");
 	localPreferences.fontSize = $(this).val();
 	console.log($(this).val());
 	chrome.storage.local.set({ preferences : localPreferences });

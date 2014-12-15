@@ -3,17 +3,75 @@ html[ic="invert"] {
 }
 
 html[ts="large"], html[ts="large"] body {
-  font-size: 1.2rem !important;
+  /*font-size: 1.2rem !important;*/
+  font-size: 25px !important;
 }
 
 html[ts="x-large"], html[ts="x-large"] > body {
-  font-size: 1.4rem !important;
+  /*font-size: 1.4rem !important;*/
+  font-size: 35px !important;
 }
 
 html[hc = 'bw'] {
   -webkit-filter: grayscale(100%);
 }
 
+/*white over black*/
+html[hc = 'bw'] {
+  background: white;
+}
+
+div[hc = 'bw'], span[hc = 'bw'], p[hc = 'bw'], ul[hc = 'bw'], li[hc = 'bw'],
+h1[hc = 'bw'], h2[hc = 'bw'], h3[hc = 'bw'], h4[hc = 'bw'], h5[hc = 'bw'],
+table[hc = 'bw'], th[hc = 'bw'], tr[hc = 'bw'], td[hc = 'bw'], pre[hc = 'bw'], code[hc = 'bw'], header[hc='bw'],
+dt[hc='bw'], dl[hc='bw'] {
+  background: white !important;
+  color: black !important;
+  text-shadow: none !important;
+}
+
+input[hc='bw'][type='submit']{background: white !important; color: black !important; text-shadow: none !important; border: 2px solid white !important;  border-radius:10px !important;}
+input[hc='bw'][type='submit']:focus, input[hc='bw'][type='submit']:hover {border: 4px solid black !important;}
+
+a[hc = 'bw'] {
+  background: white !important;
+  background-color: white !important;
+  color: #C2CFFF !important;
+  text-decoration: underline !important;
+  text-shadow: none !important;
+}
+
+a[hc='bw']:visited, a[hc = 'bw']:hover {
+  color: black !important;
+}
+
+input[hc='bw'], input[type='number'][hc='bw'] {
+  color: black;
+  background: white;
+  border: 1px solid white;
+}
+
+button[hc='bw'] {
+  color: #C2CFFF;
+  background: black;
+  border: 1px solid #C2CFFF;
+}
+
+html[hc = 'bw'] > body {
+  background: white !important;
+  color: black;
+}
+
+/*black over white*/
+/*
+html[hc = 'wb'] {
+  -webkit-filter: grayscale(0%);
+}
+*/
+
+html[hc = 'wb'] {
+  -webkit-filter: grayscale(100%);
+}
 
 html[hc = 'wb'] {
   background: black;
@@ -27,6 +85,18 @@ dt[hc='wb'], dl[hc='wb'] {
   color: white !important;
   text-shadow: none !important;
 }
+
+/*input[hc='wb'][type='submit'], input[hc='wb'][type='button'], button[hc='wb']{background: black !important; color: white !important; text-shadow: none !important; border-color: white !important; border-radius:10px !important;}
+input[hc='wb'][type='submit']:focus, input[hc='wb'][type='submit']:hover, input[hc='wb'][type='button']:hover, input[hc='wb'][type='button']:focus, button[hc='wb']:hover, button[hc='wb']:focus {border-color: white !important;}*/
+input[hc='wb'][type='submit'], input[hc='wb'][type='button'], button[hc='wb']{background: black !important; color: white !important; text-shadow: none !important; border: 2px solid white !important; border-radius:10px !important;}
+input[hc='wb'][ts='large'][type='submit']:focus, input[hc='wb'][ts='large'][type='submit']:hover, input[hc='wb'][ts='large'][type='button']:hover, input[hc='wb'][ts='large'][type='button']:focus, button[hc='wb'][ts='large']:hover, button[hc='wb'][ts='large']:focus,
+input[hc='wb'][ts='x-large'][type='submit']:focus, input[hc='wb'][ts='x-large'][type='submit']:hover, input[hc='wb'][ts='x-large'][type='button']:hover, input[hc='wb'][ts='x-large'][type='button']:focus, button[hc='wb'][ts='x-large']:hover, button[hc='wb'][ts='x-large']:focus {border: 4px solid white !important;}
+input[hc='wb'][ts='medium'][type='submit']:focus, input[hc='wb'][ts='medium'][type='submit']:hover, input[hc='wb'][ts='medium'][type='button']:hover, input[hc='wb'][ts='medium'][type='button']:focus, button[hc='wb'][ts='medium']:hover, button[hc='wb'][ts='medium']:focus {border: 3px solid white !important;}
+select[hc='wb']{background: #D2D2D2 !important; color: #000 !important; text-shadow: none !important; border: 2px solid white !important;}
+input[hc='wb'][type='text'], input[hc='wb'][type='password']{background: black !important; color: white !important; text-shadow: none !important; border: 2px solid white !important;}
+input[hc='wb'][ts='large'][type='text']:focus, input[hc='wb'][ts='large'][type='text']:hover, input[hc='wb'][ts='large'][type='password']:focus, input[hc='wb'][ts='large'][type='password']:hover, select[hc='wb'][ts='large']:hover, select[hc='wb'][ts='large']:focus,
+input[hc='wb'][ts='x-large'][type='text']:focus, input[hc='wb'][ts='x-large'][type='text']:hover, input[hc='wb'][ts='x-large'][type='password']:focus, input[hc='wb'][ts='x-large'][type='password']:hover, select[hc='wb'][ts='x-large']:hover, select[hc='wb'][ts='x-large']:focus {border: 4px solid white !important;}
+input[hc='wb'][ts='medium'][type='text']:focus, input[hc='wb'][ts='medium'][type='text']:hover, input[hc='wb'][ts='medium'][type='password']:focus, input[hc='wb'][ts='medium'][type='password']:hover, select[hc='wb'][ts='medium']:hover, select[hc='wb'][ts='medium']:focus{border: 3px solid white !important;}
 
 a[hc = 'wb'] {
   background: black !important;
@@ -76,6 +146,20 @@ dl[hc='yb'], dt[hc='yb'] {
   text-shadow: none !important;
 }
 
+input[hc='yb'][type='submit'], input[hc='yb'][type='button'], button[hc='yb']{background: black !important; color: yellow !important; text-shadow: none !important; border: 2px solid yellow !important; border-radius:10px !important;}
+input[hc='yb'][ts='large'][type='submit']:focus, input[hc='yb'][ts='large'][type='submit']:hover, input[hc='yb'][ts='large'][type='button']:hover, input[hc='yb'][ts='large'][type='button']:focus, button[hc='yb'][ts='large']:hover, button[hc='yb'][ts='large']:focus,
+input[hc='yb'][ts='x-large'][type='submit']:focus, input[hc='yb'][ts='x-large'][type='submit']:hover, input[hc='yb'][ts='x-large'][type='button']:hover, input[hc='yb'][ts='x-large'][type='button']:focus, button[hc='yb'][ts='x-large']:hover, button[hc='yb'][ts='x-large']:focus {border: 4px solid yellow !important;}
+input[hc='yb'][ts='medium'][type='submit']:focus, input[hc='yb'][ts='medium'][type='submit']:hover, input[hc='yb'][ts='medium'][type='button']:hover, input[hc='yb'][ts='medium'][type='button']:focus, button[hc='yb'][ts='medium']:hover, button[hc='yb'][ts='medium']:focus {border: 3px solid yellow !important;}
+input[hc='yb'][type='text'], input[hc='yb'][type='password']{background: black !important; color: yellow !important; text-shadow: none !important; border: 2px solid yellow !important;}
+input[hc='yb'][ts='large'][type='text']:focus, input[hc='yb'][ts='large'][type='text']:hover, input[hc='yb'][ts='large'][type='password']:focus, input[hc='yb'][ts='large'][type='password']:hover,
+input[hc='yb'][ts='x-large'][type='text']:focus, input[hc='yb'][ts='x-large'][type='text']:hover, input[hc='yb'][ts='x-large'][type='password']:focus, input[hc='yb'][ts='x-large'][type='password']:hover {border: 4px solid yellow !important;}
+input[hc='yb'][ts='medium'][type='text']:focus, input[hc='yb'][ts='medium'][type='text']:hover, input[hc='yb'][ts='medium'][type='password']:focus, input[hc='yb'][ts='medium'][type='password']:hover {border: 3px solid yellow !important;}
+/*
+input[hc='yb'][type='submit']{background: black !important; color: yellow !important; text-shadow: none !important; border: 2px solid yellow !important; border-radius:10px !important;}
+input[hc='yb'][type='submit']:focus, input[hc='yb'][type='submit']:hover {border: 4px solid yellow !important;}
+input[hc='yb'][type='text']{background: black !important; color: yellow !important; text-shadow: none !important; border: 2px solid yellow !important;}
+input[hc='yb'][type='text']:focus, input[hc='yb'][type='text']:hover {border: 4px solid yellow !important;}
+*/
 a[hc = 'yb'] {
   background: black !important;
   background-color: black !important;
@@ -117,6 +201,20 @@ dl[hc='by'], dt[hc='by'] {
   text-shadow: none !important;
 }
 
+input[hc='by'][type='submit'], input[hc='by'][type='button'], button[hc='by']{background: yellow !important; color: black !important; text-shadow: none !important; border: 2px solid black !important; border-radius:10px !important;}
+input[hc='by'][ts='large'][type='submit']:focus, input[hc='by'][ts='large'][type='submit']:hover, input[hc='by'][ts='large'][type='button']:hover, input[hc='by'][ts='large'][type='button']:focus, button[hc='by'][ts='large']:hover, button[hc='by'][ts='large']:focus,
+input[hc='by'][ts='x-large'][type='submit']:focus, input[hc='by'][ts='x-large'][type='submit']:hover, input[hc='by'][ts='x-large'][type='button']:hover, input[hc='by'][ts='x-large'][type='button']:focus, button[hc='by'][ts='x-large']:hover, button[hc='by'][ts='x-large']:focus {border: 4px solid black !important;}
+input[hc='by'][ts='medium'][type='submit']:focus, input[hc='by'][ts='medium'][type='submit']:hover, input[hc='by'][ts='medium'][type='button']:hover, input[hc='by'][ts='medium'][type='button']:focus, button[hc='by'][ts='medium']:hover, button[hc='by'][ts='medium']:focus {border: 3px solid black !important;}
+input[hc='by'][type='text'], input[hc='by'][type='password']{background: yellow !important; color: black !important; text-shadow: none !important; border: 2px solid black !important;}
+input[hc='by'][ts='large'][type='text']:focus, input[hc='by'][ts='large'][type='text']:hover, input[hc='by'][ts='large'][type='password']:focus, input[hc='by'][ts='large'][type='password']:hover,
+input[hc='by'][ts='x-large'][type='text']:focus, input[hc='by'][ts='x-large'][type='text']:hover, input[hc='by'][ts='x-large'][type='password']:focus, input[hc='by'][ts='x-large'][type='password']:hover {border: 4px solid black !important;}
+input[hc='by'][ts='medium'][type='text']:focus, input[hc='by'][ts='medium'][type='text']:hover, input[hc='by'][ts='medium'][type='password']:focus, input[hc='by'][ts='medium'][type='password']:hover {border: 3px solid black !important;}
+/*
+input[hc='by'][type='submit']{background: yellow !important; color: black !important; text-shadow: none !important; border: 2px solid black !important; border-radius:10px !important;}
+input[hc='by'][type='submit']:focus, input[hc='by'][type='submit']:hover {border: 4px solid black !important;}
+input[hc='by'][type='text']{background: yellow !important; color: black !important; text-shadow: none !important; border: 2px solid black !important;}
+input[hc='by'][type='text']:focus, input[hc='by'][type='text']:hover {border: 4px solid black !important;}
+*/
 a[hc = 'by'] {
   background: yellow !important;
   background-color: yellow !important;
@@ -142,68 +240,77 @@ button[hc='by'] {
 }
 
 div[ts='large'], span[ts='large'], p[ts='large'], ul[ts='large'], 
-h5[ts='large'], dt[ts='large'],
+h5[ts='large'], dt[ts='large'], a[ts='large'],
 table[ts='large'], th[ts='large'], tr[ts='large'], td[ts='large'], pre[ts='large'], code[ts='large'],
 article[ts='large'], nav[ts='large'], section[ts='large'] {
-  font-size: 1em !important;
+  font-size: 1rem !important;
   line-height: 1.3em !important;
 }
 
-li[ts='large'] {
-  font-size: 1em !important;
-  line-height: 1.2em !important;
+li[ts='large'], input[ts='large'] {
+  font-size: 1rem !important;
+  /*line-height: 1.2em !important;*/
 }
+input[ts='large'][type='submit'], input[ts='large'][type='button'], button[ts='large'] {font-size: 1rem !important; /*line-height: 1.2em !important;*/ padding: 10px !important; height: initial !important;}
+input[ts='large'][type='text'], input[ts='large'][type='password'], select[hc='wb'] {font-size: 1rem !important; /*line-height: 1.2em !important;*/ height: initial !important;}
+/*input[ts='large'][type='submit']:focus, input[ts='large'][type='submit']:hover, input[ts='large'][type='button']:hover, input[ts='large'][type='button']:focus, button[ts='large']:hover, button[ts='large']:focus {border-width: 4px !important;}
+input[ts='large'][type='text']:focus, input[ts='large'][type='text']:hover{border-width: 4px !important;}*/
 
 h1[ts='large'] {
-  font-size: 1.6em !important;
+  font-size: 1.6rem !important;
   line-height: 1.6em !important;
 }
 
 h2[ts='large'] {
-  font-size: 1.5em !important;
+  font-size: 1.5rem !important;
   line-height: 1.5em !important;
 }
 
 h3[ts='large'] {
-  font-size: 1.4em !important;
+  font-size: 1.4rem !important;
   line-height: 1.4em !important;
 }
 
 h4[ts='large'] {
-  font-size: 1.3em !important;
+  font-size: 1.3rem !important;
   line-height: 1.3em !important;
 }
 
 div[ts='x-large'], span[ts='x-large'], p[ts='x-large'], ul[ts='x-large'], 
-h5[ts='x-large'],
+h5[ts='x-large'], a[ts='x-large'],
 table[ts='x-large'], th[ts='x-large'], tr[ts='x-large'], td[ts='x-large'], pre[ts='x-large'], code[ts='x-large'],
 article[ts='x-large'], nav[ts='x-large'], section[ts='x-large'] {
-  font-size: 1em !important;
+  font-size: 1rem !important;
   line-height: 1.3em !important;
 }
 
 li[ts='x-large'] {
-  font-size: 1em !important;
-  line-height: 1.2em !important;
+  font-size: 1rem !important;
+  /*line-height: 1.2em !important;*/
 }
 
+input[ts='x-large'][type='submit'], input[ts='x-large'][type='button'], button[ts='x-large']  {font-size: 1rem !important; /*line-height: 1.2em !important;*/ padding: 15px !important; height: initial !important;}
+input[ts='x-large'][type='text'], input[ts='x-large'][type='password'], select[hc='wb'] {font-size: 1rem !important; /*line-height: 1.2em !important;*/ height: initial !important;}
+/*input[ts='x-large'][type='submit']:focus, input[ts='x-large'][type='submit']:hover, input[ts='x-large'][type='button']:hover, input[ts='x-large'][type='button']:focus, button[ts='x-large']:hover, button[ts='x-large']:focus {border-width: 4px !important;}
+input[ts='x-large'][type='text']:focus, input[ts='x-large'][type='text']:hover{border-width: 4px !important;}*/
+
 h1[ts='x-large'] {
-  font-size: 1.6em !important;
+  font-size: 1.6rem !important;
   line-height: 1.6em !important;
 }
 
 h2[ts='x-large'] {
-  font-size: 1.5em !important;
+  font-size: 1.5rem !important;
   line-height: 1.5em !important;
 }
 
 h3[ts='x-large'] {
-  font-size: 1.4em !important;
+  font-size: 1.4rem !important;
   line-height: 1.4em !important;
 }
 
 h4[ts='x-large'] {
-  font-size: 1.3em !important;
+  font-size: 1.3rem !important;
   line-height: 1.3em !important;
 }
 

@@ -38,14 +38,23 @@ function setFontSize(size)
 		{
 			node.setAttribute('ts', size); 		
 			//console.log(node.id + " - " + node.className)
-			if($.inArray(className, clases) == -1 && $("." + className).css('height') != null)  { 		
+			/*if($.inArray(className, clases) == -1 && $("." + className).css('letter-spacing') != null)
+			{
+				console.log(node.nodeName + ' - ' + className + ' letter-spacing');
+				//$("." + className).css('letter-spacing', none);
+			}*/
+			/*if($.inArray(className, clases) == -1 && $("." + className).css('height') != null)  { 		
 				clases.push(className);
 				var height = $("." + className).css("height");
 				var newHeight = getNewHeight(height, size);
 				//$("." + className).css("cssText", "height: " + newHeight + " !important");
 				$("." + className).css("height", newHeight);
 				console.log(node.nodeName + ' - ' + className + ' Height: ' + height + ' - ' + newHeight + ' +++ ' + node.offsetHeight);
-			}
+			}*/
+		}
+		else if(node.nodeName != "p" || node.nodeName != "a")
+		{
+			node.setAttribute('ts', size);
 		}
 		else if(className != '')
 		{

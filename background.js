@@ -8,7 +8,8 @@ var value,
 	suffix = '/settings/%7B"OS":%7B"id":"web"%7D,"solutions":[%7B"id":"org.chrome.cloud4chrome"%7D]%7D',
 	audio = new Audio("audio/beep-06.wav"),
 	locale = "en-GB",
-	cloudExtensionId = 'finocloegofdnndgmjfemdcfpapgcain';
+	cloudExtensionId = 'finocloegofdnndgmjfemdcfpapgcain',
+	socketServer = 'http://localhost:8081/browserChannel';
 
 
 chrome.windows.onCreated.addListener(function() {
@@ -303,19 +304,20 @@ function setPreferences(preferences) {
 					if (chrome.runtime.lastError) { console.log("Error in adding attribute ts = medium: " + chrome.runtime.lastError.message ); }
 				});
 				//setfontsize('medium');
+				//if (chrome.runtime.lastError) { console.log("Error in adding attribute ts = medium: " + chrome.runtime.lastError.message ); }
 			  	break;
 			case 'large': 
-				chrome.tabs.executeScript({ code: "document.documentElement.setAttribute('ts','large'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.setAttribute('ts', 'large'); });" }, function() {
+				/*chrome.tabs.executeScript({ code: "document.documentElement.setAttribute('ts','large'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.setAttribute('ts', 'large'); });" }, function() {
 					if (chrome.runtime.lastError) { console.log("Error in adding attribute ts = large: " + chrome.runtime.lastError.message ); }
-				});
-				//setfontsize('large');
+				});*/
+				setfontsize('large');
 				if (chrome.runtime.lastError) { console.log("Error in adding attribute ts = large: " + chrome.runtime.lastError.message );}
 				break;
 			case 'x-large':
-				chrome.tabs.executeScript({ code: "document.documentElement.setAttribute('ts','x-large'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.setAttribute('ts', 'x-large'); });" }, function() {
+				/*chrome.tabs.executeScript({ code: "document.documentElement.setAttribute('ts','x-large'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.setAttribute('ts', 'x-large'); });" }, function() {
 					if (chrome.runtime.lastError) { console.log("Error in adding attribute ts = x-large: " + chrome.runtime.lastError.message ); }
-				});
-				//setfontsize('x-large');
+				});*/
+				setfontsize('x-large');
 				if (chrome.runtime.lastError) { console.log("Error in adding attribute ts = x-large: " + chrome.runtime.lastError.message );}
 				break;
 			default:
@@ -450,20 +452,21 @@ function isEmpty(obj) {
 }	
 
 //SOCKET.IO SERVER
-var socket = io.connect('http://localhost:8000', function(){
+/*var socket = io.connect('http://localhost:8000', function(){
 	socketListeners();
-});
+});*/
 //var socket = io.connect('http://localhost:8000');
-
+var socket;
 function connectServer()
 {
 	console.log("windows.onCreated....");
-	if(socket == null) socket = io.connect('http://localhost:8000');
+	//if(socket == null) socket = io.connect('http://localhost:8000');
+	if(socket == null) socket = io.connect(socketServer);
 	
 	if(socket != null && socket.socket.connected)
 	{
 		console.log("--- Connected ---");
-		socket.socket.connect();
+		//socket.socket.connect();
 		socketListeners();
 	}
 	else
@@ -479,14 +482,34 @@ function socketListeners()
 {
 	socket.on('connect', function(data){
 		console.log('Socket connected: ');
-		socket.emit('getpreferences', 'Cloud4chrome');
+		socket.send(uri);
 	});
 
-	socket.on('preferences', function(preferences){
+	socket.on('applyPref', function(preferences){
 		console.log('Preferences received: ' + preferences);
 		processPreferences({ token : 'system', payloadJSON: preferences });
 		chrome.tabs.reload();
-		socket.socket.disconnect();
+		//socket.socket.disconnect();
+	});
+	
+	socket.on('onBrowserSettingsChanged', function(preferences){
+		console.log('Preferences received: ' + preferences);
+		//processPreferences({ token : 'system', payloadJSON: preferences });
+		//chrome.tabs.reload();
+		//socket.socket.disconnect();
+	});
+	
+	socket.on('getPref', function(request){
+		console.log('Get preferences');
+		chrome.storage.local.get({ 'token' : "", 'preferences' : {} }, function(results) {
+			if (!(chrome.runtime.lastError)) {
+				if (!(isEmpty(results['preferences']))) {
+					var prefe = '{"' + uri + '":' + JSON.stringify(results['preferences']) + '}';
+					console.log('--- Get preferences: ' + prefe);
+					socket.emit('getpreferences', prefe);
+				}
+			}
+		}); 
 	});
 	
 	/*socket.on('disconnect', function(request){
