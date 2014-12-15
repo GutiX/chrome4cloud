@@ -452,6 +452,7 @@ function isEmpty(obj) {
 }	
 
 //SOCKET.IO SERVER
+var io = require("socket.io-client");
 /*var socket = io.connect('http://localhost:8000', function(){
 	socketListeners();
 });*/
