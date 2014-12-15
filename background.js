@@ -14,7 +14,7 @@ var value,
 
 chrome.windows.onCreated.addListener(function() {
 	// audio.play();
-	connectServer();
+	//connectServer();
 });
 
 chrome.windows.onRemoved.addListener(function() {
@@ -452,17 +452,54 @@ function isEmpty(obj) {
 }	
 
 //SOCKET.IO SERVER
-var io = require("socket.io-client");
+//var io = require("socket.io-client");
 /*var socket = io.connect('http://localhost:8000', function(){
 	socketListeners();
 });*/
-//var socket = io.connect('http://localhost:8000');
-var socket;
-function connectServer()
+var socket = io.connect('http://localhost:8081/browserChannel');
+
+socket.on('connect', function(data){
+	console.log('Socket connected: ');
+	socket.send(uri);
+});
+
+socket.on("connectionSucceeded", function (settings) {
+	console.log("## Received the following settings: " + JSON.stringify(settings));
+});
+
+socket.on('applyPref', function(preferences){
+	console.log('Preferences received: ' + preferences);
+	processPreferences({ token : 'system', payloadJSON: preferences });
+	chrome.tabs.reload();
+	//socket.socket.disconnect();
+});
+
+socket.on('onBrowserSettingsChanged', function(preferences){
+	console.log('Preferences received: ' + preferences);
+	//processPreferences({ token : 'system', payloadJSON: preferences });
+	//chrome.tabs.reload();
+	//socket.socket.disconnect();
+});
+
+socket.on('getPref', function(request){
+	console.log('Get preferences');
+	chrome.storage.local.get({ 'token' : "", 'preferences' : {} }, function(results) {
+		if (!(chrome.runtime.lastError)) {
+			if (!(isEmpty(results['preferences']))) {
+				var prefe = '{"' + uri + '":' + JSON.stringify(results['preferences']) + '}';
+				console.log('--- Get preferences: ' + prefe);
+				socket.emit('getpreferences', prefe);
+			}
+		}
+	}); 
+});
+
+//var socket;
+/*function connectServer()
 {
 	console.log("windows.onCreated....");
-	//if(socket == null) socket = io.connect('http://localhost:8000');
-	if(socket == null) socket = io.connect(socketServer);
+	if(socket == null) socket = io.connect('http://localhost:8000');
+	//if(socket == null) socket = io.connect(socketServer);
 	
 	if(socket != null && socket.socket.connected)
 	{
@@ -484,6 +521,10 @@ function socketListeners()
 	socket.on('connect', function(data){
 		console.log('Socket connected: ');
 		socket.send(uri);
+	});
+	
+	socket.on("connectionSucceeded", function (settings) {
+		console.log("## Received the following settings: " + JSON.stringify(settings));
 	});
 
 	socket.on('applyPref', function(preferences){
@@ -518,7 +559,7 @@ function socketListeners()
 		signOut();
 		chrome.tabs.reload();
 	});*/
-}
+//}
 
 function diconnectServer()
 {
