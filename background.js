@@ -14,7 +14,7 @@ var value,
 
 chrome.windows.onCreated.addListener(function() {
 	// audio.play();
-	//connectServer();
+	connectServer();
 });
 
 chrome.windows.onRemoved.addListener(function() {
@@ -30,6 +30,7 @@ chrome.runtime.onStartup.addListener(function() {
 chrome.runtime.onInstalled.addListener(function(details) {
 	// audio.play();
 	chrome.storage.local.set({ "token" : "", "preferences" : {} });
+	//connectServer();
 });
 
 chrome.runtime.onSuspend.addListener(function() {
@@ -456,46 +457,10 @@ function isEmpty(obj) {
 /*var socket = io.connect('http://localhost:8000', function(){
 	socketListeners();
 });*/
-var socket = io.connect('http://localhost:8081/browserChannel');
 
-socket.on('connect', function(data){
-	console.log('Socket connected: ');
-	socket.send(uri);
-});
 
-socket.on("connectionSucceeded", function (settings) {
-	console.log("## Received the following settings: " + JSON.stringify(settings));
-});
-
-socket.on('applyPref', function(preferences){
-	console.log('Preferences received: ' + preferences);
-	processPreferences({ token : 'system', payloadJSON: preferences });
-	chrome.tabs.reload();
-	//socket.socket.disconnect();
-});
-
-socket.on('onBrowserSettingsChanged', function(preferences){
-	console.log('Preferences received: ' + preferences);
-	//processPreferences({ token : 'system', payloadJSON: preferences });
-	//chrome.tabs.reload();
-	//socket.socket.disconnect();
-});
-
-socket.on('getPref', function(request){
-	console.log('Get preferences');
-	chrome.storage.local.get({ 'token' : "", 'preferences' : {} }, function(results) {
-		if (!(chrome.runtime.lastError)) {
-			if (!(isEmpty(results['preferences']))) {
-				var prefe = '{"' + uri + '":' + JSON.stringify(results['preferences']) + '}';
-				console.log('--- Get preferences: ' + prefe);
-				socket.emit('getpreferences', prefe);
-			}
-		}
-	}); 
-});
-
-//var socket;
-/*function connectServer()
+var socket;
+function connectServer()
 {
 	console.log("windows.onCreated....");
 	if(socket == null) socket = io.connect('http://localhost:8000');
@@ -525,6 +490,9 @@ function socketListeners()
 	
 	socket.on("connectionSucceeded", function (settings) {
 		console.log("## Received the following settings: " + JSON.stringify(settings));
+		var preferences = '{"' + uri + '":' + settings + '}';
+		processPreferences({ token : 'system', payloadJSON: preferences });
+		chrome.tabs.reload();
 	});
 
 	socket.on('applyPref', function(preferences){
@@ -536,9 +504,9 @@ function socketListeners()
 	
 	socket.on('onBrowserSettingsChanged', function(preferences){
 		console.log('Preferences received: ' + preferences);
-		//processPreferences({ token : 'system', payloadJSON: preferences });
-		//chrome.tabs.reload();
-		//socket.socket.disconnect();
+		var preferences = '{"' + uri + '":' + settings + '}';
+		processPreferences({ token : 'system', payloadJSON: preferences });
+		chrome.tabs.reload();
 	});
 	
 	socket.on('getPref', function(request){
@@ -559,7 +527,7 @@ function socketListeners()
 		signOut();
 		chrome.tabs.reload();
 	});*/
-//}
+}
 
 function diconnectServer()
 {
