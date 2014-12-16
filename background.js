@@ -11,6 +11,7 @@ var value,
 	cloudExtensionId = 'finocloegofdnndgmjfemdcfpapgcain',
 	socketServer = 'http://localhost:8081/browserChannel';
 
+var socket;
 
 chrome.windows.onCreated.addListener(function() {
 	// audio.play();
@@ -30,7 +31,8 @@ chrome.runtime.onStartup.addListener(function() {
 chrome.runtime.onInstalled.addListener(function(details) {
 	// audio.play();
 	chrome.storage.local.set({ "token" : "", "preferences" : {} });
-	//connectServer();
+	console.log("Chrome extension installed.");
+	connectServer();
 });
 
 chrome.runtime.onSuspend.addListener(function() {
@@ -459,7 +461,6 @@ function isEmpty(obj) {
 });*/
 
 
-var socket;
 function connectServer()
 {
 	console.log("windows.onCreated....");
