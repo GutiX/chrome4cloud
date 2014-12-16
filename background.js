@@ -463,8 +463,8 @@ var socket;
 function connectServer()
 {
 	console.log("windows.onCreated....");
-	if(socket == null) socket = io.connect('http://localhost:8000');
-	//if(socket == null) socket = io.connect(socketServer);
+	//if(socket == null) socket = io.connect('http://localhost:8000');
+	if(socket == null) socket = io.connect(socketServer);
 	
 	if(socket != null && socket.socket.connected)
 	{
