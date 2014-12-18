@@ -27,7 +27,7 @@ chrome.windows.onRemoved.addListener(function() {
 
 chrome.runtime.onStartup.addListener(function() {
 	console.log("Start up");
-	connectServer();
+	//connectServer();
 });
 
 // initialization when your extension is installed or upgraded	
@@ -391,11 +391,11 @@ function setPreferences(preferences) {
 		});
 	}
 	// SIMPLIFIER
-	if (preferences.hasOwnProperty('simplifier')) {
+	/*if (preferences.hasOwnProperty('simplifier')) {
 		if (preferences['simplifier']) {
 			chrome.tabs.executeScript({ file : "js/simplifier.js" });
 		}
-	}
+	}*/
 
 	// SYNONYMS
 	if (preferences.hasOwnProperty('synonymsEn')) {
@@ -467,19 +467,23 @@ function connectServer()
 {
 	console.log("windows.onCreated....");
 	//if(socket == null) socket = io.connect('http://localhost:8000');
-	if(socket == null) socket = io.connect(socketServer);
+	if(socket == null)
+	{
+		console.log("### Connecting");
+		socket = io.connect(socketServer);
+	}
 	
 	if(socket != null && socket.socket.connected)
 	{
 		console.log("--- Connected ---");
-		//socket.socket.connect();
 		socketListeners();
 	}
 	else
 	{
-		console.log("--- Disconnected ---");
-		socket.socket.connect();
 		socketListeners();
+		console.log("--- Disconnected ---");
+		socket.socket.reconnect();
+		//socket.socket.connect();
 	}
 	//socket.emit('getpreferences', 'Cloud4chrome');
 }
@@ -488,12 +492,14 @@ function socketListeners()
 {
 	socket.on('connect', function(data){
 		console.log('Socket connected: ');
+		console.log("### Sending uri");
 		socket.send(uri);
 	});
 	
 	socket.on("connectionSucceeded", function (settings) {
 		console.log("## Received the following settings: " + JSON.stringify(settings));
-		var preferences = '{"' + uri + '":' + settings + '}';
+		var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
+		console.log("## Received the following preferences: " + preferences);
 		processPreferences({ token : 'system', payloadJSON: preferences });
 		chrome.tabs.reload();
 	});
@@ -508,9 +514,9 @@ function socketListeners()
 		//socket.socket.disconnect();
 	});
 	
-	socket.on('onBrowserSettingsChanged', function(preferences){
+	socket.on('onBrowserSettingsChanged', function(settings){
 		console.log('Preferences received: ' + preferences);
-		var preferences = '{"' + uri + '":' + settings + '}';
+		var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
 		processPreferences({ token : 'system', payloadJSON: preferences });
 		chrome.tabs.reload();
 	});
@@ -539,7 +545,11 @@ function diconnectServer()
 {
 	console.log("windows.onRemoved....");
 	if(socket != null && socket.socket.connected)
+	{
+		console.log("windows.onRemoved....");
 		socket.socket.disconnect();
+		//socket.disconnect();
+	}
 		
 	signOut();
 }
