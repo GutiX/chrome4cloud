@@ -34,15 +34,17 @@ function setFontSize(size)
 	
 	[].forEach.call(document.querySelectorAll('body *'), function(node) { 
 		var className = node.className.trim();
+		var nodeid = node.id;
 		if(className != '' && $("." + className).css('display') != null && $("." + className).css('display') != "none" && node.nodeName != "IMG")
 		{
 			node.setAttribute('ts', size); 		
 			//console.log(node.id + " - " + node.className)
-			/*if($.inArray(className, clases) == -1 && $("." + className).css('letter-spacing') != null)
+			if($.inArray(className, clases) == -1 && $("." + className).css('position') != null)
 			{
-				console.log(node.nodeName + ' - ' + className + ' letter-spacing');
+				console.log(node.nodeName + ' - Clase: ' + className + ' - Id: ' + nodeid + ' ----  position');
+				clases.push(className);
 				//$("." + className).css('letter-spacing', none);
-			}*/
+			}
 			/*if($.inArray(className, clases) == -1 && $("." + className).css('height') != null)  { 		
 				clases.push(className);
 				var height = $("." + className).css("height");

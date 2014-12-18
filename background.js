@@ -11,6 +11,8 @@ var value,
 	cloudExtensionId = 'finocloegofdnndgmjfemdcfpapgcain',
 	socketServer = 'http://localhost:8081/browserChannel';
 
+
+//var io = require("socket.io-client");
 var socket;
 
 chrome.windows.onCreated.addListener(function() {
@@ -25,6 +27,7 @@ chrome.windows.onRemoved.addListener(function() {
 
 chrome.runtime.onStartup.addListener(function() {
 	console.log("Start up");
+	connectServer();
 });
 
 // initialization when your extension is installed or upgraded	
@@ -455,7 +458,6 @@ function isEmpty(obj) {
 }	
 
 //SOCKET.IO SERVER
-//var io = require("socket.io-client");
 /*var socket = io.connect('http://localhost:8000', function(){
 	socketListeners();
 });*/
@@ -498,7 +500,10 @@ function socketListeners()
 
 	socket.on('applyPref', function(preferences){
 		console.log('Preferences received: ' + preferences);
-		processPreferences({ token : 'system', payloadJSON: preferences });
+		var settings = '{"' + uri + '":' + preferences + '}';
+		console.log('Preferences received: ' + settings);
+		processPreferences({ token : 'system', payloadJSON: settings });
+		//processPreferences({ token : 'system', payloadJSON: preferences });
 		chrome.tabs.reload();
 		//socket.socket.disconnect();
 	});
