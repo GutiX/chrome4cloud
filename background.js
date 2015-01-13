@@ -4,7 +4,7 @@ var value,
 	html = document.documentElement,
 	uri = 'org.chrome.cloud4chrome',
 	//npserver = 'http://127.0.0.1:8081/',
-	npserver = 'http://preferences.gpii.net/',
+	npserver = 'http://flowmanager.gpii.net/',
 	suffix = '/settings/%7B"OS":%7B"id":"web"%7D,"solutions":[%7B"id":"org.chrome.cloud4chrome"%7D]%7D',
 	audio = new Audio("audio/beep-06.wav"),
 	locale = "en-GB",
@@ -67,7 +67,7 @@ function requestPreferences(token) {
 
 	var xhr = new XMLHttpRequest();
 	var url= npserver + token + suffix; 
-
+	console.log(url);
 	xhr.open("GET", url, true);
 	xhr.onreadystatechange = function() {
 		if (this.readyState == 4) {
@@ -495,40 +495,38 @@ function socketListeners()
 {
 	socket.on('connect', function(data){
 		console.log('Socket connected: ');
-		console.log(socket.socket.connected);
-		console.log(socket.socket.connecting);
 		console.log("### Sending uri");
 		socket.send(uri);
 	});
 	
 	socket.on("connectionSucceeded", function (settings) {
 		console.log("## Received the following settings: " + JSON.stringify(settings));
-		/*var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
+		var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
 		console.log("## Received the following preferences: " + preferences);
 		processPreferences({ token : 'system', payloadJSON: preferences });
-		chrome.tabs.reload();*/
+		chrome.tabs.reload();
 	});
 
 	socket.on('applyPref', function(preferences){
 		console.log('Preferences received: ' + preferences);
-		/*var settings = '{"' + uri + '":' + preferences + '}';
+		var settings = '{"' + uri + '":' + preferences + '}';
 		console.log('Preferences received: ' + settings);
 		processPreferences({ token : 'system', payloadJSON: settings });
 		//processPreferences({ token : 'system', payloadJSON: preferences });
-		chrome.tabs.reload();*/
+		chrome.tabs.reload();
 		//socket.socket.disconnect();
 	});
 	
 	socket.on('onBrowserSettingsChanged', function(settings){
 		console.log('Preferences received: ' + preferences);
-		/*var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
+		var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
 		processPreferences({ token : 'system', payloadJSON: preferences });
-		chrome.tabs.reload();*/
+		chrome.tabs.reload();
 	});
 	
 	socket.on('getPref', function(request){
 		console.log('Get preferences');
-		/*chrome.storage.local.get({ 'token' : "", 'preferences' : {} }, function(results) {
+		chrome.storage.local.get({ 'token' : "", 'preferences' : {} }, function(results) {
 			if (!(chrome.runtime.lastError)) {
 				if (!(isEmpty(results['preferences']))) {
 					var prefe = '{"' + uri + '":' + JSON.stringify(results['preferences']) + '}';
@@ -536,7 +534,7 @@ function socketListeners()
 					socket.emit('getpreferences', prefe);
 				}
 			}
-		}); */
+		}); 
 	});
 	
 	/*socket.on('disconnect', function(request){
