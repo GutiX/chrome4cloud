@@ -468,7 +468,7 @@ function connectServer()
 {
 	console.log("windows.onCreated....");
 	//if(socket == null) socket = io.connect('http://localhost:8000');
-	if(socket == null)
+	if(socket == null || !socket.socket.connected)
 	{
 		console.log("### Connecting");
 		socket = io.connect(socketServer);
@@ -478,12 +478,13 @@ function connectServer()
 	{
 		console.log("--- Connected ---");
 		socketListeners();
+		socket.send(uri);
 	}
 	else
 	{
-		socketListeners();
 		console.log("--- Disconnected ---");
-		socket.socket.reconnect();
+		socketListeners();
+		//socket.socket.reconnect();
 		
 		//socket.socket.connect();
 		//socket.send(uri);
@@ -550,7 +551,7 @@ function diconnectServer()
 	if(socket != null && socket.socket.connected)
 	{
 		console.log("removing....");
-		socket.socket.disconnect();
+		//socket.socket.disconnect();
 		//socket.disconnect();
 	}
 		
