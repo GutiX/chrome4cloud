@@ -7,6 +7,7 @@
 
 var userToken = "",
     localPreferences = {};
+	
 
 var notification_OnScreenReaderActivated = {
 	type: "basic",

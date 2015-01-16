@@ -21,6 +21,7 @@
                 "js/simplifier.js",
                 "js/synonyms_en.js",
                 "js/sinonimos_es.js",
+				"lib/socket.io.js",
 				"content.js"
             ],
             "css": [

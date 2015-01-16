@@ -101,6 +101,7 @@ function processPreferences(userPreferencesDownloaded) {
 		if (!(isEmpty(payload)) && (payload.hasOwnProperty(uri))) {
 
 			payload[uri].language = chrome.i18n.getUILanguage();
+			chrome.storage.local.clear();
 			chrome.storage.local.set({ token : token, preferences : payload[uri]}, function() {
 				if (chrome.runtime.lastError) {
 					console.log("Error storing preferences locally: " + chrome.runtime.lastError.message);
@@ -256,7 +257,12 @@ function setPreferences(preferences) {
 				if (chrome.runtime.lastError) { console.log("Error in removing attribute hc" + chrome.runtime.lastError.message ); }
 			});
 		}
-	} // End High Contrast
+	}  else {
+		// high contrast is not enabled
+		chrome.tabs.executeScript({code: "document.documentElement.removeAttribute('hc'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.removeAttribute('hc'); });" }, function() {
+			if (chrome.runtime.lastError) { console.log("Error in removing attribute hc" + chrome.runtime.lastError.message ); }
+		});
+	}// End High Contrast
 
 
 	//INVERT COLOURS
@@ -271,6 +277,10 @@ function setPreferences(preferences) {
 				if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message); }
 			});
 		}
+	} else {
+		chrome.tabs.executeScript({ code : 'document.documentElement.removeAttribute("ic");' }, function() {
+			if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message); }
+		});
 	}
 
 	// MAGNIFICATION
@@ -368,6 +378,10 @@ function setPreferences(preferences) {
 					if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message ); }
 				});
 		}
+	} else {
+		chrome.tabs.executeScript({ code : 'document.documentElement.removeAttribute("cs");' }, function() {
+			if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message ); }
+		});
 	}
 
 	if (preferences.hasOwnProperty('onScreenKeyboardEnabled')) {
@@ -472,23 +486,25 @@ function connectServer()
 	{
 		console.log("### Connecting");
 		socket = io.connect(socketServer);
+		
+		socketListeners();
 	}
 	
 	if(socket != null && socket.socket.connected)
 	{
 		console.log("--- Connected ---");
-		socketListeners();
+		//socketListeners();
 		socket.send(uri);
 	}
-	else
+	/*else
 	{
 		console.log("--- Disconnected ---");
-		socketListeners();
+		//socketListeners();
 		//socket.socket.reconnect();
 		
 		//socket.socket.connect();
 		//socket.send(uri);
-	}
+	}*/
 	//socket.emit('getpreferences', 'Cloud4chrome');
 }
 
@@ -501,28 +517,20 @@ function socketListeners()
 	});
 	
 	socket.on("connectionSucceeded", function (settings) {
-		console.log("## Received the following settings: " + JSON.stringify(settings));
-		var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
-		console.log("## Received the following preferences: " + preferences);
-		processPreferences({ token : 'system', payloadJSON: preferences });
-		chrome.tabs.reload();
+		processSettings(settings);
 	});
 
-	socket.on('applyPref', function(preferences){
+	/*socket.on('applyPref', function(preferences){
 		console.log('Preferences received: ' + preferences);
 		var settings = '{"' + uri + '":' + preferences + '}';
 		console.log('Preferences received: ' + settings);
 		processPreferences({ token : 'system', payloadJSON: settings });
 		//processPreferences({ token : 'system', payloadJSON: preferences });
 		chrome.tabs.reload();
-		//socket.socket.disconnect();
-	});
+	});*/
 	
-	socket.on('onBrowserSettingsChanged', function(settings){
-		console.log('Preferences received: ' + preferences);
-		var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
-		processPreferences({ token : 'system', payloadJSON: preferences });
-		chrome.tabs.reload();
+	socket.on("onBrowserSettingsChanged", function(settings){
+		processSettings(settings);
 	});
 	
 	socket.on('getPref', function(request){
@@ -545,15 +553,24 @@ function socketListeners()
 	});*/
 }
 
+function processSettings(settings)
+{
+	console.log("## Received the following settings: " + JSON.stringify(settings));
+	var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
+	console.log("## Received the following preferences: " + preferences);
+	processPreferences({ token : 'system', payloadJSON: preferences });
+	//chrome.tabs.reload();
+}
+
 function diconnectServer()
 {
 	console.log("windows.onRemoved....");
-	if(socket != null && socket.socket.connected)
+	
+	/*if(socket != null && socket.socket.connected)
 	{
 		console.log("removing....");
 		//socket.socket.disconnect();
-		//socket.disconnect();
-	}
+	}*/
 		
 	signOut();
 }
@@ -562,22 +579,5 @@ function signOut() {
   chrome.storage.local.clear();
   
   processPreferences({ token: "", preferences: {} }); 
-  /*
-  document.documentElement.removeAttribute('hc');
-  document.documentElement.removeAttribute('ts');
-  document.documentElement.removeAttribute('zoom');
-  document.documentElement.removeAttribute('ic');
   
-  chrome.management.get('kgejglhpjiefppelpmljglcjbhoiplfn', function(extInfo) {
-  	if (chrome.runtime.lastError) {
-  		console.log("ChromeVox is not installed");
-  	} else {
-  		if (extInfo.enabled) {
-	  		chrome.management.setEnabled(extInfo.id, false, function() {
-	    		console.log("ChromeVox has been deactivated"); 
-	  		});
-		}
-  	}
-	
-  });*/
 }
