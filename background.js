@@ -101,7 +101,6 @@ function processPreferences(userPreferencesDownloaded) {
 		if (!(isEmpty(payload)) && (payload.hasOwnProperty(uri))) {
 
 			payload[uri].language = chrome.i18n.getUILanguage();
-			chrome.storage.local.clear();
 			chrome.storage.local.set({ token : token, preferences : payload[uri]}, function() {
 				if (chrome.runtime.lastError) {
 					console.log("Error storing preferences locally: " + chrome.runtime.lastError.message);
