@@ -54,6 +54,7 @@
         }
     },
     "permissions": [
+        "background",
         "tabs",
         "tts",
         "storage",
