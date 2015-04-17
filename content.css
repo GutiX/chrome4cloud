@@ -362,6 +362,12 @@ html[ff="Verdana"] blockquote, html[ff="Verdana"] article, html[ff="Verdana"] di
   font-family: Verdana, sans-serif !important; 
 }
 
+html[ff="Helvetica"], html[ff="Helvetica"] body, html[ff="Helvetica"] p, html[ff="Helvetica"] h1, html[ff="Helvetica"] h2, 
+html[ff="Helvetica"] h3, html[ff="Helvetica"] h4, html[ff="Helvetica"] h5, html[ff="Helvetica"] h6, 
+html[ff="Helvetica"] blockquote, html[ff="Helvetica"] article, html[ff="Helvetica"] div, html[ff="Helvetica"] span, html[ff="Helvetica"] a {
+  font-family: Helvetica, sans-serif !important; 
+}
+
 html[ff="Courier"], html[ff="Courier"] body, html[ff="Courier"] p, html[ff="Courier"] h1, html[ff="Courier"] h2, 
 html[ff="Courier"] h3, html[ff="Courier"] h4, html[ff="Courier"] h5, html[ff="Courier"] h6, 
 html[ff="Courier"] blockquote, html[ff="Courier"] article, html[ff="Courier"] div, html[ff="Courier"] span, html[ff="Courier"] a {

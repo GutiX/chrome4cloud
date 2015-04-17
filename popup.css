@@ -115,7 +115,8 @@ div#preferences-container header {
   padding: 0 1em 1em 1em;
   margin: 0;
 }
-		
+
+.config-option input[type=text]{background-color:#fff; border: 1px solid #000;}
 		
 ul.radiogroup {
   list-style: none; 

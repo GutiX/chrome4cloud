@@ -209,7 +209,13 @@ function setPreferences(preferences) {
 						});
 					}
 				}
-			}
+			}else {
+					
+						chrome.management.setEnabled(extInfo.id, false, function() {
+							console.log("ChromeVox deactivated in background");
+						});
+					
+				}
 		
 		}
 	}); 
@@ -310,7 +316,29 @@ function setPreferences(preferences) {
 		});
 	}
 
+	//LINE SPACE
+	if (preferences.hasOwnProperty('lineHeight')) {
+	// magnifier is enabled and there is a value for magnification
+		chrome.tabs.executeScript({ code : "$('html').css('lineHeight', " + preferences.lineHeight +  ");" +
+			"$('p').css('lineHeight', " + preferences.lineHeight +  ");" +
+			"$('span').css('lineHeight', " + preferences.lineHeight +  ");" +
+			"$('a').css('lineHeight', " + preferences.lineHeight +  ");" +
+			"$('input').css('lineHeight', " + preferences.lineHeight +  ");" +
+			"$('label').css('lineHeight', " + preferences.lineHeight +  ");" , runAt: "document_end" }, function() {
+				if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message); }
+		});
 
+	} else {
+	// magnifier is enabled but there is no value for magnification
+		chrome.tabs.executeScript({ code : "$('html').css('lineHeight', 1);" +
+			"$('p').css('lineHeight', 1);" +
+			"$('span').css('lineHeight', 1);" +
+			"$('a').css('lineHeight', 1);" +
+			"$('input').css('lineHeight', 1);" +
+			"$('label').css('lineHeight', 1);"}, function() {
+				if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message); }
+		});
+	}
 
 	// FONT SIZE
 	if (preferences.hasOwnProperty('fontSize')) {

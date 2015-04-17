@@ -140,6 +140,9 @@
     "installOnScreenKeyboardButtonText": {
         "message": "Install Chrome Virtual Keyboard"
     },
+    "onLinespaceTitleText": {
+        "message": "Line Height"
+    },
     "simplifierTitleText": {
         "message": "Simplifier (Beta)"
     },

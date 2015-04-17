@@ -187,5 +187,8 @@
     },
     "onScreenKeyboardNotificationMessage": {
         "message": "Has activado el teclado en pantalla. Para hacerlo funcionar, no olvides refrescar la página"
+    },
+    "onLinespaceTitleText": {
+        "message": "Interlineado"
     }
 }

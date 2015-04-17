@@ -60,19 +60,19 @@
 				<label for='no-high-contrast' id='no-high-contrast-label'></label>
 			</div>
 			<div class='radio'>
-				<input type='radio' name='high-contrast' value='black-white' role='radio' />
+				<input type='radio' name='high-contrast' value='black-white' role='radio' id='high-contrast-black-white' />
 				<label for='high-contrast-black-white' id='high-contrast-black-white-label' class='black-on-white'></label>
 			</div>
 			<div class='radio'>
-				<input type='radio' name='high-contrast' value='white-black' role='radio' />
+				<input type='radio' name='high-contrast' value='white-black' role='radio' id='high-contrast-white-black' />
 				<label for='high-contrast-white-black' id='high-contrast-white-black-label' class='white-on-black'></label>
 			</div>
 			<div class='radio'>
-				<input type='radio' name='high-contrast' value='yellow-black' role='radio' />
+				<input type='radio' name='high-contrast' value='yellow-black' role='radio' id='high-contrast-yellow-black' />
 				<label for='high-contrast-yellow-black' id='high-contrast-yellow-black-label' class='yellow-on-black'></label>
 			</div>
 			<div class='radio'>
-				<input type='radio' name='high-contrast' value='black-yellow' role='radio' />
+				<input type='radio' name='high-contrast' value='black-yellow' role='radio' id='high-contrast-black-yellow' />
 				<label for='high-contrast-black-yellow' id='high-contrast-black-yellow-label' class='black-on-yellow'></label>
 			</div>
 		  </div>
@@ -122,11 +122,26 @@
 			  	<option value="Arial" id="font-face-Arial">Arial</option>
 			  	<option value="Verdana" id="font-face-Verdana">Verdana</option>
 			  	<option value="Courier" id="font-face-Courier">Courier</option>
+			  	<!--<option value="Helvetica" id="font-face-Courier">Helvetica</option>-->
 			  	<option value="Comic Sans MS" id="font-face-ComicSans">Comic Sans MS</option>
 			  </select>
 
 		  </div>
 
+		  <div class='config-option'>
+				<h2 id="linespace-title"></h2>
+				
+				<div class='form-group'>
+					<label for='linespace-level' id='linespace-level-label' class='sr-only'></label>
+					<input type='number' value='1' min='1' max='3' step='.1' id='linespace-level' />
+				</div>
+				<!--<div id="pwLineSpace" class="pwLineSpace">
+					<button class="downButton" id="lineSpaceDownButton">-</button>
+					<input type="text" class="display" id="lineSpaceDisplay" disabled="true" value="1.4"/>
+					<button class="upButton" id="lineSpaceUpButton">+</button>
+				</div>-->
+		  </div>
+			
 		  <div class='config-option'>
 		  	<h2 id='cursor-size-title'></h2>
 		  	<div class='radio'>
@@ -157,8 +172,7 @@
 			  </div>
 		  </div>
 			
-		  
-		  <div class='config-option'>
+		  <!--<div class='config-option'>
 			<h2 id='simplifier-title'></h2>
 			<div class='checkbox'>
 			  <input type='checkbox' id='simplifier-checkBox' role='checkbox' />
@@ -182,7 +196,7 @@
 		  		<input type='checkbox' id='sinonimos-es-checkbox' role='checkbox' />
 		  		<label for='sinonimos-es-checkbox'>Habilitar mostrar sinónimos</label>
 		  	</div>
-		  </div>
+		  </div>-->
 		  
 		  <div class='config-option' id='prefOptions'>
 		  	<a href="" class="btn btn-warning sign-out-btn" title="Sign out of Cloud4all" ></a>
