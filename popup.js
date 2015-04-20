@@ -276,7 +276,9 @@ function setPreferencesForm(npsetObject) {
 		    // lineheight
 		    if (localPreferences.hasOwnProperty('lineHeight')) {
 				$('#linespace-level').val(localPreferences.lineHeight);
-		    } // End of lineheight if
+		    } else {
+				$('#linespace-level').val(1.3);
+			}// End of lineheight if
 
 	
 	      	if (localPreferences.hasOwnProperty('fontSize')) {

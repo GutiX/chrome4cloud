@@ -244,7 +244,7 @@ h5[ts='large'], dt[ts='large'], a[ts='large'],
 table[ts='large'], th[ts='large'], tr[ts='large'], td[ts='large'], pre[ts='large'], code[ts='large'],
 article[ts='large'], nav[ts='large'], section[ts='large'] {
   font-size: 1rem !important;
-  line-height: 1.3em !important;
+  /*line-height: 1.3em !important;*/
 }
 
 li[ts='large'], input[ts='large'] {
@@ -258,22 +258,22 @@ input[ts='large'][type='text']:focus, input[ts='large'][type='text']:hover{borde
 
 h1[ts='large'] {
   font-size: 1.6rem !important;
-  line-height: 1.6em !important;
+  /*line-height: 1.6em !important;*/
 }
 
 h2[ts='large'] {
   font-size: 1.5rem !important;
-  line-height: 1.5em !important;
+  /*line-height: 1.5em !important;*/
 }
 
 h3[ts='large'] {
   font-size: 1.4rem !important;
-  line-height: 1.4em !important;
+  /*line-height: 1.4em !important;*/
 }
 
 h4[ts='large'] {
   font-size: 1.3rem !important;
-  line-height: 1.3em !important;
+  /*line-height: 1.3em !important;*/
 }
 
 div[ts='x-large'], span[ts='x-large'], p[ts='x-large'], ul[ts='x-large'], 
@@ -281,7 +281,7 @@ h5[ts='x-large'], a[ts='x-large'],
 table[ts='x-large'], th[ts='x-large'], tr[ts='x-large'], td[ts='x-large'], pre[ts='x-large'], code[ts='x-large'],
 article[ts='x-large'], nav[ts='x-large'], section[ts='x-large'] {
   font-size: 1rem !important;
-  line-height: 1.3em !important;
+  /*line-height: 1.3em !important;*/
 }
 
 li[ts='x-large'] {
@@ -296,22 +296,22 @@ input[ts='x-large'][type='text']:focus, input[ts='x-large'][type='text']:hover{b
 
 h1[ts='x-large'] {
   font-size: 1.6rem !important;
-  line-height: 1.6em !important;
+  /*line-height: 1.6em !important;*/
 }
 
 h2[ts='x-large'] {
   font-size: 1.5rem !important;
-  line-height: 1.5em !important;
+  /*line-height: 1.5em !important;*/
 }
 
 h3[ts='x-large'] {
   font-size: 1.4rem !important;
-  line-height: 1.4em !important;
+  /*line-height: 1.4em !important;*/
 }
 
 h4[ts='x-large'] {
   font-size: 1.3rem !important;
-  line-height: 1.3em !important;
+  /*line-height: 1.3em !important;*/
 }
 
 .simpWarn {

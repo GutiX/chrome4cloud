@@ -331,11 +331,11 @@ function setPreferences(preferences) {
 	} else {
 	// magnifier is enabled but there is no value for magnification
 		chrome.tabs.executeScript({ code : "$('html').css('lineHeight', 1);" +
-			"$('p').css('lineHeight', 1);" +
-			"$('span').css('lineHeight', 1);" +
-			"$('a').css('lineHeight', 1);" +
-			"$('input').css('lineHeight', 1);" +
-			"$('label').css('lineHeight', 1);"}, function() {
+			"$('p').css('lineHeight', 1.3);" +
+			"$('span').css('lineHeight', 1.3);" +
+			"$('a').css('lineHeight', 1.3);" +
+			"$('input').css('lineHeight', 1.3);" +
+			"$('label').css('lineHeight', 1.3);"}, function() {
 				if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message); }
 		});
 	}
