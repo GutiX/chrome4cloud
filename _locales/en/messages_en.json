@@ -8,7 +8,7 @@
         "description": "information about the extension that will be shown in the extensions tab"
     },
     "popupDefaultTitle": {
-        "message": "Click to fine-tune your preferences",
+        "message": "Click to fine tune your preferences",
         "description": "text that will appear when hovering over the extension's icon"
     },
     "welcomeMessage": {
@@ -27,10 +27,10 @@
         "description": "link to the PMT in the popup's main screen"
     },
     "c4aWebsiteLinkTitle": {
-        "message": "visit the Cloud4all website"
+        "message": "visit Cloud4all website"
     },
     "c4aWebsiteLinkText": {
-        "message": "What is Cloud4all?"
+        "message": "What's Cloud4all?"
     },
     "configTitleText": {
         "message": "Welcome",
@@ -69,19 +69,19 @@
         "message": "None"
     },
     "highContrastBlackWhiteLabelText": {
-        "message": "Black on white"
+        "message": "Black on White"
     },
     "highContrastWhiteBlackLabelText": {
-        "message": "White on black"
+        "message": "White on Black"
     },
     "highContrastYellowBlackLabelText": {
-        "message": "Yellow on black"
+        "message": "Yellow on Black"
     },
     "highContrastBlackYellowLabelText": {
-        "message": "Black on yellow"
+        "message": "Black on Yellow"
     },
     "invertColoursTitleText": {
-        "message": "Invert colors"
+        "message": "Invert Colors"
     },
     "invertLabelText": {
         "message": "Invert colors"
@@ -102,37 +102,37 @@
         "message": "Font size"
     },
     "fontSizeNormalLabeltext": {
-        "message": "Normal"
+        "message": "normal"
     },
     "fontSizeLargeLabelText": {
-        "message": "Large"
+        "message": "large"
     },
     "fontSizeXLargeLabelText": {
-        "message": "Extra large"
+        "message": "X-large"
     },
     "fontFaceTitleText": {
-        "message": "Font face"
+        "message": "Font Face"
     },
     "fontFaceOriginalText": {
         "message": "-- Original font --"
     },
     "cursorSizeTitleText": {
-        "message": "Cursor size"
+        "message": "Cursor Size"
     },
     "CursorSizeNormalLabelText": {
-        "message": "Normal"
+        "message": "normal"
     },
     "CursorSizeLargeLabelText": {
-        "message": "Large"
+        "message": "large"
     },
     "CursorSizeXLargeLabelText": {
-        "message": "Extra large"
+        "message": "x-large"
     },
     "onScreenKeyboardTitleText": {
-        "message": "On-screen keyboard"
+        "message": "On Screen Keyboard"
     },
     "onScreenKeyboardLabelText": {
-        "message": "Activate on-screen keyboard"
+        "message": "Activate On Screen Keyboard"
     },
     "onScreenKeyboardNotInstalledWarningText": {
         "message": "Chrome Virtual Keyboard is not installed"
@@ -141,16 +141,16 @@
         "message": "Install Chrome Virtual Keyboard"
     },
     "onLinespaceTitleText": {
-        "message": "Line height"
+        "message": "Line Height"
     },
     "simplifierTitleText": {
         "message": "Simplifier (Beta)"
     },
     "simplifierCheckBoxLabelText": {
-        "message": "Enable text simplification"
+        "message": "Enable Simplification"
     },
     "synonymsEnTitleText": {
-        "message": "Show synonyms"
+        "message": "Show Synonyms"
     },
     "synonymsEnExplanationText": {
         "message": "Double-click on any word to see a list of synonyms"
@@ -161,20 +161,19 @@
     "signOutBtnText": {
         "message": "Log out"
     },
-    "signoutBtnTitle": {
-        "message": "Log out from Cloud4all"
+    "signoutBtnTitle": {    "message": "Log out of Cloud4all"
     },
     "optionsPageTitleText": {
     	"message": "Edit your preferences"
     },
     "optionsPageSubtitleText": {
-    	"message": "Edit your preferences in Cloud4all and a lot of devices will automatically adapt to your preferences"
+    	"message": "Edit your preferences in Cloud4all and a lot of devices will adapt to your preferences automatically"
     },
     "formTokenWarningText": {
     	"message": "Please insert a valid token"
     },
     "tokenTitleText": {
-    	"message": "Token (required)"
+    	"message": "Token *"
     },
     "saveButtonText": {
     	"message": "Save"
@@ -186,9 +185,9 @@
     	"message": "Clear all preferences"
     },
     "onScreenKeyboardNotificationTitle": {
-        "message": "On-Screen Keyboard activated"
+        "message": "On Screen Keyboard activated"
     },
     "onScreenKeyboardNotificationMessage": {
-        "message": "You have activated the on-screen keyboard. If you wish to start using it, please make sure to refresh the page"
+        "message": "You have activated the on screen keyboard. If you wish to make it active, please make sure to refresh the page"
     }
 }

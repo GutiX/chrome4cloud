@@ -1,0 +1,194 @@
+﻿{
+    "extName": {
+        "message": "Cloud4all για το Chrome (Ctrl + Shift + 4)",
+        "description": "name of the extension"
+    },
+    "extDescription": {
+        "message": "Προσαρμόστε το Google Chrome και αποθηκεύστε τις προτιμήσεις σας στο Cloud",
+        "description": "information about the extension that will be shown in the extensions tab"
+    },
+    "popupDefaultTitle": {
+        "message": "Κάντε κλίκ για να τελειοποιήσετε τις προτιμήσεις σας ",
+        "description": "text that will appear when hovering over the extension's icon"
+    },
+    "welcomeMessage": {
+        "message": "Καλως ήρθατε στο Cloud4all",
+        "description": "message in the popup"
+    },
+    "tokenInputLabelText": {
+        "message": "Cloud4all token"
+    },
+    "tokenInputPlaceholder": {
+        "message": "Εισάγετε τον κωδικό χρήστη",
+        "description": "placeholder of the input for the token"
+    },
+    "optionsLinkText": {
+        "message": "ή να επεξεργαστείτε τις προτιμήσεις σας",
+        "description": "link to the PMT in the popup's main screen"
+    },
+    "c4aWebsiteLinkTitle": {
+        "message": "Επισκευτείτε την ιστοσελίδα του Cloud4all"
+    },
+    "c4aWebsiteLinkText": {
+        "message": "Τι είναι το Cloud4all;"
+    },
+    "configTitleText": {
+        "message": "Καλως ήρθατε",
+        "description": "Welcome text for the configuration popup"
+    },
+    "configTitleTextWithToken": {
+    	"message": "Καλως ήρθατε, "
+    },
+    "configDescriptionText": {
+        "message": "Αυτές είναι οι προτιμήσεις σας στο Cloud4all - ",
+        "description": "Text explaining preferences"
+    },
+    "seeAllPrefsText": {
+        "message": "δείτε τις προτιμήσεις σας",
+        "description": "link to the PMT from the configuration popup"
+    },
+    "seeAllPrefsTitle": {
+        "message": "Κάντε κλίκ για να δείτε όλες τις διαθέσιμες προτιμήσεις"
+    },
+    "screenReaderTitleText": {
+        "message": "Αναγνώστης οθόνης"
+    },
+    "screenReaderLabelText": {
+        "message": "Ενεργοποιήστε το ChromeVox"
+    },
+    "chromeVoxNotInstalledWarningText": {
+        "message": "το ChromeVox δεν είναι εγκατεστημένο"
+    },
+    "installCVButtonText": {
+        "message": "Εγκαταστήστε το ChromeVox"
+    },
+    "highContrastRgTitleText": {
+        "message": "Υψηλή αντίθεση"
+    },
+    "NoHighContrastRB2Text": {
+        "message": "Τίποτα"
+    },
+    "highContrastBlackWhiteLabelText": {
+        "message": "Μαύρο σε λευκό"
+    },
+    "highContrastWhiteBlackLabelText": {
+        "message": "Λευκό σε μαύρο"
+    },
+    "highContrastYellowBlackLabelText": {
+        "message": "Κίτρινο σε μαύρο"
+    },
+    "highContrastBlackYellowLabelText": {
+        "message": "Μαύρο σε κίτρινο"
+    },
+    "invertColoursTitleText": {
+        "message": "Αντιστροφή χρωμάτων"
+    },
+    "invertLabelText": {
+        "message": "Αντιστροφή χρωμάτων"
+    },
+    "zoomRgTitleText": {
+        "message": "Ζουμ"
+    },
+    "zoomEnableChechboxLabelText": {
+        "message": "Ενεργοποίηση μεγένθυσης"
+    },
+    "zoomLevelLabelText": {
+        "message": "Διαλλέξτε το επίπεδο μεγένθυσης"
+    },
+    "fontOptionsTitleText": {
+        "message": "Επιλογές γραμματοσειράς"
+    },
+    "fontSizeTitleText": {
+        "message": "Μέγεθος γραμματοσειράς"
+    },
+    "fontSizeNormalLabeltext": {
+        "message": "Κανονικό"
+    },
+    "fontSizeLargeLabelText": {
+        "message": "Μεγάλο"
+    },
+    "fontSizeXLargeLabelText": {
+        "message": "Πολύ μεγάλο"
+    },
+    "fontFaceTitleText": {
+        "message": "Γραμματοσειρά"
+    },
+    "fontFaceOriginalText": {
+        "message": "-- Προεπιλεγμένη γραμματοσειρά --"
+    },
+    "cursorSizeTitleText": {
+        "message": "Μέγεθος κέρσορα"
+    },
+    "CursorSizeNormalLabelText": {
+        "message": "Κανονικό"
+    },
+    "CursorSizeLargeLabelText": {
+        "message": "Μεγάλο"
+    },
+    "CursorSizeXLargeLabelText": {
+        "message": "Πολύ μεγάλο"
+    },
+    "onScreenKeyboardTitleText": {
+        "message": "Πληκτρολόγιο οθόνης"
+    },
+    "onScreenKeyboardLabelText": {
+        "message": "Ενεργοποιήστε το πληκτρολόγιο οθόνης"
+    },
+    "onScreenKeyboardNotInstalledWarningText": {
+        "message": "Το πληκτρολόγιο οθόνης του Chrome δεν είναι εγκατεστημένο"
+    },
+    "installOnScreenKeyboardButtonText": {
+        "message": "Εγκαταστήστε το πληκτρολόγιο οθόνης του Chrome"
+    },
+    "onLinespaceTitleText": {
+        "message": "Ύψος γραμμής"
+    },
+    "simplifierTitleText": {
+        "message": "Απλοποίηση σελίδας"
+    },
+    "simplifierCheckBoxLabelText": {
+        "message": "Ενεροποίηση απλοποίησης"
+    },
+    "synonymsEnTitleText": {
+        "message": "Προβολή συνωνύμων"
+    },
+    "synonymsEnExplanationText": {
+        "message": "Κάντε διπλό κλίκ πάνω σε οποιαδήποτε λέξη για να δείτε τη λίστα με τα συνώνυμά της"
+    },
+    "synonymsEnCheckboxLabelText": {
+        "message": "Ενεργοποιήστε την προβολή συνωνύμων"
+    },
+    "signOutBtnText": {
+        "message": "Αποσύνδεση"
+    },
+    "signoutBtnTitle": {
+        "message": "Αποσύνδεση από το Cloud4all"
+    },
+    "optionsPageTitleText": {
+    	"message": "Επεξεργασία προτιμήσεων"
+    },
+    "optionsPageSubtitleText": {
+    	"message": "Επεξεργαστείτε τις προτιμήσεις σας στο Cloud4all και πολλές συσκευές θα προσαρμοστούν στις προτιμήσεις σας αυτόματα"
+    },
+    "formTokenWarningText": {
+    	"message": "Παρακαλώ εισάγετε έγκυρο κωδικό χρήστη"
+    },
+    "tokenTitleText": {
+    	"message": "Κωδικός χρήστη"
+    },
+    "saveButtonText": {
+    	"message": "Αποθήκευση"
+    },
+    "clearBtnText": {
+    	"message": "Καθαρισμός"
+    },
+    "clearBtnTitleText": {
+    	"message": "Καθαρισμός όλων των προτιμήσεων"
+    },
+    "onScreenKeyboardNotificationTitle": {
+        "message": "Πληκτρολόγιο οθόνης ενεργοποιημένο"
+    },
+    "onScreenKeyboardNotificationMessage": {
+        "message": "Έχετε ενεργοποιήσει το πληκτρολόγιο της οθόνης. Αν θέλετε να εμφανιστεί, φροντίστε να ανανεώσετε τη σελίδα"
+    }
+}

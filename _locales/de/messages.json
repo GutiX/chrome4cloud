@@ -1,194 +1,194 @@
 {
     "extName": {
-        "message": "Cloud4all for Chrome (Ctrl + Shift + 4)",
+        "message": "Cloud4all for Chrome (Strg + Shift + 4)",
         "description": "name of the extension"
     },
     "extDescription": {
-        "message": "Personalize Google Chrome and store your preferences in the Cloud",
+        "message": "Google Chrome personalisieren und Ihre bevorzugten Einstellungen in der Cloud speichern",
         "description": "information about the extension that will be shown in the extensions tab"
     },
     "popupDefaultTitle": {
-        "message": "Click to fine-tune your preferences",
+        "message": "Feinabstimmung Ihrer Einstellungen",
         "description": "text that will appear when hovering over the extension's icon"
     },
     "welcomeMessage": {
-        "message": "Welcome to Cloud4all",
+        "message": "Willkommen in Cloud4all",
         "description": "message in the popup"
     },
     "tokenInputLabelText": {
-        "message": "Cloud4all token"
+        "message": "Cloud4all-Token"
     },
     "tokenInputPlaceholder": {
-        "message": "insert your token",
+        "message": "Token eingeben",
         "description": "placeholder of the input for the token"
     },
     "optionsLinkText": {
-        "message": "or edit your preferences",
+        "message": "oder Ihre Einstellungen bearbeiten",
         "description": "link to the PMT in the popup's main screen"
     },
     "c4aWebsiteLinkTitle": {
-        "message": "visit the Cloud4all website"
+        "message": "Cloud4all-Website besuchen"
     },
     "c4aWebsiteLinkText": {
-        "message": "What is Cloud4all?"
+        "message": "Was ist Cloud4all?"
     },
     "configTitleText": {
-        "message": "Welcome",
+        "message": "Willkommen",
         "description": "Welcome text for the configuration popup"
     },
     "configTitleTextWithToken": {
-    	"message": "Welcome, "
+    	"message": "Willkommen, "
     },
     "configDescriptionText": {
-        "message": "These are your preferences in Cloud4all - ",
+        "message": "Dies sind Ihre bevorzugten Einstellungen in Cloud4all - ",
         "description": "Text explaining preferences"
     },
     "seeAllPrefsText": {
-        "message": "see all preferences",
+        "message": "alle Einstellungen ansehen",
         "description": "link to the PMT from the configuration popup"
     },
     "seeAllPrefsTitle": {
-        "message": "Click to see all preferences available"
+        "message": "Alle verfügbaren Einstellungen ansehen"
     },
     "screenReaderTitleText": {
-        "message": "Screen reader"
+        "message": "Screenreader"
     },
     "screenReaderLabelText": {
-        "message": "Activate ChromeVox"
+        "message": "ChromeVox aktivieren"
     },
     "chromeVoxNotInstalledWarningText": {
-        "message": "ChromeVox is not installed"
+        "message": "ChromeVox ist nicht installiert"
     },
     "installCVButtonText": {
-        "message": "Install ChromeVox"
+        "message": "ChromeVox installieren"
     },
     "highContrastRgTitleText": {
-        "message": "High Contrast"
+        "message": "Hoher Kontrast"
     },
     "NoHighContrastRB2Text": {
-        "message": "None"
+        "message": "Kein hoher Kontrast"
     },
     "highContrastBlackWhiteLabelText": {
-        "message": "Black on white"
+        "message": "Schwarz auf Weiß"
     },
     "highContrastWhiteBlackLabelText": {
-        "message": "White on black"
+        "message": "Weiß auf Schwarz"
     },
     "highContrastYellowBlackLabelText": {
-        "message": "Yellow on black"
+        "message": "Gelb auf Schwarz"
     },
     "highContrastBlackYellowLabelText": {
-        "message": "Black on yellow"
+        "message": "Schwarz auf Gelb"
     },
     "invertColoursTitleText": {
-        "message": "Invert colors"
+        "message": "Farbinversion (Farbschema umkehren)"
     },
     "invertLabelText": {
-        "message": "Invert colors"
+        "message": "Farbinversion"
     },
     "zoomRgTitleText": {
-        "message": "Zoom"
+        "message": "Vergrößerung"
     },
     "zoomEnableChechboxLabelText": {
-        "message": "Enable magnification"
+        "message": "Vergrößerung aktivieren"
     },
     "zoomLevelLabelText": {
-        "message": "Choose your zoom level"
+        "message": "Wählen Sie die Vergrößerungsstärke"
     },
     "fontOptionsTitleText": {
-        "message": "Font options"
+        "message": "Schrifteinstellungen"
     },
     "fontSizeTitleText": {
-        "message": "Font size"
+        "message": "Schriftgröße"
     },
     "fontSizeNormalLabeltext": {
         "message": "Normal"
     },
     "fontSizeLargeLabelText": {
-        "message": "Large"
+        "message": "Groß"
     },
     "fontSizeXLargeLabelText": {
-        "message": "Extra large"
+        "message": "Sehr groß"
     },
     "fontFaceTitleText": {
-        "message": "Font face"
+        "message": "Schriftart"
     },
     "fontFaceOriginalText": {
-        "message": "-- Original font --"
+        "message": "-- Standard-Schriftart --"
     },
     "cursorSizeTitleText": {
-        "message": "Cursor size"
+        "message": "Größe des Mauszeigers"
     },
     "CursorSizeNormalLabelText": {
         "message": "Normal"
     },
     "CursorSizeLargeLabelText": {
-        "message": "Large"
+        "message": "Groß"
     },
     "CursorSizeXLargeLabelText": {
-        "message": "Extra large"
+        "message": "Sehr groß"
     },
     "onScreenKeyboardTitleText": {
-        "message": "On-screen keyboard"
+        "message": "Bildschirmtastatur"
     },
     "onScreenKeyboardLabelText": {
-        "message": "Activate on-screen keyboard"
+        "message": "Bildschirmtastatur aktivieren"
     },
     "onScreenKeyboardNotInstalledWarningText": {
-        "message": "Chrome Virtual Keyboard is not installed"
+        "message": "Chrome Virtual Keyboard (Bildschirmtastatur) ist nicht installiert"
     },
     "installOnScreenKeyboardButtonText": {
-        "message": "Install Chrome Virtual Keyboard"
+        "message": "Chrome Virtual Keyboard installieren"
     },
     "onLinespaceTitleText": {
-        "message": "Line height"
+        "message": "Zeilenabstand"
     },
     "simplifierTitleText": {
-        "message": "Simplifier (Beta)"
+        "message": "Sprache vereinfachen (Beta)"
     },
     "simplifierCheckBoxLabelText": {
-        "message": "Enable text simplification"
+        "message": "Sprache vereinfachen"
     },
     "synonymsEnTitleText": {
-        "message": "Show synonyms"
+        "message": "Synonyme zeigen"
     },
     "synonymsEnExplanationText": {
-        "message": "Double-click on any word to see a list of synonyms"
+        "message": "Doppelklicken Sie auf ein Wort um eine Liste von Synonymen zu sehen"
     },
     "synonymsEnCheckboxLabelText": {
-        "message": "Enable show synonyms"
+        "message": "Synonyme zeigen aktivieren"
     },
     "signOutBtnText": {
-        "message": "Log out"
+        "message": "Ausloggen"
     },
     "signoutBtnTitle": {
-        "message": "Log out from Cloud4all"
+        "message": "Aus Cloud4all ausloggen"
     },
     "optionsPageTitleText": {
-    	"message": "Edit your preferences"
+    	"message": "Einstellungen bearbeiten"
     },
     "optionsPageSubtitleText": {
-    	"message": "Edit your preferences in Cloud4all and a lot of devices will automatically adapt to your preferences"
+    	"message": "Wenn Sie Ihre Einstellungen in Cloud4all speichern, werden viele Endegeräte sich automatisch an ihre Einstellungen anpassen können"
     },
     "formTokenWarningText": {
-    	"message": "Please insert a valid token"
+    	"message": "Bitte geben Sie ein gültiges Token ein"
     },
     "tokenTitleText": {
-    	"message": "Token (required)"
+    	"message": "Token (erforderlich)"
     },
     "saveButtonText": {
-    	"message": "Save"
+    	"message": "Speichern"
     },
     "clearBtnText": {
-    	"message": "Clear"
+    	"message": "Löschen"
     },
     "clearBtnTitleText": {
-    	"message": "Clear all preferences"
+    	"message": "Alle Einstellungen löschen"
     },
     "onScreenKeyboardNotificationTitle": {
-        "message": "On-Screen Keyboard activated"
+        "message": "Bildschirmtastatur aktiviert"
     },
     "onScreenKeyboardNotificationMessage": {
-        "message": "You have activated the on-screen keyboard. If you wish to start using it, please make sure to refresh the page"
+        "message": "Sie haben die Bildschirmtastatur aktiviert. Wenn Sie die Bildschirmtastatur benutzen wollen, bitte aktualisieren Sie die Webseite."
     }
 }
