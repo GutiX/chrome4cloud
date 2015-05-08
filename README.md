@@ -14,7 +14,7 @@ In this version, the user will be able to choose:
 - Font face
 - Simplification (beta - for now, it just picks all text elements from the DOM and lists them one after another).
 
-The settings of the user are now stored using Chrome's sync storage. In a future, the preferences will be downloaded from the preferences server of Cloud4all.
+The settings of the user are now stored using Chrome's sync storage. In the future, the preferences will be downloaded from the preferences server of Cloud4all.
 
 Installation
 ============
