@@ -161,7 +161,8 @@
     "signOutBtnText": {
         "message": "Log out"
     },
-    "signoutBtnTitle": {    "message": "Log out of Cloud4all"
+    "signoutBtnTitle": {
+        "message": "Log out from Cloud4all"
     },
     "optionsPageTitleText": {
     	"message": "Edit your preferences"
