@@ -104,20 +104,21 @@ function processPreferences(userPreferencesDownloaded) {
 			chrome.storage.local.set({ token : token, preferences : payload[uri]}, function() {
 				if (chrome.runtime.lastError) {
 					console.log("Error storing preferences locally: " + chrome.runtime.lastError.message);
-					chrome.runtime.sendMessage({ action : "preferences downloaded", status : "error", message : "Error storing preferences locally" });
+					chrome.runtime.sendMessage({ action : "preferences downloaded", status : "error", message : "Error storing preferences locally" }); // @@l10n
 				} else {
 					console.log("Preferences saved locally");
-					chrome.runtime.sendMessage({ action : "preferences downloaded", status : "success", message: "Preferences saved locally" });
+					chrome.runtime.sendMessage({ action : "preferences downloaded", status : "success", message: "Preferences saved locally" }); // @@l10n
 				}
 			});
 
 		} else {
-			chrome.runtime.sendMessage({ action : "preferences downloaded", status : "error", message : "Preferences set is empty"});	
+		    var emptyNpSetMessage = chrome.i18n.getMessage('emptyNpSetMessage');
+			chrome.runtime.sendMessage({ action : "preferences downloaded", status : "error", message : emptyNpSetMessage}); // @@l10n
 		}
 
 	// There has been an error processing preferences
 	} catch (e) {
-		chrome.runtime.sendMessage({ action : "preferences downloaded", status : "error", message : "Error processing preferences"});
+		chrome.runtime.sendMessage({ action : "preferences downloaded", status : "error", message : "Error processing preferences"}); // @@l10n
 	}
 }
 
@@ -156,7 +157,7 @@ chrome.storage.onChanged.addListener(function(changes, local) {
 	if (!(isEmpty(newPrefs))) {
 		setPreferences(newPrefs);
 	} else {
-		if (oldPrefs != undefined) {
+		if (oldPrefs !== undefined) {
 			var simplifierIsOn = oldPrefs.simplifier || false;
 
 
@@ -167,7 +168,7 @@ chrome.storage.onChanged.addListener(function(changes, local) {
 				} else {
 					chrome.management.setEnabled(extInfo.id, false, function() {
 						console.log("ChromeVox deactivated");
-					})
+					});
 				}
 			});
 
@@ -178,7 +179,7 @@ chrome.storage.onChanged.addListener(function(changes, local) {
 				} else {
 					chrome.management.setEnabled(extInfo.id, false, function() {
 						console.log("Chrome Virtual Keyboard deactivated");
-					})
+					});
 				}
 			});
 
@@ -420,13 +421,13 @@ function setPreferences(preferences) {
 					if (!extInfo.enabled) {
 						chrome.management.setEnabled(extInfo.id, true, function() {
 							console.log("Chrome Virtual Keyboard activated");
-						})
+						});
 					}
 				} else {
 					if (extInfo.enabled) {
 						chrome.management.setEnabled(extInfo.id, false, function() {
 							console.log("Chrome Virtual Keyboard has been deactivated");
-						})
+						});
 					}
 				}
 			}
@@ -508,8 +509,8 @@ function isEmpty(obj) {
 function connectServer()
 {
 	console.log("windows.onCreated....");
-	//if(socket == null) socket = io.connect('http://localhost:8000');
-	if(socket == null || !socket.socket.connected)
+	//if(socket === null) socket = io.connect('http://localhost:8000');
+	if(socket === null || !socket.socket.connected)
 	{
 		console.log("### Connecting");
 		socket = io.connect(socketServer);
@@ -517,7 +518,7 @@ function connectServer()
 		socketListeners();
 	}
 	
-	if(socket != null && socket.socket.connected)
+	if(socket !== null && socket.socket.connected)
 	{
 		console.log("--- Connected ---");
 		//socketListeners();
@@ -593,7 +594,7 @@ function diconnectServer()
 {
 	console.log("windows.onRemoved....");
 	
-	/*if(socket != null && socket.socket.connected)
+	/*if(socket !== null && socket.socket.connected)
 	{
 		console.log("removing....");
 		//socket.socket.disconnect();
