@@ -15,7 +15,7 @@
 		  <h1 id='optionsPageTitle'></h1>
 		  <p id='optionsPageSubtitle'></p>
 		</div>
-		</header>
+
 		<form id='preferencesFormOP'>
 		
 		  <div class='formWarning'>
@@ -31,21 +31,21 @@
 		    <h2 tabindex='2' id="screenReaderTitle"></h2>
 			  <div id='screenReaderDivCVInstalled'>
 				<input type='checkbox' name='screen reader checkbox' id='screenReaderCheckBoxOP' role='checkbox' tabindex='3' />
-				<label for='screenReaderCheckBox' id='screenReaderLabel'></label>
+				<label for='screenReaderCheckBoxOP' id='screenReaderLabel'></label>
 			  </div>
 			  
 			  <div id='screenReaderDivCVNotInstalled' style='display: none;'>
 				<p id='chromeVoxNotInstalledWarning'></p>
-				<p><button id='installCVButton' role='button' tabindex='3'></a></p>
+				<p><button id='installCVButton' role='button' tabindex='3'></button></p>
 			  </div>
 		  </div>
 			
 		  <div class='config_option'>
 			<h2 id='highContrastRgTitle' tabindex='4'></h2>
-			  <ul class= 'radiogroup' role='radiogroup' aria-labelledby='highContrastRg'>
+			  <ul class= 'radiogroup' role='radiogroup' aria-labelledby='highContrastRgTitle'>
 				<li>
-			      <input type='radio' name='highContrast' id='noHighContrastRBOP' value='noHighContrast' role='radio' tabindex="" />
-				  <label for='NoHighContrastRB2' id='noHighContrastLabel'></label>
+          <input type='radio' name='highContrast' id='noHighContrastRBOP' value='noHighContrast' role='radio' />
+				  <label for='noHighContrastRBOP' id='noHighContrastLabel'></label>
 				</li>
 				<li>
 					<input type='radio' name='highContrast' id='highContrastBlackWhite' value='highContrastBlackWhite' role='radio' />
@@ -81,16 +81,16 @@
 			  <ul class='radiogroup' role='radiogroup' aria-labelledby='zoomrg'>
 				<li>
 				  <input type='radio' name='zoom' id='zoom100OP' value='100' tabindex='7' role='radio'>
-				  <label for='zoom100'>100%</label>
+				  <label for='zoom100OP'>100%</label>
 				</li>
 				<li>
 				  <input type='radio' name='zoom' id='zoom200OP' value='200' tabindex='8' role='radio'>
-				  <label for='zoom200'>200%</label>
+				  <label for='zoom200OP'>200%</label>
 				</li>
 				
 				<li>
 				  <input type='radio' name='zoom' id='zoom300OP' value='300' tabindex='9' role='radio'>
-				  <label for='zoom300'>300%</label>
+				  <label for='zoom300OP'>300%</label>
 				</li>
 			  </ul>
 		  </div>
@@ -100,17 +100,17 @@
 		      <ul class='radiogroup' role='radiogroup' aria-labelledby='fontsizerg'>
 				<li>
 				  <input type='radio' name='textSize' id='textSizeNormalOP' value='medium' tabindex='11' role='radio'>
-				  <label for='textSizeMedium'><span class='textSizeMedium' id='textSizeMediumLabel'>Medium</span></label>
+				  <label for='textSizeNormalOP'><span class='textSizeMedium' id='textSizeMediumLabel'>Medium</span></label>
 				</li>
 				
 				<li>
 				  <input type='radio' name='textSize' id='textSizeLargeOP' value='large' tabindex="12" role="radio">
-				  <label for='textSizeLarge'><span class='textSizeLarge' id='textSizeLargeLabel'>Large</span></label>
+				  <label for='textSizeLargeOP'><span class='textSizeLarge' id='textSizeLargeLabel'>Large</span></label>
 				</li>
 				
 				<li>
 				  <input type='radio' name='textSize' id='textSizeXLargeOP' value='x-large' tabindex='13' role='radio'>
-				  <label for='textSizeXLarge'><span class="textSizeXLarge" id='textSizeXLargeLabel'>X-Large</span></label>
+				  <label for='textSizeXLargeOP'><span class="textSizeXLarge" id='textSizeXLargeLabel'>X-Large</span></label>
 				</li>
 			  </ul>
 		  </div>
@@ -118,12 +118,12 @@
 		  <div class='config_option'>
 			<h2 tabindex='14' id='simplifierTitle'>Simplifier (Beta)</h2>
 			  <input type='checkbox' name='simplifier checkbox' id='simplifierCheckBoxOP' role='checkbox' tabindex='15'/>
-			  <label for='simplifierCheckBox' id='simplifierCheckBoxLabel'>Enable simplification</label>
+			  <label for='simplifierCheckBoxOP' id='simplifierCheckBoxLabel'>Enable simplification</label>
 		  </div>
 		  
 		  <div class='config_option' id='prefOptions'>
 		    <input type='submit' id='savePrefsBtn' />
-			<a href="" id="clearBtn">Clear</a>
+        <button id="clearBtn">Clear</button>
 		  </div>
 		</form>
 	  </div> <!-- prefContainer -->

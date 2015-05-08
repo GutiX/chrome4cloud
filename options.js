@@ -1,8 +1,8 @@
 var preferences = {},
     xhrupload = new XMLHttpRequest(),
-	  uploadserver = 'http://preferences.gpii.net/user/',
-	  localPreferences = {},
-	  preferencesFormatObject = { 'http://registry.gpii.org/applications/org.chrome.cloud4chrome' : [] };
+    uploadserver = 'http://preferences.gpii.net/preferences/',
+    localPreferences = {},
+    preferencesFormatObject = { 'http://registry.gpii.org/applications/org.chrome.cloud4chrome' : [] };
 
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#screenReaderCheckBoxOP').addEventListener('click', screenReaderCheckBoxOPClicked); 
@@ -410,5 +410,4 @@ function formPreferenceSubmit(e) {
   }
   
 }
-
 

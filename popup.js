@@ -494,7 +494,7 @@ function onLinespaceChanged() {
 }
 
 function fontSizeChanged() {
-	console.log("Cambio de tamaña de letra.");
+	console.log("Cambio de tamaÃ±a de letra.");
 	localPreferences.fontSize = $(this).val();
 	console.log($(this).val());
 	chrome.storage.local.set({ preferences : localPreferences });
