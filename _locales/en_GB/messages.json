@@ -48,7 +48,7 @@
         "description": "link to the PMT from the configuration popup"
     },
     "seeAllPrefsTitle": {
-        "message": "Click to see all preferences available"
+        "message": "Click to see all available preferences"
     },
     "screenReaderTitleText": {
         "message": "Screen reader"
