@@ -190,5 +190,9 @@
     },
     "onScreenKeyboardNotificationMessage": {
         "message": "You have activated the on-screen keyboard. If you wish to start using it, please make sure to refresh the page"
+    },
+    "emptyNpSetMessage": {
+        "message": "This preferences set is empty or does not exist.",
+        "description": "Error message shown to the user when they have entered an invalid token."
     }
 }

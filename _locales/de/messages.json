@@ -190,5 +190,9 @@
     },
     "onScreenKeyboardNotificationMessage": {
         "message": "Sie haben die Bildschirmtastatur aktiviert. Wenn Sie die Bildschirmtastatur benutzen wollen, bitte aktualisieren Sie die Webseite."
+    },
+    "emptyNpSetMessage": {
+        "message": "Dieses Token existiert nicht oder die Einstellungen sind leer.",
+        "description": "Error message shown to the user when they have entered an invalid token."
     }
 }
