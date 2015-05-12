@@ -34,9 +34,10 @@ input[hc='bw'][type='submit']{background: white !important; color: black !import
 input[hc='bw'][type='submit']:focus, input[hc='bw'][type='submit']:hover {border: 4px solid black !important;}
 
 a[hc = 'bw'] {
-  background: white !important;
+  /*background: white !important;*/
   background-color: white !important;
-  color: #C2CFFF !important;
+  /*color: #C2CFFF !important;*/
+  color: black;
   text-decoration: underline !important;
   text-shadow: none !important;
 }
@@ -99,7 +100,7 @@ input[hc='wb'][ts='x-large'][type='text']:focus, input[hc='wb'][ts='x-large'][ty
 input[hc='wb'][ts='medium'][type='text']:focus, input[hc='wb'][ts='medium'][type='text']:hover, input[hc='wb'][ts='medium'][type='password']:focus, input[hc='wb'][ts='medium'][type='password']:hover, select[hc='wb'][ts='medium']:hover, select[hc='wb'][ts='medium']:focus{border: 3px solid white !important;}
 
 a[hc = 'wb'] {
-  background: black !important;
+  /*background: black !important;*/
   background-color: black !important;
   color: #C2CFFF !important;
   text-decoration: underline !important;

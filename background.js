@@ -230,12 +230,13 @@ function setPreferences(preferences) {
 			// high contrast is enabled and there is a high contrast
 				switch (preferences['highContrastTheme']) {
 					case 'black-white':
-						chrome.tabs.executeScript( {code: "document.documentElement.setAttribute('hc','bw'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.removeAttribute('hc'); }); document.documentElement.setAttribute('hc', 'bw'); "}, function() {
+						//chrome.tabs.executeScript( {code: "document.documentElement.setAttribute('hc','bw'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.removeAttribute('hc'); }); document.documentElement.setAttribute('hc', 'bw'); "}, function() {
+						chrome.tabs.executeScript( {code: "document.documentElement.setAttribute('hc','bw'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.setAttribute('hc', 'bw'); }); document.documentElement.setAttribute('hc', 'bw'); "}, function() {
 							if (chrome.runtime.lastError) { console.log("Error in setting attribute hc = bw: " + chrome.runtime.lastError.message ); }
 						});
 						break;
 					case 'white-black':
-						chrome.tabs.executeScript( { code : "document.documentElement.setAttribute('hc','wb'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.setAttribute('hc', 'wb'); });" }, function() {
+						chrome.tabs.executeScript( { code : "document.documentElement.setAttribute('hc','wb'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.setAttribute('hc', 'wb'); }); document.documentElement.setAttribute('hc', 'wb');" }, function() {
 							if (chrome.runtime.lastError) { console.log("Error in setting attribute hc = wb: " + chrome.runtime.lastError.message ); }
 						}); 
 			 			break;
@@ -510,7 +511,7 @@ function connectServer()
 {
 	console.log("windows.onCreated....");
 	//if(socket === null) socket = io.connect('http://localhost:8000');
-	if(socket === null || !socket.socket.connected)
+	if(socket == null || !socket.socket.connected)
 	{
 		console.log("### Connecting");
 		socket = io.connect(socketServer);
@@ -518,7 +519,7 @@ function connectServer()
 		socketListeners();
 	}
 	
-	if(socket !== null && socket.socket.connected)
+	if(socket != null && socket.socket.connected)
 	{
 		console.log("--- Connected ---");
 		//socketListeners();
