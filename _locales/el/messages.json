@@ -192,7 +192,7 @@
         "message": "Έχετε ενεργοποιήσει το πληκτρολόγιο της οθόνης. Αν θέλετε να εμφανιστεί, φροντίστε να ανανεώσετε τη σελίδα"
     },
     "emptyNpSetMessage": {
-        "message": "This preferences set is empty or does not exist.",
+        "message": "Το συγκεκριμένο σετ προτιμήσεων είναι άδειο ή δεν υπάρχει.",
         "description": "Error message shown to the user when they have entered an invalid token."
     }
 }
