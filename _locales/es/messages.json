@@ -192,7 +192,7 @@
         "message": "Interlineado"
     },
     "emptyNpSetMessage": {
-        "message": "This preferences set is empty or does not exist.",
+        "message": "Este conjunto de preferencias está vacío o no existe.",
         "description": "Error message shown to the user when they have entered an invalid token."
     }
 }
