@@ -40,7 +40,7 @@
     	"message": "Willkommen, "
     },
     "configDescriptionText": {
-        "message": "Dies sind Ihre bevorzugten Einstellungen in Cloud4all - ",
+        "message": "Dies sind Ihre bevorzugten Einstellungen in Cloud4all. ",
         "description": "Text explaining preferences"
     },
     "seeAllPrefsText": {

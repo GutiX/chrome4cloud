@@ -40,7 +40,7 @@
     	"message": "Καλως ήρθατε, "
     },
     "configDescriptionText": {
-        "message": "Αυτές είναι οι προτιμήσεις σας στο Cloud4all - ",
+        "message": "Αυτές είναι οι προτιμήσεις σας στο Cloud4all. ",
         "description": "Text explaining preferences"
     },
     "seeAllPrefsText": {

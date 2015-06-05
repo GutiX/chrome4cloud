@@ -1,42 +1,122 @@
+
+/*------------------------------------------------------*\
+				Control Panel Filters
+\*------------------------------------------------------*/
+
 /* Personalization options */
-html[hc="invert"] {
-  -webkit-filter: invert();
+
+/* --- Font size --- */
+/* Large */
+html[ts="large-cp"] body {width: 470px}
+html[ts="large-cp"] .preferences-container {font-size: 1.6rem;}
+html[ts="large-cp"] .config-option h2{font-size: 2.1rem;}
+html[ts="large-cp"] .config-option input[type=text]{font-size: 1.6rem;}
+html[ts="large-cp"] .config-control{font-size: 1.6rem;}
+html[ts="large-cp"] .config-control h3{font-size: 1.8rem;}
+
+/* X-Large */
+html[ts="x-large-cp"] body {width: 560px}
+html[ts="x-large-cp"] .preferences-container {font-size: 2rem;}
+html[ts="x-large-cp"] .config-option h2{font-size: 2.5rem;}
+html[ts="x-large-cp"] .config-option input[type=text]{font-size: 2rem;}
+html[ts="x-large-cp"] .config-control{font-size: 2rem;}
+html[ts="x-large-cp"] .config-control h3{font-size: 2.2rem;}
+
+/* --- Color Combinations --- */
+/* Black on white*/
+html[hc="bwcp"], html[hc="bwcp"] .preferences-container{background-color:#fff;
+	color:#000;}
+html[hc="bwcp"] h2{background-color:#fff;}
+html[hc="bwcp"] .config-option input[type=text]{background-color:#fff;
+	border:none;}
+html[hc="bwcp"] input , html[hc="bwcp"] button{
+  background-color:#fff;
+  color:#000;
+  border: 1px solid #000;
 }
-			
-html[ts="large"], html[ts="large"] > body {
-  font-size: large;
+html[hc="bwcp"] select{background:#fff !important;
+  color:#000;
+  border: 1px solid #000;}
+html[hc="bwcp"] .sign-out-btn{
+	background-color:#fff;
+	color:#000;
+	border: 1px solid #000;}
+
+/* White on black*/
+/*html[hc="wb"] input, html[hc="wb"] select, html[hc="wb"] button {
+  background:#000;
+  color:#fff;
 }
 
-html[ts="x-large"], html[ts="x-large"] > body {
- font-size: x-large;
-}
-
-html[hc="bw"] input, html[hc="bw"] select {
-  background: white;
-  color: black;
-}
-
-html[hc="wb"] input, html[hc="wb"] select {
+html[hc="wb"] input[type="text"], html[hc="wb"] button {
   background: black;
   color: white;
-}
+  /*border: 1px solid white;*/
+/*}*/
 
-html[hc="yb"] input, html[hc="yb"] select {
-  background: black;
+/* Yellow on black*/
+html[hc="ybcp"], html[hc="ybcp"] .preferences-container{color:yellow;}
+html[hc="ybcp"] input, html[hc="ybcp"] select, html[hc="ybcp"] button{
   color: yellow;
-}
+  border: 1px solid yellow;}
+html[hc="ybcp"] .sign-out-btn{
+	background-color:#fff;
+	color:#000;
+	border: 1px solid #000;}
 
-html[hc="by"] input, html[hc="by"] select {
-  background: yellow;
-  color: orange;
+/* Black on yelow*/
+html[hc="bycp"], html[hc="bycp"] .preferences-container{background-color:yellow;
+	color:#000;}
+html[hc="bycp"] h2{background-color:yellow;}
+html[hc="bycp"] .config-option input[type=text]{background-color:yellow;
+	border:none;}
+html[hc="bycp"] input, html[hc="bycp"] select , html[hc="bycp"] button{
+  background-color:yellow;
+  color:#000;
+  border: 1px solid #000;
 }
+html[hc="bycp"] .sign-out-btn{
+	background-color:yellow;
+	color:#000;
+	border: 1px solid #000;}
 
-/* Common options */
+/* Invert colors */
+html[ic="invertcp"], html[ic="invertcp"] h1, html[ic="invertcp"] h2, html[ic="invertcp"] h3{color:#F9BA51;}
+/*html[ic="invertcp"] input, html[ic="invertcp"] select, html[ic="invertcp"] button{
+  color: #F9BA51;
+  border: 1px solid #F9BA51;}*/
+  
+/* --- Font Type --- */
+html[ft="comic-sans-ms-cp"] .preferences-container {font-family: Comic Sans MS, sans-serif;}
+html[ft="arial-cp"] .preferences-container {font-family: Arial, sans-serif;}
+html[ft="verdana-cp"] .preferences-container {font-family: Verdana, sans-serif;}
+html[ft="courier-cp"] .preferences-container {font-family: Courier, sans-serif;}
+html[ft="courier-cp"] body {width: 550px;}
+html[ts="large-cp"][ft="courier-cp"] body {width: 630px;}
+html[ts="x-large-cp"][ft="courier-cp"] body {width: 760px;}
+html[ft="verdana-cp"] body {width: 440px;}
+html[ts="large-cp"][ft="verdana-cp"] body {width: 530px;}
+html[ts="x-large-cp"][ft="verdana-cp"] body {width: 650px;}
+html[ft="comic-sans-ms-cp"] body {width: 420px;}
+html[ts="large-cp"][ft="comic-sans-ms-cp"] body {width: 500px;}
+html[ts="x-large-cp"][ft="comic-sans-ms-cp"] body {width: 600px;}
+
+html[cs="large-cp"]{cursor : url(images/arrow_icon_large.png), auto;}
+html[cs="large-cp"] a, html[cs="large-cp"] select, html[cs="large-cp"] button, 
+html[cs="large-cp"] input, html[cs="large-cp"] label[for] {cursor : url(images/hand_icon_large.png), auto !important;}
+html[cs="x-large-cp"]{cursor : url(images/arrow_icon_x_large.png), auto;}
+html[cs="x-large-cp"] a, html[cs="x-large-cp"] select, html[cs="x-large-cp"] button, 
+html[cs="x-large-cp"] input, html[cs="x-large-cp"] label[for]{cursor : url(images/hand_icon_x_large.png), auto !important;}
+
+  
+/* --- Common options --- */
+html{font-size: 14px !important;}
 
 body {
   font-family: Helvetica, Arial, sans-serif;
   width: 400px;
   margin: 0;
+  background-color:#000 !important;
 }
 
 /* Token form */
@@ -104,20 +184,45 @@ div#token-form-container div#options a#exitbutton {
 }
 
 
-/* Style of preferences form */
+/*------------------------------------------------------*\
+				Style of preferences form 
+\*------------------------------------------------------*/
 
 div#preferences-container header {
   padding: 0 1em;
 }
-			
-.config-option {
-  border-top: 1px solid #CCC;
-  padding: 0 1em 1em 1em;
-  margin: 0;
-}
-
-.config-option input[type=text]{background-color:#fff; border: 1px solid #000;}
-		
+header p{padding-left: 5px;}
+.preferences-container{color:#fff;
+	background-color:#000;
+	font-size: 1.3rem;}
+.preferences-container input[type=radio]{margin-top:8px;}
+.config-option {border: 1px solid #CCC;
+	width: 93%;
+	padding-left: 10px;
+	margin-left: 17px;
+	margin-top: 20px;
+	border-radius: 10px;}
+.config-option h2{background-color: #000;
+	padding: 0px 10px;
+	margin-top: -15px;
+	font-size: 1.8rem;
+	display: table;}
+.config-option input[type=text]{  background-color: #000;
+	border: 1px solid #000;
+	font-size: 1.3rem;}
+.config-control{font-size: 1.3rem;
+	padding-left: 25px;
+	margin-bottom: 10px;}
+.config-control label{font-weight: 400;}
+.config-control h3{font-size: 1.5rem;}
+.config-control select{background: URL(images/bn-arrow.gif) no-repeat 163px 0px #000 !important;
+	width:185px;
+	margin-left: 10px;
+	background-color: #000;
+	border: 2px solid white;
+	border-radius: 5px;
+	-webkit-appearance: none;}
+.font-group{margin-left:10px;}
 ul.radiogroup {
   list-style: none; 
   margin: 0; 
@@ -125,24 +230,29 @@ ul.radiogroup {
 }
 			
 span.font-size-normal-span {
-  font-size: 1em; 
+  font-size: 1rem; 
 }
 			
 span.font-size-large-span {
-  font-size: 1.2em;
+  font-size: 1.6rem;
 }
 			
 span.font-size-x-large-span {
-  font-size: 1.4em;
+  font-size: 2rem; 
 }
 
 div#prefOptions {
-  padding: 1em;
+  padding: 0px;
+}
+.sign-out-btn {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
 }
 
 input[type='submit'] {
   background: #FF5702;
-  font-size: 1.2em;
+  font-size: 1.3rem;
   color: white;
   border: 0;
   padding: 0.3em 0.8em;
@@ -156,24 +266,83 @@ a.sign-out-btn {
   font-size: 0.9em;
 }
 
+.default-color-combination{
+	background-color: #0000FF; 
+	color: #fff;
+	width: 80%;
+	display: inline-block !important;
+	padding-left: 15px;
+}
 
 .black-on-white {
-  background: white;
-  color: black;
+	background: white;
+	color: black;
+	width: 80%;
+	display: inline-block !important;
+	padding-left: 15px;
 }
 
 .white-on-black {
   background: black;
   color: white;
+	width: 80%;
+	display: inline-block !important;
+	padding-left: 15px;
 }
 
 .yellow-on-black {
   background: black;
   color: yellow;
+	width: 80%;
+	display: inline-block !important;
+	padding-left: 15px;
 }
 
 .black-on-yellow {
   background: yellow;
   color: black;
+	width: 80%;
+	display: inline-block !important;
+	padding-left: 15px;
 }
+
+.invert-colours{
+	background-color: #EE80FD; 
+	color: #000000;
+	width: 80%;
+	display: inline-block !important;
+	padding-left: 15px;
+}
+
+.font-face-ComicSans {font-family: Comic Sans MS, sans-serif;}
+.font-face-Arial {font-family: Arial, sans-serif;}
+.font-face-Verdana {font-family: Verdana, sans-serif;}
+.font-face-Courier {font-family: Courier, sans-serif;}
+
+.cursorImg{margin-left: 10px;
+	zoom: reset !important;}
+.normalCursorImg{width:12px}
+.cursorNormal input[type=radio]{margin-top: 8px;}
+.cursorLarge input[type=radio]{margin-top: 18px;}
+.cursorXLarge input[type=radio]{margin-top: 40px;}
+
+/*--------- nuevo -----------*/
+.eUpDownLabel{
+	float:left;
+	margin-right: 20px;
+	margin-top: 4px;
+}
+.eUpDownButton{border: 1px solid;
+	padding: 0;
+	width: 33px;
+	font-size: 1.5rem;
+	background-color: #505050;
+	border-radius: 5px;}
+.eDisplay{
+	width: 100px;
+	text-align: center;
+	/*margin: 0 10px;*/
+	border: none;
+}
+.foot-config{padding-bottom:25px !important;}
 

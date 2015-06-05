@@ -40,7 +40,7 @@
     	"message": "Welcome, "
     },
     "configDescriptionText": {
-        "message": "These are your preferences in Cloud4all - ",
+        "message": "These are your preferences in Cloud4all. ",
         "description": "Text explaining preferences"
     },
     "seeAllPrefsText": {
@@ -63,10 +63,10 @@
         "message": "Install ChromeVox"
     },
     "highContrastRgTitleText": {
-        "message": "High Contrast"
+        "message": "Color Combination"
     },
     "NoHighContrastRB2Text": {
-        "message": "None"
+        "message": "Default"
     },
     "highContrastBlackWhiteLabelText": {
         "message": "Black on white"
@@ -96,10 +96,10 @@
         "message": "Choose your zoom level"
     },
     "fontOptionsTitleText": {
-        "message": "Font options"
+        "message": "Text options"
     },
     "fontSizeTitleText": {
-        "message": "Font size"
+        "message": "Text size"
     },
     "fontSizeNormalLabeltext": {
         "message": "Normal"

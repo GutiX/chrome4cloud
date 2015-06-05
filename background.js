@@ -36,7 +36,7 @@ chrome.runtime.onInstalled.addListener(function(details) {
 	// audio.play();
 	chrome.storage.local.set({ "token" : "", "preferences" : {} });
 	console.log("Chrome extension installed.");
-	//connectServer();
+	connectServer();
 });
 
 chrome.runtime.onSuspend.addListener(function() {
@@ -291,8 +291,8 @@ function setPreferences(preferences) {
 	}
 
 	// MAGNIFICATION
-	if (preferences.hasOwnProperty('magnifierEnabled')) {
-		if (preferences.magnifierEnabled) {
+	if (/*preferences.hasOwnProperty('magnifierEnabled')*/ true) {
+		if (/*preferences.magnifierEnabled*/ true) {
 		// magnifier is enabled
 			if (preferences.hasOwnProperty('magnification')) {
 			// magnifier is enabled and there is a value for magnification
@@ -385,22 +385,32 @@ function setPreferences(preferences) {
 		});
 	}
 	
+	//CURSOR SIZE
 	if (preferences.hasOwnProperty('cursorSize')) {
 		switch (preferences.cursorSize) {
 			case "normal": 
-				chrome.tabs.insertCSS({ code : 'html, a { cursor : auto; }' }, function() {
+				chrome.tabs.insertCSS({ code : 'html, a, select, button, input, label[for] { cursor : auto; }' }, function() {
 					if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message ); }
 				});
+				/*chrome.tabs.executeScript({ code: "document.documentElement.removeAttribute('cs'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.removeAttribute('cs'); });" }, function() {
+					if (chrome.runtime.lastError) { console.log("Error in adding attribute cs = medium: " + chrome.runtime.lastError.message ); }
+				});*/
 				break;
 			case "large":
-				chrome.tabs.insertCSS({ code : 'html { cursor : url('+ chrome.extension.getURL('images') +'/arrow_icon_large.png), auto; } a { cursor : url('+ chrome.extension.getURL('images') +'/hand_icon_large.png), auto !important; }'}, function() {
+				chrome.tabs.insertCSS({ code : 'html { cursor : url('+ chrome.extension.getURL('images') +'/arrow_icon_large.png), auto; } a, select, button, input, label[for] { cursor : url('+ chrome.extension.getURL('images') +'/hand_icon_large.png), auto; }'}, function() {
 					if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message ); }
 				}); 
+				/*chrome.tabs.executeScript({ code: "document.documentElement.setAttribute('cs','large'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.setAttribute('cs', 'large'); });" }, function() {
+					if (chrome.runtime.lastError) { console.log("Error in adding attribute cs = large: " + chrome.runtime.lastError.message ); }
+				});*/
 				break;
 			case "x-large":
-				chrome.tabs.insertCSS({ code : 'html { cursor : url('+ chrome.extension.getURL('images') +'/arrow_icon_x_large.png), auto; } a { cursor : url('+ chrome.extension.getURL('images') +'/hand_icon_x_large.png), auto !important; }'}, function() {
+				chrome.tabs.insertCSS({ code : 'html { cursor : url('+ chrome.extension.getURL('images') +'/arrow_icon_x_large.png), auto; } a, select, button, input, label[for], iframe { cursor : url('+ chrome.extension.getURL('images') +'/hand_icon_x_large.png), auto; }'}, function() {
 					if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message ); }
-				}); 
+				});
+				/*chrome.tabs.executeScript({ code: "document.documentElement.setAttribute('cs','x-large'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.setAttribute('cs', 'x-large'); });" }, function() {
+					if (chrome.runtime.lastError) { console.log("Error in adding attribute cs = x-large: " + chrome.runtime.lastError.message ); }
+				});*/
 				break;
 			default:
 				chrome.tabs.executeScript({ code : 'document.documentElement.removeAttribute("cs");' }, function() {
@@ -587,7 +597,8 @@ function processSettings(settings)
 	console.log("## Received the following settings: " + JSON.stringify(settings));
 	var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
 	console.log("## Received the following preferences: " + preferences);
-	processPreferences({ token : 'system', payloadJSON: preferences });
+	//processPreferences({ token : 'system', payloadJSON: preferences });
+	processPreferences({ token : '', payloadJSON: preferences });
 	//chrome.tabs.reload();
 }
 

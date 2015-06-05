@@ -26,9 +26,9 @@ $(document).ready(function(e) {
   $('#screenreader-checkbox').click(screenReaderCBClicked);
   $('#install-CV-btn').click(installCVClicked);
   $('input[name="high-contrast"]').change(highContrastChanged);
-  $('#invert-colours-checkbox').click(invertRBClicked);
-  $('#zoom-enable-checkbox').click(zoomEnableCheckboxClicked);
-  $('#zoom-level').change(onZoomChanged);
+  //$('#invert-colours-checkbox').click(invertRBClicked);
+  //$('#zoom-enable-checkbox').click(zoomEnableCheckboxClicked);
+  //$('#zoom-level').change(onZoomChanged);
   $('#linespace-level').change(onLinespaceChanged);
   $('input[name="font-size"]').change(fontSizeChanged);
   $('#font-face-select').change(fontFaceChanged);
@@ -38,6 +38,10 @@ $(document).ready(function(e) {
   $('#simplifier-checkBox').click(simplifierCheckBoxClicked);
   $('#synonyms-en-checkbox').click(synonymsEnCheckboxClicked);
   $('#sinonimos-es-checkbox').click(sinonimosEsCheckboxClicked);
+  $('#eZoomUpButton').click(zoomUpButtonClicked);
+  $('#eZoomDownButton').click(zoomDownButtonClicked);
+  $('#eLinespaceUpButton').click(linespaceUpButtonClicked);
+  $('#eLinespaceDownButton').click(linespaceDownButtonClicked);
 
   $('#see-all-prefs').click(onOptionsClick);
 
@@ -66,7 +70,7 @@ $(document).ready(function(e) {
   $('#high-contrast-white-black-label').text(chrome.i18n.getMessage("highContrastWhiteBlackLabelText"));
   $('#high-contrast-yellow-black-label').text(chrome.i18n.getMessage("highContrastYellowBlackLabelText"));
   $('#high-contrast-black-yellow-label').text(chrome.i18n.getMessage("highContrastBlackYellowLabelText"));
-  $('#invert-colours-title').text(chrome.i18n.getMessage("invertColoursTitleText"));
+  //$('#invert-colours-title').text(chrome.i18n.getMessage("invertColoursTitleText"));
   $('#invert-colours-checkbox-label').text(chrome.i18n.getMessage("invertLabelText"));
   $('#zoom-title').text(chrome.i18n.getMessage("zoomRgTitleText"));
   $('#zoom-enable-checkbox-label').text(chrome.i18n.getMessage('zoomEnableChechboxLabelText'));
@@ -74,6 +78,7 @@ $(document).ready(function(e) {
   $('#font-options-title').text(chrome.i18n.getMessage("fontOptionsTitleText"));
   $('#font-size-title').text(chrome.i18n.getMessage("fontSizeTitleText"));
   $('#font-face-title').text(chrome.i18n.getMessage("fontFaceTitleText"));
+  $('#font-face-label').text(chrome.i18n.getMessage("fontFaceTitleText"));
   $('#font-face-original').text(chrome.i18n.getMessage("fontFaceOriginalText"));
   $('#font-size-normal-label').text(chrome.i18n.getMessage("fontSizeNormalLabelText"));
   $('#font-size-large-label').text(chrome.i18n.getMessage("fontSizeLargeLabelText"));
@@ -93,6 +98,7 @@ $(document).ready(function(e) {
   $('#synonyms-en-explanation').text(chrome.i18n.getMessage("synonymsEnExplanationText"));
   $('#synonyms-en-checkbox-label').text(chrome.i18n.getMessage("synonymsEnCheckboxLabelText"));
   
+  console.log("--Comienzo popup.js");
   // if there is a configuration stored locally, we will load this 
   // set of needs and preferences
   chrome.storage.local.get({'token' : "" , 'preferences': {} }, function(results) {
@@ -147,9 +153,10 @@ function handleResponse(response) {
 
 }
 
-// Function that initializes the popup
+// ****************************************************************
+// *********** Function that initializes the popup ****************
+// ****************************************************************
 function setPreferencesForm(npsetObject) {
-
   if (npsetObject.hasOwnProperty('token') && npsetObject.hasOwnProperty('preferences')) {
     // The needs and preferences object has a property 'token' and a property 'preferences'
   
@@ -202,29 +209,34 @@ function setPreferencesForm(npsetObject) {
 	        	}
 		    });
 
-	     
 		    // Initialize high contrast
 		    if (localPreferences.hasOwnProperty('highContrastEnabled')) {
 		    	if (localPreferences.highContrastEnabled) {
 		    		console.log("High Contrast is enabled");
 		    		if (localPreferences.hasOwnProperty('highContrastTheme')) {
+						$('html').removeAttr('ic');
 		    			switch (localPreferences.highContrastTheme) {
 		    				case 'black-white':
 		    					$('#high-contrast-black-white').prop('checked', true);
-		    					$('html').attr('hc', 'bw');
+		    					$('html').attr('hc', 'bwcp');
 		    					break;
 		    				case 'white-black':
 		    					$('#high-contrast-white-black').prop('checked', true);
-		    					$('html').attr('hc', 'wb');
+		    					$('html').attr('hc', 'wbcp');
 		    					break;
 		    				case 'yellow-black':
 		    					$('#high-contrast-yellow-black').prop('checked', true);
-		    					$('html').attr('hc', 'yb');
+		    					$('html').attr('hc', 'ybcp');
 		    					break;
 		    				case 'black-yellow':
 		    					$('#high-contrast-black-yellow').prop('checked', true);
-		    					$('html').attr('hc', 'by');
+		    					$('html').attr('hc', 'bycp');
 		    					break;
+		    				/*case 'invert-colours':
+								$('html').removeAttr('hc');
+		    					$('#high-contrast-invert-colours').prop('checked', true);
+		    					$('html').attr('ic', 'invertcp');
+		    					break;*/
 		    				default:
 		    					break;
 		    			}
@@ -232,6 +244,7 @@ function setPreferencesForm(npsetObject) {
 		    		} else {
 						$('#no-high-contrast').prop('checked', true);
 		    			$('html').removeAttr('hc');
+						$('html').removeAttr('ic');
 		    		}
 
 		    	// if not highContrastEnabled
@@ -248,36 +261,35 @@ function setPreferencesForm(npsetObject) {
 		    // Invert Colours
 		    if (localPreferences.hasOwnProperty('invertColours')) {
 		    	if (localPreferences.invertColours) {
-		    		$('#invert-colours.checkbox').prop('checked', true);
-		    		$('html').attr('ic', 'invert');
+		    		//$('#invert-colours.checkbox').prop('checked', true);
+		    		//$('html').attr('ic', 'invert');
+					document.documentElement.setAttribute('ic', 'invertcp');
+					$('#high-contrast-invert-colours').prop('checked', true);
 		    	} else {
-		    		$('#invert-colours-checkbox').prop('checked', false);
-		    		$('html').removeAttr('ic');
+		    		//$('#invert-colours-checkbox').prop('checked', false);
+		    		//$('html').removeAttr('ic');
+					document.documentElement.removeAttribute('ic');
 		    	}
 		    } // end of if Invert Colours
 
 		    // magnification
-		    if (localPreferences.hasOwnProperty('magnifierEnabled')) {
-		    	if (localPreferences.magnifierEnabled) {
-		    		$('#zoom-enable-checkbox').prop('checked', true);
-		    		$('#zoom-level').prop('disabled', false);
+		    if (true) {
+		    	if (true) {
 		    		if (localPreferences.hasOwnProperty('magnification')) {
 		    			var zoomValue = localPreferences.magnification,
 		    				popupWidth = 400 * zoomValue;
-		    			$('#zoom-level').val(localPreferences.magnification);
-		    			$('body').css("{ zoom : " + zoomValue + "; width: "+ popupWidth +"");
+						$('#eZoomDisplay').val(parseInt(zoomValue * 100) + "%");
+		    			//$('body').css("{ zoom : " + zoomValue + "; width: "+ popupWidth +"");
+						document.documentElement.style.zoom = zoomValue;
 		    		}
 		    	}
-		    } else {
-		    	$('#zoom-enable-checkbox').prop('checked', false);
-		    	$('#zoom-level').prop('disabled', true);
-		    } // End of magnification if
+		    }// End of magnification if
 			
 		    // lineheight
 		    if (localPreferences.hasOwnProperty('lineHeight')) {
-				$('#linespace-level').val(localPreferences.lineHeight);
+				$('#eLinespaceDisplay').val(parseInt(localPreferences.lineHeight * 100) + "%");
 		    } else {
-				$('#linespace-level').val(1.3);
+				$('#eLinespaceDisplay').val("130%");
 			}// End of lineheight if
 
 	
@@ -290,46 +302,59 @@ function setPreferencesForm(npsetObject) {
 		          		break;
 		        	case 'large': 
 		          		$('#font-size-large').prop('checked', true); 
-			        	$('html').attr('ts', 'large');
+			        	$('html').attr('ts', 'large-cp');
 		          		break;
 		        	case 'x-large': 
 		          		$('#font-size-x-large').prop('checked', true);
-			        	$('html').attr('ts', 'x-large');
+			        	$('html').attr('ts', 'x-large-cp');
 		          	break;
 		        	default:
-		          		$('#textSizeNormal').prop('checked', true);
+		          		$('#font-size-normal').prop('checked', true);
 			        	$('html').removeAttr('ts');
 	        	} 
-	      	} // fontSize
+	      	} else {
+				$('#font-size-normal').prop('checked', true);
+			    $('html').removeAttr('ts');
+			}// fontSize
 
 	      	if (localPreferences.hasOwnProperty('fontFace')) {
 	      		switch (localPreferences.fontFace) {
 	      			case 'Arial':
 	      				$('#font-face-Arial').prop('selected', true);
+						document.documentElement.setAttribute('ft', 'arial-cp');
 	      				break;
 	      			case 'Verdana':
 	      				$('#font-face-Verdana').prop('selected', true);
+						document.documentElement.setAttribute('ft', 'verdana-cp');
 	      				break;
 	      			case 'Courier':
 	      				$('#font-face-Courier').prop('selected', true);
+						document.documentElement.setAttribute('ft', 'courier-cp');
 	      				break;
 	      			case 'Comic Sans MS':
 	      				$('#font-face-ComicSans').prop('selected', true);
+						document.documentElement.setAttribute('ft', 'comic-sans-ms-cp');
 	      				break;
 	      			default:
 	      		}
 	      	}
 
 	      	if (localPreferences.hasOwnProperty('cursorSize')) {
-	      		switch (localPreferences.cursorSize) {
+				console.log("---  cursor size");
+				var cursorSize = localPreferences.cursorSize;
+				var cursorClass = cursorSize + '-cp';
+	      		switch (cursorSize) {
 	      			case 'normal':
 	      				$('#cursor-size-normal').prop('checked', true);
+						document.documentElement.removeAttribute('cs');
 	      				break;
 	      			case 'large':
 	      				$('#cursor-size-large').prop('checked', true);
+						document.documentElement.setAttribute('cs', cursorClass);
 	      				break;
 	      			case 'x-large':
 	      				$('#cursor-size-x-large').prop('checked', true);
+						document.documentElement.setAttribute('cs', cursorClass);
 	      				break;
 	      			default: 
 	      				break;
@@ -470,7 +495,7 @@ function screenReaderCBClicked() {
   chrome.storage.local.set({ preferences : localPreferences });
 }
 
-function zoomEnableCheckboxClicked() {
+/*function zoomEnableCheckboxClicked() {
 	if (this.checked) {
 		localPreferences.magnifierEnabled = true;
 		$('#zoom-level').prop('disabled', false);
@@ -482,36 +507,160 @@ function zoomEnableCheckboxClicked() {
 }
 
 function onZoomChanged() {
-	var zoomValue = $(this).val();
-	localPreferences.magnification = parseFloat(zoomValue);
+	var zoomValue = parseFloat($(this).val());
+	if(zoomValue > 3) {zoomValue = 3;}
+	else if(zoomValue < 1) {zoomValue = 1;}
+	localPreferences.magnification = zoomValue;
     chrome.storage.local.set({ preferences : localPreferences });
+}*/
+
+function zoomUpButtonClicked(){
+	//alert("--- Entra en ZOOM UP");
+	updateZoom("+", this);
+}
+
+function zoomDownButtonClicked(){
+	//alert("--- Entra en ZOOM UP: " + this.id);
+	updateZoom("-", this);
+}
+
+function updateZoom(op, element)
+{
+	var scrolly = window.scrollY;
+	var zoomDisplayValues = $('#eZoomDisplay').val().split('%');
+	var zoomDisplayValue = parseInt(zoomDisplayValues[0]);
+	if(zoomDisplayValue > 300) 
+	{
+		zoomDisplayValue = 300;
+	}
+	else if(zoomDisplayValue < 100) 
+	{
+		zoomDisplayValue = 100;
+	}
+	else if(zoomDisplayValue < 300 && op == "+")
+	{
+		zoomDisplayValue = zoomDisplayValue + 10;
+		scrolly = scrolly + 20;
+	}
+	else if(zoomDisplayValue > 100 && op == "-")
+	{
+		zoomDisplayValue = zoomDisplayValue - 10;
+		scrolly = scrolly - 20;
+	}
+	var zoomCoef = zoomDisplayValue/100;
+	//zoomDisplayValue = perseInt(zoomCoef * 100);
+	$('#eZoomDisplay').val(zoomDisplayValue + "%");
+	document.documentElement.style.zoom = zoomCoef;
+	window.scrollTo(500, scrolly);
+	localPreferences.magnification = zoomCoef;
+    chrome.storage.local.set({ preferences : localPreferences });
+	
+	//adjust cursor radio buttons	
+	//var mtop = $('#cursor-size-x-large').css('margin-top').split('px');
+	//var currentMtop = parseInt((parseInt(mtop[0]) / zoomCoef) * 100) / 100;
+	var currentMtop = parseInt((35 / zoomCoef) * 100) / 100;
+	var value = currentMtop + 'px';
+	$('#cursor-size-x-large').css('margin-top', value);
+	currentMtop = parseInt((18 / zoomCoef) * 100) / 100;
+	value = currentMtop + 'px';
+	$('#cursor-size-large').css('margin-top', value);
 }
 
 function onLinespaceChanged() {
+	console.log("--- Entra en LinespaceChanged");
 	var lineHeightValue = $(this).val();
 	localPreferences.lineHeight = parseFloat(lineHeightValue);
     chrome.storage.local.set({ preferences : localPreferences });
 }
 
+function linespaceUpButtonClicked()
+{
+	updateLinespace("+")
+}
+
+function linespaceDownButtonClicked()
+{
+	updateLinespace("-")
+}
+
+function updateLinespace(op)
+{
+	var linespaceDisplayValues = $('#eLinespaceDisplay').val().split('%');
+	var linespaceDisplayValue = parseInt(linespaceDisplayValues[0]);
+	if(linespaceDisplayValue > 300) 
+	{
+		linespaceDisplayValue = 300;
+	}
+	else if(linespaceDisplayValue < 100) 
+	{
+		linespaceDisplayValue = 100;
+	}
+	else if(linespaceDisplayValue < 300 && op == "+")
+	{
+		linespaceDisplayValue = linespaceDisplayValue + 10;
+	}
+	else if(linespaceDisplayValue > 100 && op == "-")
+	{
+		linespaceDisplayValue = linespaceDisplayValue - 10;
+	}
+	var linespaceCoef = linespaceDisplayValue/100;
+	linespaceCoef = linespaceCoef.toFixed(2);
+	//zoomDisplayValue = perseInt(zoomCoef * 100);
+	$('#eLinespaceDisplay').val(linespaceDisplayValue + "%");
+	localPreferences.lineHeight = linespaceCoef;
+    chrome.storage.local.set({ preferences : localPreferences });
+}
+
 function fontSizeChanged() {
 	console.log("Cambio de tamaña de letra.");
-	localPreferences.fontSize = $(this).val();
-	console.log($(this).val());
+	var ts = $(this).val();
+	localPreferences.fontSize = ts;
+	console.log(ts);	
+	if(ts == 'normal')
+	{
+		document.documentElement.removeAttribute('ts');
+	}
+	else
+	{
+		document.documentElement.setAttribute('ts', $(this).val() + "-cp");
+	}
 	chrome.storage.local.set({ preferences : localPreferences });
 }
 
 function fontFaceChanged() {
-	localPreferences.fontFace = $("#font-face-select").val();
+	var fontFace = $("#font-face-select").val();
+	localPreferences.fontFace = fontFace;
+	var fontFaceClass = fontFace.replace(" ", "-").replace(" ", "-").toLowerCase()  + "-cp";
+	if(fontFaceClass == 'none')
+	{
+		document.documentElement.removeAttribute('ft');
+	}
+	else
+	{
+		document.documentElement.setAttribute('ft', fontFaceClass);
+	}
 	chrome.storage.local.set({ preferences : localPreferences });
 }
 
 function cursorSizeChanged() {
-	localPreferences.cursorSize = $(this).val();
+	var cursorSize = $(this).val();
+	localPreferences.cursorSize = cursorSize;
+	if(cursorSize == 'normal') 
+	{
+		document.documentElement.removeAttribute('cs');
+	}
+	else
+	{
+		var cursorClass = cursorSize + '-cp';
+		document.documentElement.setAttribute('cs', cursorClass);
+	}
 	chrome.storage.local.set({ preferences : localPreferences });
 }
 
 function highContrastChanged() {
 	console.log("High contrast has changed");
+	localPreferences['invertColours'] = false;
+	document.documentElement.removeAttribute('ic');
 	var hcValue = ($(this).val());
 	switch (hcValue) {
 		case "none":
@@ -523,26 +672,33 @@ function highContrastChanged() {
 		case "white-black":
 			localPreferences.highContrastEnabled = true;
 			localPreferences.highContrastTheme = hcValue;
-			document.documentElement.setAttribute('hc', 'wb');
+			document.documentElement.setAttribute('hc', 'wbcp');
 			chrome.storage.local.set({ preferences: localPreferences });
 			break;
 		case "black-white":
 			localPreferences.highContrastEnabled = true;
 			localPreferences.highContrastTheme = hcValue;
-			document.documentElement.setAttribute('hc', 'bw');
+			document.documentElement.setAttribute('hc', 'bwcp');
 			chrome.storage.local.set({ preferences: localPreferences });
 			break;
 		case "yellow-black":
 			localPreferences.highContrastEnabled = true;
 			localPreferences.highContrastTheme = hcValue;
-			document.documentElement.setAttribute('hc', 'yb');
+			document.documentElement.setAttribute('hc', 'ybcp');
 			chrome.storage.local.set({ preferences: localPreferences });
 			break;
 		case "black-yellow":
 			localPreferences.highContrastEnabled = true;
 			localPreferences.highContrastTheme = hcValue;
-			document.documentElement.setAttribute('hc', 'by');
+			document.documentElement.setAttribute('hc', 'bycp');
 			chrome.storage.local.set({ preferences: localPreferences });
+			break;
+		case "invert-colours":
+			localPreferences.highContrastEnabled = false;		
+			document.documentElement.removeAttribute('hc');
+			localPreferences['invertColours'] = true;
+			chrome.storage.local.set({ token: userToken, preferences: localPreferences });
+			document.documentElement.setAttribute('ic', 'invertcp');
 			break;
 		default:
 			localPreferences.highContrastEnabled = false;
@@ -552,7 +708,7 @@ function highContrastChanged() {
 	}
 }
 
-function invertRBClicked() {
+/*function invertRBClicked() {
 	if (this.checked) {
 		localPreferences['invertColours'] = true;
 		chrome.storage.local.set({ token: userToken, preferences: localPreferences });
@@ -562,7 +718,7 @@ function invertRBClicked() {
 		chrome.storage.local.set({ token: userToken, preferences: localPreferences });
 		document.documentElement.removeAttribute('ic');
 	}
-}
+}*/
 
 function simplifierCheckBoxClicked() {
 	if (this.checked) {

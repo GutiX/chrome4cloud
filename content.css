@@ -403,3 +403,10 @@ html[ff="Comic Sans MS"] blockquote, html[ff="Comic Sans MS"] article, html[ff="
   font-weight: bold !important;
   text-decoration: underline;
 }
+
+html[cs="large"]{cursor : url(images/arrow_icon_large.png), auto;}
+a[cs="large"], select[cs="large"], button[cs="large"], 
+input[cs="large"], label[cs="large"][for] {cursor : url(images/hand_icon_large.png), auto !important;}
+html[cs="x-large-cp"]{cursor : url(images/arrow_icon_x_large.png), auto;}
+html[cs="x-large-cp"] a, html[cs="x-large-cp"] select, html[cs="x-large-cp"] button, 
+html[cs="x-large-cp"] input, html[cs="x-large-cp"] label[for]{cursor : url(images/hand_icon_x_large.png), auto !important;}
