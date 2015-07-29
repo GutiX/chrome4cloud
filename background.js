@@ -124,6 +124,7 @@ function processPreferences(userPreferencesDownloaded) {
 
 // New window has been activated
 chrome.tabs.onActivated.addListener(function(activeInfo) {
+	console.log(" Entra en chrome.tabs.onActivated.addListener");
 	chrome.storage.local.get({ 'token' : "", 'preferences' : {} }, function(results) {
 		if (!(chrome.runtime.lastError)) {
 			if (!(isEmpty(results['preferences']))) {
@@ -136,8 +137,11 @@ chrome.tabs.onActivated.addListener(function(activeInfo) {
 
 // Window has been updated
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+	console.log(" Entra en chrome.tabs.onUpdated.addListener");
 	if (changeInfo.status == 'complete') {
+		console.log(" Entra en chrome.tabs.onUpdated.addListener - complete");
 		chrome.storage.local.get({'token' : "", "preferences" : {} }, function(results) {
+			console.log(" Entra en chrome.tabs.onUpdated.addListener - complete - results: " + JSON.stringify(results));
 			if (!(chrome.runtime.lastError)) {
 				if (!(isEmpty(results['preferences']))) {
 					setPreferences(results['preferences']);
@@ -183,7 +187,7 @@ chrome.storage.onChanged.addListener(function(changes, local) {
 				}
 			});
 
-			chrome.tabs.reload();
+			//chrome.tabs.reload();
 
 		}
 	}
