@@ -524,35 +524,31 @@ function isEmpty(obj) {
 
 //SOCKET.IO SERVER
 
-//function connectServer()
-//{	
-	console.log("Socket.io connection ....");
-	if(socket == null || !socket.socket.connected)
-	{
-		//connect = false;
-		console.log("### Connecting");
-		socket = io.connect(socketServer, {
-		  'force new connection': true
-		});		
-		socketListeners();		
-			
-		//socket.socket.reconnect();
-	}
-//}
-	setInterval(function () {
-		if(!connect) socket = io.connect(socketServer, {'force new connection': true});
-		socketListeners();
-	}, 10000);
-	setInterval(function () {if(connect) socket.socket.disconnect();}, 5000);
-	
-function socketListeners()
-{
-	socket.on('connect', function(data){
+console.log("Socket.io connection ....");
+
+if (socket == null) {
+    console.log("### Connecting for the first time");
+    connectToGPII();
+}
+
+setInterval(function () {
+    if (!connect || socket == null || !socket.socket.connected) {
+        connect = false;
+        connectToGPII();
+    }
+}, 10000);
+
+function connectToGPII () {
+    socket = io.connect(socketServer, {'force new connection': true});
+    socketListeners();
+}
+
+function socketListeners () {
+	socket.on('connect', function (data) {
 		console.log('Socket connected: ');
 		console.log("### Sending uri");
 		socket.send(uri);
 		connect = true;
-		//connectServer();
 	});
 	
 	socket.on("connectionSucceeded", function (settings) {
@@ -563,7 +559,6 @@ function socketListeners()
 	socket.on("onBrowserSettingsChanged", function(settings){
 		console.log("onBrowserSettingsChanged: " + JSON.stringify(settings));
 		processSettings(settings);
-		reloadTabs();
 	});
 	
 	socket.on('getPref', function(request){
@@ -579,20 +574,15 @@ function socketListeners()
 		}); 
 	});
 	
-	socket.socket.on('disconnect', function(request){
+	socket.socket.on('disconnect', function (request){
 		console.log('Disconnect: ' + request);
-		socket.socket.reconnect();	
-		//signOut();
-		//chrome.tabs.reload();
+		connect = false;
 	});
 	
-	socket.on('error', function(err){
+	socket.on('error', function (err){
 		console.log('Connection Error. ' + err);
-		//socket = io.connect(socketServer, {'force new connection': true});	
-		//setInterval(function () {if(!connect) socket = io.connect(socketServer, {'force new connection': true});}, 5000);
+		connect = false;
 	});
-	
-	
 }
 
 function processSettings(settings)
