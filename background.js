@@ -9,20 +9,25 @@ var value,
 	audio = new Audio("audio/beep-06.wav"),
 	locale = "en-GB",
 	cloudExtensionId = 'finocloegofdnndgmjfemdcfpapgcain',
-	socketServer = 'http://localhost:8081/browserChannel';
+	socketServer = 'http://localhost:8081/browserChannel',
+	currentPref = {};
 
 
 //var io = require("socket.io-client");
 var socket;
+var connect = false;
 
 chrome.windows.onCreated.addListener(function() {
 	// audio.play();
+	chrome.storage.local.clear();
+	chrome.storage.local.set({ "token" : "", "preferences" : {} });
 	console.log("Start.");
-	connectServer();
+	//-connectServer();
+	//connect = true;
 });
 
-chrome.windows.onRemoved.addListener(function() {
-
+chrome.windows.onRemoved.addListener(function() 
+{
 	diconnectServer();
 });
 
@@ -36,7 +41,7 @@ chrome.runtime.onInstalled.addListener(function(details) {
 	// audio.play();
 	chrome.storage.local.set({ "token" : "", "preferences" : {} });
 	console.log("Chrome extension installed.");
-	connectServer();
+	//-connectServer();
 });
 
 chrome.runtime.onSuspend.addListener(function() {
@@ -124,7 +129,7 @@ function processPreferences(userPreferencesDownloaded) {
 
 // New window has been activated
 chrome.tabs.onActivated.addListener(function(activeInfo) {
-	connectServer();
+	//-connectServer();
 	console.log(" Entra en chrome.tabs.onActivated.addListener");
 	chrome.storage.local.get({ 'token' : "", 'preferences' : {} }, function(results) {
 		if (!(chrome.runtime.lastError)) {
@@ -138,7 +143,7 @@ chrome.tabs.onActivated.addListener(function(activeInfo) {
 
 // Window has been updated
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-	connectServer();
+	//-connectServer();
 	console.log(" Entra en chrome.tabs.onUpdated.addListener");
 	if (changeInfo.status == 'complete') {
 		console.log(" Entra en chrome.tabs.onUpdated.addListener - complete");
@@ -519,16 +524,26 @@ function isEmpty(obj) {
 
 //SOCKET.IO SERVER
 
-function connectServer()
-{
-	console.log("Socket.io connection method....");
+//function connectServer()
+//{	
+	console.log("Socket.io connection ....");
 	if(socket == null || !socket.socket.connected)
 	{
+		//connect = false;
 		console.log("### Connecting");
-		socket = io.connect(socketServer);		
-		socketListeners();
+		socket = io.connect(socketServer, {
+		  'force new connection': true
+		});		
+		socketListeners();		
+			
+		//socket.socket.reconnect();
 	}
-}
+//}
+	setInterval(function () {
+		if(!connect) socket = io.connect(socketServer, {'force new connection': true});
+		socketListeners();
+	}, 10000);
+	setInterval(function () {if(connect) socket.socket.disconnect();}, 5000);
 	
 function socketListeners()
 {
@@ -536,6 +551,8 @@ function socketListeners()
 		console.log('Socket connected: ');
 		console.log("### Sending uri");
 		socket.send(uri);
+		connect = true;
+		//connectServer();
 	});
 	
 	socket.on("connectionSucceeded", function (settings) {
@@ -546,6 +563,7 @@ function socketListeners()
 	socket.on("onBrowserSettingsChanged", function(settings){
 		console.log("onBrowserSettingsChanged: " + JSON.stringify(settings));
 		processSettings(settings);
+		reloadTabs();
 	});
 	
 	socket.on('getPref', function(request){
@@ -561,28 +579,42 @@ function socketListeners()
 		}); 
 	});
 	
-	/*socket.on('disconnected', function(request){
+	socket.socket.on('disconnect', function(request){
 		console.log('Disconnect: ' + request);
+		socket.socket.reconnect();	
 		//signOut();
 		//chrome.tabs.reload();
-	});*/
+	});
+	
+	socket.on('error', function(err){
+		console.log('Connection Error. ' + err);
+		//socket = io.connect(socketServer, {'force new connection': true});	
+		//setInterval(function () {if(!connect) socket = io.connect(socketServer, {'force new connection': true});}, 5000);
+	});
+	
+	
 }
 
 function processSettings(settings)
 {
-	console.log("## Received the following settings: " + JSON.stringify(settings));
-	var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
-	if(settings == null) preferences = '{"' + uri + '": {}}';
-	console.log("## Received the following preferences: " + JSON.stringify(preferences));
-	//processPreferences({ token : 'system', payloadJSON: preferences });
-	processPreferences({ token : '', payloadJSON: preferences });
-	reloadTabs();
+	if(currentPref != settings)
+	{
+		currentPref = settings;
+		console.log("## Received the following settings: " + JSON.stringify(settings));
+		var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
+		if(settings == null) preferences = '{"' + uri + '": {}}';
+		console.log("## Received the following preferences: " + JSON.stringify(preferences));
+		//processPreferences({ token : 'system', payloadJSON: preferences });
+		processPreferences({ token : '', payloadJSON: preferences });
+		if(currentPref == {}) reloadTabs();
+	}
 }
 
 function diconnectServer()
 {
-	console.log("windows.onRemoved....");
+	console.log("Disconnected ....");
 	
+	//connectServer();
 	/*if(socket !== null && socket.socket.connected)
 	{
 		console.log("removing....");
@@ -595,7 +627,7 @@ function diconnectServer()
 function signOut() {
   chrome.storage.local.clear();
   
-  processPreferences({ token: "", preferences: {} }); 
+  //processPreferences({ token: "", payloadJSON: {"org.chrome.cloud4chrome": {}} }); 
   
 }
 
