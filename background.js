@@ -124,6 +124,7 @@ function processPreferences(userPreferencesDownloaded) {
 
 // New window has been activated
 chrome.tabs.onActivated.addListener(function(activeInfo) {
+	connectServer();
 	console.log(" Entra en chrome.tabs.onActivated.addListener");
 	chrome.storage.local.get({ 'token' : "", 'preferences' : {} }, function(results) {
 		if (!(chrome.runtime.lastError)) {
@@ -137,6 +138,7 @@ chrome.tabs.onActivated.addListener(function(activeInfo) {
 
 // Window has been updated
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+	connectServer();
 	console.log(" Entra en chrome.tabs.onUpdated.addListener");
 	if (changeInfo.status == 'complete') {
 		console.log(" Entra en chrome.tabs.onUpdated.addListener - complete");
@@ -516,41 +518,18 @@ function isEmpty(obj) {
 }	
 
 //SOCKET.IO SERVER
-/*var socket = io.connect('http://localhost:8000', function(){
-	socketListeners();
-});*/
-
 
 function connectServer()
 {
-	console.log("windows.onCreated....");
-	//if(socket === null) socket = io.connect('http://localhost:8000');
+	console.log("Socket.io connection method....");
 	if(socket == null || !socket.socket.connected)
 	{
 		console.log("### Connecting");
-		socket = io.connect(socketServer);
-		
+		socket = io.connect(socketServer);		
 		socketListeners();
 	}
-	
-	if(socket != null && socket.socket.connected)
-	{
-		console.log("--- Connected ---");
-		//socketListeners();
-		socket.send(uri);
-	}
-	/*else
-	{
-		console.log("--- Disconnected ---");
-		//socketListeners();
-		//socket.socket.reconnect();
-		
-		//socket.socket.connect();
-		//socket.send(uri);
-	}*/
-	//socket.emit('getpreferences', 'Cloud4chrome');
 }
-
+	
 function socketListeners()
 {
 	socket.on('connect', function(data){
@@ -560,19 +539,12 @@ function socketListeners()
 	});
 	
 	socket.on("connectionSucceeded", function (settings) {
+		chrome.runtime.sendMessage({action: 'socketConnected'});
 		processSettings(settings);
 	});
 
-	/*socket.on('applyPref', function(preferences){
-		console.log('Preferences received: ' + preferences);
-		var settings = '{"' + uri + '":' + preferences + '}';
-		console.log('Preferences received: ' + settings);
-		processPreferences({ token : 'system', payloadJSON: settings });
-		//processPreferences({ token : 'system', payloadJSON: preferences });
-		chrome.tabs.reload();
-	});*/
-	
 	socket.on("onBrowserSettingsChanged", function(settings){
+		console.log("onBrowserSettingsChanged: " + JSON.stringify(settings));
 		processSettings(settings);
 	});
 	
@@ -589,10 +561,10 @@ function socketListeners()
 		}); 
 	});
 	
-	/*socket.on('disconnect', function(request){
+	/*socket.on('disconnected', function(request){
 		console.log('Disconnect: ' + request);
-		signOut();
-		chrome.tabs.reload();
+		//signOut();
+		//chrome.tabs.reload();
 	});*/
 }
 
@@ -600,10 +572,11 @@ function processSettings(settings)
 {
 	console.log("## Received the following settings: " + JSON.stringify(settings));
 	var preferences = '{"' + uri + '":' + JSON.stringify(settings) + '}';
-	console.log("## Received the following preferences: " + preferences);
+	if(settings == null) preferences = '{"' + uri + '": {}}';
+	console.log("## Received the following preferences: " + JSON.stringify(preferences));
 	//processPreferences({ token : 'system', payloadJSON: preferences });
 	processPreferences({ token : '', payloadJSON: preferences });
-	//chrome.tabs.reload();
+	reloadTabs();
 }
 
 function diconnectServer()
@@ -616,7 +589,7 @@ function diconnectServer()
 		//socket.socket.disconnect();
 	}*/
 		
-	signOut();
+	//signOut();
 }
 
 function signOut() {
@@ -624,4 +597,18 @@ function signOut() {
   
   processPreferences({ token: "", preferences: {} }); 
   
+}
+
+function reloadTabs()
+{
+	console.log("Reloading Tabs ...");
+	chrome.tabs.getAllInWindow(function(tabs){
+		console.log("Tabs size: " + tabs.length);
+		for (var i = 0; i < tabs.length; i++) // loop over the tabs
+		{
+			console.log("Tab - " + i + ": " + tabs[i].id);
+			 // reload tab
+			chrome.tabs.reload(tabs[i].id);
+		}
+	});
 }
