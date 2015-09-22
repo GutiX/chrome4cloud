@@ -2,10 +2,10 @@
 
 var value,
 	html = document.documentElement,
-	uri = 'org.chrome.cloud4chrome',
+	uri = 'com.ilunion.cloud4chrome',
 	//npserver = 'http://127.0.0.1:8081/',
 	npserver = 'http://flowmanager.gpii.net/',
-	suffix = '/settings/%7B"OS":%7B"id":"web"%7D,"solutions":[%7B"id":"org.chrome.cloud4chrome"%7D]%7D',
+	suffix = '/settings/%7B"OS":%7B"id":"web"%7D,"solutions":[%7B"id":"com.ilunion.cloud4chrome"%7D]%7D',
 	audio = new Audio("audio/beep-06.wav"),
 	locale = "en-GB",
 	cloudExtensionId = 'finocloegofdnndgmjfemdcfpapgcain',
@@ -617,7 +617,7 @@ function diconnectServer()
 function signOut() {
   chrome.storage.local.clear();
   
-  //processPreferences({ token: "", payloadJSON: {"org.chrome.cloud4chrome": {}} }); 
+  //processPreferences({ token: "", payloadJSON: {"com.ilunion.cloud4chrome": {}} }); 
   
 }
 
