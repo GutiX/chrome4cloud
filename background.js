@@ -39,6 +39,7 @@ chrome.runtime.onStartup.addListener(function() {
 // initialization when your extension is installed or upgraded	
 chrome.runtime.onInstalled.addListener(function(details) {
 	// audio.play();
+	chrome.storage.local.clear();
 	chrome.storage.local.set({ "token" : "", "preferences" : {} });
 	console.log("Chrome extension installed.");
 	//-connectServer();
