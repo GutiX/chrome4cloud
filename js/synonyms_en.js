@@ -1,6 +1,7 @@
-/*'use strict';
+'use strict';
 
-var bhl_url = "http://words.bighugelabs.com/api/2/d1cbb0c53ddabe240d726e3fc76b1491/";
+//var bhl_url = "http://words.bighugelabs.com/api/2/d1cbb0c53ddabe240d726e3fc76b1491/";
+var bhl_url = "http://words.bighugelabs.com/api/2/0791f67e8212761406e388ef91856024/";
 var sel_x = 0, sel_y = 0;
 var help_paragraph_en = $('<p></p>').addClass('help-paragraph').text("Click the mouse or any key to close");
 var error_paragraph_en = $('<p></p>').text("Sorry, no synonyms found");
@@ -29,6 +30,7 @@ function onDoubleClickEn(e) {
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
+					console.log("Words received: " + xhr.responseText);
                     showTooltipEn(xhr.responseText);
                 }
             } else {
@@ -125,4 +127,4 @@ $(document).keyup(function(e) {
 
 $(document).mousedown(function(e) {
     $(".tooltip").remove();
-});*/
+});
