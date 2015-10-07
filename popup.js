@@ -18,7 +18,7 @@ var notification_OnScreenReaderActivated = {
 
 $(document).ready(function(e) {
 
-  $('#token-form').submit(onTokenFormSubmit);
+  //$('#token-form').submit(onTokenFormSubmit);
   
   $('#options-link').click(onOptionsClick);
   $("#c4a-website-link").click(onC4aWebsiteLinkClick);
@@ -51,8 +51,8 @@ $(document).ready(function(e) {
   
   // Initialize all text to make the extension localizable
   $("#welcome-message").text(chrome.i18n.getMessage("welcomeMessage"));
-  $('#token-input').attr('placeholder', chrome.i18n.getMessage("tokenInputPlaceholder"));
-  $('#token-input-label').text(chrome.i18n.getMessage("tokenInputLabelText"));
+  //$('#token-input').attr('placeholder', chrome.i18n.getMessage("tokenInputPlaceholder"));
+  //$('#token-input-label').text(chrome.i18n.getMessage("tokenInputLabelText"));
   $('#options-link').text(chrome.i18n.getMessage("optionsLinkText"));
   $('#c4a-website-link').attr('title', chrome.i18n.getMessage('c4aWebsiteLinkTitle'));
   $('#c4a-website-link').text(chrome.i18n.getMessage('c4aWebsiteLinkText'));
@@ -125,18 +125,18 @@ chrome.runtime.onMessage.addListener(
 
 // Function to handle the token submission. It finally sends a message to
 // the background page
-function onTokenFormSubmit(e) {
+/*function onTokenFormSubmit(e) {
   e.preventDefault();
   
   var token = $('#token-input').val();
   $('#token-input').val("");
   $('#results').html('<img src="/images/loading_icon_2_rev01.gif"> Loading').show();
   chrome.runtime.sendMessage({action: 'token submitted', token: token}, handleResponse);
-}
+}*/
 
 // Actions to respond to the receipt of a set of needs and preferences 
 // from the web
-function handleResponse(response) {
+/*function handleResponse(response) {
 
   var status = response.status,
       isError = response.isError,
@@ -151,7 +151,7 @@ function handleResponse(response) {
   	$('#results').html('<span class="warning">' + errorMessage + '</span>').show();
   }
 
-}
+}*/
 
 // ****************************************************************
 // *********** Function that initializes the popup ****************
@@ -164,16 +164,16 @@ function setPreferencesForm(npsetObject) {
 	    // The preferences object is empty and the token is an empty string
 	  
 	    console.log('set of needs and preferences not stored locally');
-	    $('#preferences-container').hide();
-  	  	$('#token-form-container').show();
-	    $('#token-input').focus(); 
+	    //$('#preferences-container').hide();
+  	  	//$('#token-form-container').show();
+	    //$('#token-input').focus(); 
 	    // chrome.tts.speak("Welcome to Cloud For All. Press TAB for options.");
 
 	  } else {
 	    // Either the token is a valid string or there are actual preferences 
 	    console.log('set of needs and preferences stored locally');
-	    $('#token-form-container').hide();
-	    $('#preferences-container').show();
+	    //$('#token-form-container').hide();
+	    //$('#preferences-container').show();
 	    
 	    if (npsetObject['token'] != "") {
 	    	// The token is a valid string
