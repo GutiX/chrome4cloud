@@ -18,17 +18,12 @@ var notification_OnScreenReaderActivated = {
 
 $(document).ready(function(e) {
 
-  //$('#token-form').submit(onTokenFormSubmit);
-  
   $('#options-link').click(onOptionsClick);
   $("#c4a-website-link").click(onC4aWebsiteLinkClick);
   
   $('#screenreader-checkbox').click(screenReaderCBClicked);
   $('#install-CV-btn').click(installCVClicked);
   $('input[name="high-contrast"]').change(highContrastChanged);
-  //$('#invert-colours-checkbox').click(invertRBClicked);
-  //$('#zoom-enable-checkbox').click(zoomEnableCheckboxClicked);
-  //$('#zoom-level').change(onZoomChanged);
   $('#linespace-level').change(onLinespaceChanged);
   $('input[name="font-size"]').change(fontSizeChanged);
   $('#font-face-select').change(fontFaceChanged);
@@ -51,8 +46,6 @@ $(document).ready(function(e) {
   
   // Initialize all text to make the extension localizable
   $("#welcome-message").text(chrome.i18n.getMessage("welcomeMessage"));
-  //$('#token-input').attr('placeholder', chrome.i18n.getMessage("tokenInputPlaceholder"));
-  //$('#token-input-label').text(chrome.i18n.getMessage("tokenInputLabelText"));
   $('#options-link').text(chrome.i18n.getMessage("optionsLinkText"));
   $('#c4a-website-link').attr('title', chrome.i18n.getMessage('c4aWebsiteLinkTitle'));
   $('#c4a-website-link').text(chrome.i18n.getMessage('c4aWebsiteLinkText'));
@@ -70,7 +63,6 @@ $(document).ready(function(e) {
   $('#high-contrast-white-black-label').text(chrome.i18n.getMessage("highContrastWhiteBlackLabelText"));
   $('#high-contrast-yellow-black-label').text(chrome.i18n.getMessage("highContrastYellowBlackLabelText"));
   $('#high-contrast-black-yellow-label').text(chrome.i18n.getMessage("highContrastBlackYellowLabelText"));
-  //$('#invert-colours-title').text(chrome.i18n.getMessage("invertColoursTitleText"));
   $('#invert-colours-checkbox-label').text(chrome.i18n.getMessage("invertLabelText"));
   $('#zoom-title').text(chrome.i18n.getMessage("zoomRgTitleText"));
   $('#zoom-enable-checkbox-label').text(chrome.i18n.getMessage('zoomEnableChechboxLabelText'));
@@ -116,42 +108,9 @@ chrome.runtime.onMessage.addListener(
 				$('#results').html("<span class='warning'>" + req.message + "</span>").show();
 			}
 		}
-		/*else if(req.action == "signout")
-		{
-			signOutBtnClicked;
-		}*/
 	}
 );
 
-// Function to handle the token submission. It finally sends a message to
-// the background page
-/*function onTokenFormSubmit(e) {
-  e.preventDefault();
-  
-  var token = $('#token-input').val();
-  $('#token-input').val("");
-  $('#results').html('<img src="/images/loading_icon_2_rev01.gif"> Loading').show();
-  chrome.runtime.sendMessage({action: 'token submitted', token: token}, handleResponse);
-}*/
-
-// Actions to respond to the receipt of a set of needs and preferences 
-// from the web
-/*function handleResponse(response) {
-
-  var status = response.status,
-      isError = response.isError,
-      errorMessage = response.errorMessage;
-
-  if (status == 1) {
-  	console.log("succesfully logged in");
-  	chrome.storage.local.get({'token': "", 'preferences': {}}, function(results) {
-  		window.location.reload();
-  	});
-  } else {
-  	$('#results').html('<span class="warning">' + errorMessage + '</span>').show();
-  }
-
-}*/
 
 // ****************************************************************
 // *********** Function that initializes the popup ****************
@@ -164,16 +123,10 @@ function setPreferencesForm(npsetObject) {
 	    // The preferences object is empty and the token is an empty string
 	  
 	    console.log('set of needs and preferences not stored locally');
-	    //$('#preferences-container').hide();
-  	  	//$('#token-form-container').show();
-	    //$('#token-input').focus(); 
-	    // chrome.tts.speak("Welcome to Cloud For All. Press TAB for options.");
 
 	  } else {
 	    // Either the token is a valid string or there are actual preferences 
 	    console.log('set of needs and preferences stored locally');
-	    //$('#token-form-container').hide();
-	    //$('#preferences-container').show();
 	    
 	    if (npsetObject['token'] != "") {
 	    	// The token is a valid string
@@ -261,13 +214,9 @@ function setPreferencesForm(npsetObject) {
 		    // Invert Colours
 		    if (localPreferences.hasOwnProperty('invertColours')) {
 		    	if (localPreferences.invertColours) {
-		    		//$('#invert-colours.checkbox').prop('checked', true);
-		    		//$('html').attr('ic', 'invert');
 					document.documentElement.setAttribute('ic', 'invertcp');
 					$('#high-contrast-invert-colours').prop('checked', true);
 		    	} else {
-		    		//$('#invert-colours-checkbox').prop('checked', false);
-		    		//$('html').removeAttr('ic');
 					document.documentElement.removeAttribute('ic');
 		    	}
 		    } // end of if Invert Colours
@@ -495,25 +444,6 @@ function screenReaderCBClicked() {
   chrome.storage.local.set({ preferences : localPreferences });
 }
 
-/*function zoomEnableCheckboxClicked() {
-	if (this.checked) {
-		localPreferences.magnifierEnabled = true;
-		$('#zoom-level').prop('disabled', false);
-	} else {
-		localPreferences.magnifierEnabled = false;
-		$('#zoom-level').prop('disabled', true);
-	}
-	chrome.storage.local.set({ preferences : localPreferences });
-}
-
-function onZoomChanged() {
-	var zoomValue = parseFloat($(this).val());
-	if(zoomValue > 3) {zoomValue = 3;}
-	else if(zoomValue < 1) {zoomValue = 1;}
-	localPreferences.magnification = zoomValue;
-    chrome.storage.local.set({ preferences : localPreferences });
-}*/
-
 function zoomUpButtonClicked(){
 	//alert("--- Entra en ZOOM UP");
 	updateZoom("+", this);
@@ -548,7 +478,6 @@ function updateZoom(op, element)
 		scrolly = scrolly - 20;
 	}
 	var zoomCoef = zoomDisplayValue/100;
-	//zoomDisplayValue = perseInt(zoomCoef * 100);
 	$('#eZoomDisplay').val(zoomDisplayValue + "%");
 	document.documentElement.style.zoom = zoomCoef;
 	window.scrollTo(500, scrolly);
@@ -556,8 +485,6 @@ function updateZoom(op, element)
     chrome.storage.local.set({ preferences : localPreferences });
 	
 	//adjust cursor radio buttons	
-	//var mtop = $('#cursor-size-x-large').css('margin-top').split('px');
-	//var currentMtop = parseInt((parseInt(mtop[0]) / zoomCoef) * 100) / 100;
 	var currentMtop = parseInt((35 / zoomCoef) * 100) / 100;
 	var value = currentMtop + 'px';
 	$('#cursor-size-x-large').css('margin-top', value);
@@ -605,7 +532,6 @@ function updateLinespace(op)
 	}
 	var linespaceCoef = linespaceDisplayValue/100;
 	linespaceCoef = linespaceCoef.toFixed(2);
-	//zoomDisplayValue = perseInt(zoomCoef * 100);
 	$('#eLinespaceDisplay').val(linespaceDisplayValue + "%");
 	localPreferences.lineHeight = linespaceCoef;
     chrome.storage.local.set({ preferences : localPreferences });
@@ -707,18 +633,6 @@ function highContrastChanged() {
 			chrome.storage.local.set({ preferences: localPreferences });
 	}
 }
-
-/*function invertRBClicked() {
-	if (this.checked) {
-		localPreferences['invertColours'] = true;
-		chrome.storage.local.set({ token: userToken, preferences: localPreferences });
-		document.documentElement.setAttribute('ic', 'invert');
-	} else {
-		localPreferences['invertColours'] = false;
-		chrome.storage.local.set({ token: userToken, preferences: localPreferences });
-		document.documentElement.removeAttribute('ic');
-	}
-}*/
 
 function simplifierCheckBoxClicked() {
 	if (this.checked) {

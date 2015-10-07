@@ -60,15 +60,6 @@ chrome.runtime.onMessage.addListener(
   }
 );
 
-/*chrome.runtime.onMessageExternal.addListener(
-  function(message, sender, sendResponse) {
-    if (message.action == "preferences received") {
-  		//console.log("LLega el mensaje: " + message.preferences);
-		processPreferences({ token : message.token, payloadJSON: message.preferences });
-		chrome.tabs.reload();
-  	}
-  });*/
-
 function requestPreferences(token) {
 
 	var xhr = new XMLHttpRequest();
