@@ -381,10 +381,20 @@ html[ff="Comic Sans MS"] blockquote, html[ff="Comic Sans MS"] article, html[ff="
   font-family: "Comic Sans MS", sans-serif !important; 
 }
 
+html[cs="large"], div[cs="large"]{cursor : url(images/arrow_icon_large.png), auto;}
+a[cs="large"], select[cs="large"], button[cs="large"], 
+input[cs="large"], label[cs="large"][for] {cursor : url(images/hand_icon_large.png), auto !important;}
+html[cs="x-large"], div[cs="x-large"]{cursor : url(images/arrow_icon_x_large.png), auto;}
+html[cs="x-large"] a, select[cs="x-large"], button[cs="x-large"], 
+input[cs="x-large"], label[cs="x-large"][for]{cursor : url(images/hand_icon_x_large.png), auto !important;}
+
+/*Synonyms frame style*/
+
 .tooltip {
-  position: fixed;   
-  background: black;
-  color: white;
+  /*position: fixed;   */
+  position: absolute;
+  background: black !important;
+  color: white !important;
   border-radius: 6px;
   padding: 1em;
   font-size: 12px;
@@ -392,21 +402,30 @@ html[ff="Comic Sans MS"] blockquote, html[ff="Comic Sans MS"] article, html[ff="
   width: 300px;
 }
 
+.tooltip p, .tooltip h1, .tooltip h2{
+  background: black !important;
+  color: white !important;
+}
+
 .tooltip .help-paragraph {
   font-style: italic;
   font-size: 0.8em;
 }
 
-.tooltip h1 {
-  color: white;
-  font-size: 1em;
+.tooltip p{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.tooltip h2 {
+  font-size: 1.4em !important;
+  font-weight: bold !important;
+  margin-bottom: 10px;
+  /*text-decoration: underline;*/
+}
+
+.tooltip h3 {
+  font-size: 1.2em !important;
   font-weight: bold !important;
   text-decoration: underline;
 }
-
-html[cs="large"], div[cs="large"]{cursor : url(images/arrow_icon_large.png), auto;}
-a[cs="large"], select[cs="large"], button[cs="large"], 
-input[cs="large"], label[cs="large"][for] {cursor : url(images/hand_icon_large.png), auto !important;}
-html[cs="x-large"], div[cs="x-large"]{cursor : url(images/arrow_icon_x_large.png), auto;}
-html[cs="x-large"] a, select[cs="x-large"], button[cs="x-large"], 
-input[cs="x-large"], label[cs="x-large"][for]{cursor : url(images/hand_icon_x_large.png), auto !important;}

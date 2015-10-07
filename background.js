@@ -51,11 +51,44 @@ chrome.runtime.onSuspend.addListener(function() {
 
 // Receives a message from the popup with the token when the token form is submitted	
 chrome.runtime.onMessage.addListener(
-  function(message, sender, sendResponse) {
+  function(request, sender, callback) {
   	
-  	if (message.action == "token submitted") {
-  		requestPreferences(message.token);
+  	if (request.action == "token submitted") 
+	{
+  		requestPreferences(request.token);
   	}
+	else if (request.action == "xhttp") 
+	{
+        var xhttp = new XMLHttpRequest();
+        var method = request.method ? request.method.toUpperCase() : 'GET';
+
+		xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4) {
+                if (xhttp.status == 200) {
+					console.log("Words received: " + xhttp.responseText);
+                    callback(xhttp.responseText);
+                }
+            } else {
+                if (xhr.status == 404) {
+                    callback("error_404");
+                }
+            }
+        };
+        /*xhttp.onload = function() {
+            callback(xhttp.responseText);
+        };*/
+        xhttp.onerror = function() {
+            // Do whatever you want on error. Don't forget to invoke the
+            // callback to clean up the communication port.
+            callback();
+        };
+        xhttp.open(method, request.url, true);
+        if (method == 'POST') {
+            xhttp.setRequestHeader('Content-Type', request.format);
+        }
+        xhttp.send(request.data);
+        return true; // prevents the callback from being called too early on return
+    }
 	
   }
 );
