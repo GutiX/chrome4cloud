@@ -1,7 +1,7 @@
 ﻿{
     "name": "__MSG_extName__",
-    "version": "0.2",
-    "description": "__MSG_extDescription__",
+    "version": "0.23",
+    "description": "Personalize Google Chrome and store your preferences in the Cloud",
     "manifest_version": 2,
     "default_locale": "en",
     "icons": {

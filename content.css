@@ -162,7 +162,7 @@ input[hc='yb'][type='text']{background: black !important; color: yellow !importa
 input[hc='yb'][type='text']:focus, input[hc='yb'][type='text']:hover {border: 4px solid yellow !important;}
 */
 a[hc = 'yb'] {
-  background: black !important;
+  /*background: black !important;*/
   background-color: black !important;
   color: yellow !important;
   text-decoration: underline !important;
@@ -217,7 +217,7 @@ input[hc='by'][type='text']{background: yellow !important; color: black !importa
 input[hc='by'][type='text']:focus, input[hc='by'][type='text']:hover {border: 4px solid black !important;}
 */
 a[hc = 'by'] {
-  background: yellow !important;
+  /*background: yellow !important;*/
   background-color: yellow !important;
   color: black !important;
   text-decoration: underline !important;
