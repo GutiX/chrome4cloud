@@ -18,6 +18,10 @@ chrome.extension.onRequest.addListener(function(request, sender, callback) {
 			setFontSize(request.type);
 		}
     }
+	else if(request.action == "getDimContent")
+	{
+		callback(getDimContent());
+	}
 });
 
 function setFontSize(size)
@@ -78,4 +82,12 @@ function getNewHeight(height, size)
 		heightValue = heightValue + "px";
 	}
 	return heightValue;
+}
+
+function getDimContent()
+{
+	var dimWeb = {};
+	dimWeb.width = document.body.clientWidth;
+	dimWeb.height = document.body.clientHeight;
+	return dimWeb;
 }

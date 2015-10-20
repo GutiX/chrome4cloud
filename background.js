@@ -332,17 +332,30 @@ function setPreferences(preferences) {
 		// magnifier is enabled
 			if (preferences.hasOwnProperty('magnification')) {
 			// magnifier is enabled and there is a value for magnification
-				chrome.tabs.executeScript({ code : "$('html').css('zoom', " + preferences.magnification +  ");" , runAt: "document_end" }, function() {
-					if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message); }
+				//chrome.tabs.executeScript({ code : "$('html').css('zoom', " + preferences.magnification +  ");" , runAt: "document_end" }, function() {
+				chrome.tabs.getAllInWindow(null, function(tabs){
+					for (var i = 0; i < tabs.length; i++) {
+						console.log("Tab: " + tabs[i].id);
+						
+						chrome.tabs.executeScript(tabs[i].id, { code : "var bwidth = document.body.clientWidth; " + 
+															"var bheight = document.body.clientHeight; " +
+															"var newCoef = " + preferences.magnification + "; " +
+															"var translx = (((bwidth * newCoef) - bwidth) / 2) / newCoef; " +
+															"var transly = (((bheight * newCoef) - bheight) / 2) / newCoef; " + 
+															"$('html').css('transform', 'scale(' + newCoef + ') translate(' + translx + 'px, ' + transly + 'px)');" , runAt: "document_end" }, function() {
+							if (chrome.runtime.lastError) { console.log("Error: " + chrome.runtime.lastError.message); }
+						});
+						
+					}
 				});
-
 			} else {
 			// magnifier is enabled but there is no value for magnification
-				chrome.tabs.executeScript({ code : "$('html').css('zoom', 1);"}, function() {
+				//chrome.tabs.executeScript({ code : "$('html').css('zoom', 1);"}, function() {
+				chrome.tabs.executeScript({ code : "$('html').css('transform', 'scale(1) translate(0px, 0px);"}, function() {
 					if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message); }
 				});
 			}
-		} else {
+		} /*else {
 		// magnifier is not enabled
 			chrome.tabs.executeScript({ code : "$('html').css('zoom', 1);"}, function() {
 				if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message ); }
@@ -351,7 +364,7 @@ function setPreferences(preferences) {
 	} else {
 		chrome.tabs.executeScript({ code : "$('html').css('zoom', 1);" }, function() {
 			if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message ); }
-		});
+		});*/
 	}
 
 	//LINE SPACE
@@ -425,7 +438,7 @@ function setPreferences(preferences) {
 	if (preferences.hasOwnProperty('cursorSize')) {
 		switch (preferences.cursorSize) {
 			case "normal": 
-				chrome.tabs.insertCSS({ code : 'html, div, a, select, button, input, img, label[for], ul, li, h1, h2, h3, p { cursor : auto !important; }' }, function() {
+				chrome.tabs.insertCSS({ code : 'html, div, a, a span, a img, select, button, input, img, label[for], ul, li, h1, h2, h3, p, span, iframe html { cursor : auto !important; }' }, function() {
 					if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message ); }
 				});
 				/*chrome.tabs.executeScript({ code: "document.documentElement.removeAttribute('cs'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.removeAttribute('cs'); });" }, function() {
@@ -433,7 +446,7 @@ function setPreferences(preferences) {
 				});*/
 				break;
 			case "large":
-				chrome.tabs.insertCSS({ code : 'html, div, img, ul, li, h1, h2, h3, p { cursor : url('+ chrome.extension.getURL('images') +'/arrow_icon_large.png), auto !important; } a, select, button, input, label[for] { cursor : url('+ chrome.extension.getURL('images') +'/hand_icon_large.png), auto !important; }'}, function() {
+				chrome.tabs.insertCSS({ code : 'html, div, img, ul, li, h1, h2, h3, p, span, iframe html { cursor : url('+ chrome.extension.getURL('images') +'/arrow_icon_large.png), auto !important; } a, a span, a img, select, button, input, label[for] { cursor : url('+ chrome.extension.getURL('images') +'/hand_icon_large.png), auto !important; }'}, function() {
 					if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message ); }
 				}); 
 				/*chrome.tabs.executeScript({ code: "document.documentElement.setAttribute('cs','large'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.setAttribute('cs', 'large'); });" }, function() {
@@ -441,7 +454,7 @@ function setPreferences(preferences) {
 				});*/
 				break;
 			case "x-large":
-				chrome.tabs.insertCSS({ code : 'html, div, img, ul, li, h1, h2, h3, p { cursor : url('+ chrome.extension.getURL('images') +'/arrow_icon_x_large.png), auto !important; } a, select, button, input, label[for], iframe { cursor : url('+ chrome.extension.getURL('images') +'/hand_icon_x_large.png), auto !important; }'}, function() {
+				chrome.tabs.insertCSS({ code : 'html, div, img, ul, li, h1, h2, h3, p, span, iframe html { cursor : url('+ chrome.extension.getURL('images') +'/arrow_icon_x_large.png), auto !important; } a, a span, a img, select, button, input, label[for], iframe { cursor : url('+ chrome.extension.getURL('images') +'/hand_icon_x_large.png), auto !important; }'}, function() {
 					if (chrome.runtime.lastError) { console.log(chrome.runtime.lastError.message ); }
 				});
 				/*chrome.tabs.executeScript({ code: "document.documentElement.setAttribute('cs','x-large'); [].forEach.call(document.querySelectorAll('body *'), function(node) { node.setAttribute('cs', 'x-large'); });" }, function() {

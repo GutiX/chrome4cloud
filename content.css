@@ -1,6 +1,7 @@
 html[ic="invert"] {
 	-webkit-filter: invert();
 }
+html[ic="invert"] { background-color: black;}
 
 html[ts="large"], html[ts="large"] body {
   /*font-size: 1.2rem !important;*/
@@ -37,7 +38,7 @@ a[hc = 'bw'] {
   /*background: white !important;*/
   background-color: white !important;
   /*color: #C2CFFF !important;*/
-  color: black;
+  color: black !important;
   text-decoration: underline !important;
   text-shadow: none !important;
 }
@@ -245,35 +246,41 @@ h5[ts='large'], dt[ts='large'], a[ts='large'],
 table[ts='large'], th[ts='large'], tr[ts='large'], td[ts='large'], pre[ts='large'], code[ts='large'],
 article[ts='large'], nav[ts='large'], section[ts='large'] {
   font-size: 1rem !important;
+  line-height: normal;
   /*line-height: 1.3em !important;*/
 }
 
 li[ts='large'], input[ts='large'] {
   font-size: 1rem !important;
+  line-height: normal;
   /*line-height: 1.2em !important;*/
 }
-input[ts='large'][type='submit'], input[ts='large'][type='button'], button[ts='large'] {font-size: 1rem !important; /*line-height: 1.2em !important;*/ padding: 10px !important; height: initial !important;}
-input[ts='large'][type='text'], input[ts='large'][type='password'], select[hc='wb'] {font-size: 1rem !important; /*line-height: 1.2em !important;*/ height: initial !important;}
+input[ts='large'][type='submit'], input[ts='large'][type='button'], button[ts='large'] {font-size: 1rem !important; line-height: normal !important;/*line-height: 1.2em !important;*/ padding: 10px !important; height: initial !important;}
+input[ts='large'][type='text'], input[ts='large'][type='password'], select[hc='wb'] {font-size: 1rem !important; line-height: normal !important;/*line-height: 1.2em !important;*/ height: initial !important;}
 /*input[ts='large'][type='submit']:focus, input[ts='large'][type='submit']:hover, input[ts='large'][type='button']:hover, input[ts='large'][type='button']:focus, button[ts='large']:hover, button[ts='large']:focus {border-width: 4px !important;}
 input[ts='large'][type='text']:focus, input[ts='large'][type='text']:hover{border-width: 4px !important;}*/
 
 h1[ts='large'] {
   font-size: 1.6rem !important;
+  line-height: normal !important;
   /*line-height: 1.6em !important;*/
 }
 
 h2[ts='large'] {
   font-size: 1.5rem !important;
+  line-height: normal !important;
   /*line-height: 1.5em !important;*/
 }
 
 h3[ts='large'] {
   font-size: 1.4rem !important;
+  line-height: normal !important;
   /*line-height: 1.4em !important;*/
 }
 
 h4[ts='large'] {
   font-size: 1.3rem !important;
+  line-height: normal !important;
   /*line-height: 1.3em !important;*/
 }
 
@@ -282,36 +289,42 @@ h5[ts='x-large'], a[ts='x-large'],
 table[ts='x-large'], th[ts='x-large'], tr[ts='x-large'], td[ts='x-large'], pre[ts='x-large'], code[ts='x-large'],
 article[ts='x-large'], nav[ts='x-large'], section[ts='x-large'] {
   font-size: 1rem !important;
+  line-height: normal;
   /*line-height: 1.3em !important;*/
 }
 
 li[ts='x-large'] {
   font-size: 1rem !important;
+  line-height: normal;
   /*line-height: 1.2em !important;*/
 }
 
-input[ts='x-large'][type='submit'], input[ts='x-large'][type='button'], button[ts='x-large']  {font-size: 1rem !important; /*line-height: 1.2em !important;*/ padding: 15px !important; height: initial !important;}
-input[ts='x-large'][type='text'], input[ts='x-large'][type='password'], select[hc='wb'] {font-size: 1rem !important; /*line-height: 1.2em !important;*/ height: initial !important;}
+input[ts='x-large'][type='submit'], input[ts='x-large'][type='button'], button[ts='x-large']  {font-size: 1rem !important; line-height: normal !important;/*line-height: 1.2em !important;*/ padding: 15px !important; height: initial !important;}
+input[ts='x-large'][type='text'], input[ts='x-large'][type='password'], select[hc='wb'] {font-size: 1rem !important; line-height: normal !important;/*line-height: 1.2em !important;*/ height: initial !important;}
 /*input[ts='x-large'][type='submit']:focus, input[ts='x-large'][type='submit']:hover, input[ts='x-large'][type='button']:hover, input[ts='x-large'][type='button']:focus, button[ts='x-large']:hover, button[ts='x-large']:focus {border-width: 4px !important;}
 input[ts='x-large'][type='text']:focus, input[ts='x-large'][type='text']:hover{border-width: 4px !important;}*/
 
 h1[ts='x-large'] {
   font-size: 1.6rem !important;
+  line-height: normal !important;
   /*line-height: 1.6em !important;*/
 }
 
 h2[ts='x-large'] {
   font-size: 1.5rem !important;
+  line-height: normal !important;
   /*line-height: 1.5em !important;*/
 }
 
 h3[ts='x-large'] {
   font-size: 1.4rem !important;
+  line-height: normal !important;
   /*line-height: 1.4em !important;*/
 }
 
 h4[ts='x-large'] {
   font-size: 1.3rem !important;
+  line-height: normal !important;
   /*line-height: 1.3em !important;*/
 }
 
