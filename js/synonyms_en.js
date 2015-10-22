@@ -22,77 +22,88 @@ chrome.runtime.onMessage.addListener(
 );
 
 function onDoubleClickEn(e) {
-    word = get_selection_en();
+    get_selection_en();
+	console.log("Word: " + word);
 
-    if (word.length > 0) {
-        /*var xhr = new XMLHttpRequest();
-        xhr.open("GET", bhl_url + word + "/json", true);
-        xhr.setRequestHeader('Content-Type','application/json');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-					console.log("Words received: " + xhr.responseText);
-                    showTooltipEn(xhr.responseText);
-                }
-            } else {
-                if (xhr.status == 404) {
-                    showErrorTooltipEn();
-                }
-            }
-        };
+    
+}
 
-        xhr.send();*/
-		
+function get_selection_en() {
+    var txt = '';
+	var zoomCoef = 1;
+	chrome.storage.local.get({ 'token' : "", 'preferences' : {} }, function(results) {
+		console.log("Antes de control de error: " + JSON.stringify(results));
+		if (!(chrome.runtime.lastError)) {
+			console.log("No error: " + JSON.stringify(results['preferences']));
+			if (results['preferences'].hasOwnProperty('magnification')) {
+				zoomCoef = results['preferences'].magnification;	
+			}
+				
+			console.log("ZoomCoef: " + results['preferences'].magnification);				
+			
+			if (window.getSelection) {
+
+				txt = window.getSelection();
+				var selection = txt.getRangeAt(0);
+				var bodyRect = document.body.getBoundingClientRect();
+				var sel_xx = selection.getBoundingClientRect().left; 
+				var sel_yy = selection.getBoundingClientRect().top; 
+				sel_x = (sel_xx - bodyRect.left) / zoomCoef; 
+				sel_y = (sel_yy - bodyRect.top) / zoomCoef;
+
+			} else if (document.getSelection) {
+
+				txt = document.getSelection();
+				var selection = txt.getRangeAt(0);
+				var bodyRect = document.body.getBoundingClientRect();
+				var sel_xx = selection.getBoundingClientRect().left; 
+				var sel_yy = selection.getBoundingClientRect().top; 
+				sel_x = (sel_xx - bodyRect.left) / zoomCoef; 
+				sel_y = (sel_yy - bodyRect.top) / zoomCoef;
+
+			} else if (document.selection) {
+
+				txt = document.selection.createRange().text;
+
+			}
+			
+			console.log("Position X: " + sel_x + " - Y: " + sel_y);
+
+			word = $.trim(txt.toString());
+			displaySynonims();
+			
+		}
+	});
+}
+
+function displaySynonims()
+{
+	if (word.length > 0) {
+        
 		chrome.runtime.sendMessage({
 			method: 'GET',
 			action: 'xhttp',
 			url: bhl_url + word + "/json",
 			format: 'application/json'
 		}, function(responseText) {
-			console.log(responseText);
-			showTooltipEn(responseText);
-			/*Callback function to deal with the response*/
+			var synonyms = JSON.parse(responseText);
+			if(synonyms.hasOwnProperty('error'))
+			{
+				showErrorTooltipEn();
+			}
+			else
+			{
+				console.log("Xhttp response: " + responseText);
+				showTooltipEn(synonyms);
+				/*Callback function to deal with the response*/
+			}
 		});
     }
 }
 
-function get_selection_en() {
-    var txt = '';
+function showTooltipEn(synonyms) {
 
-    if (window.getSelection) {
-
-        txt = window.getSelection();
-        var selection = txt.getRangeAt(0);
-		var bodyRect = document.body.getBoundingClientRect();
-        var sel_xx = selection.getBoundingClientRect().left; 
-        var sel_yy = selection.getBoundingClientRect().top; 
-		sel_x = sel_xx - bodyRect.left; 
-        sel_y = sel_yy - bodyRect.top;
-
-    } else if (document.getSelection) {
-
-        txt = document.getSelection();
-        var selection = txt.getRangeAt(0);
-        var bodyRect = document.body.getBoundingClientRect();
-        var sel_xx = selection.getBoundingClientRect().left; 
-        var sel_yy = selection.getBoundingClientRect().top; 
-		sel_x = sel_xx - bodyRect.left; 
-        sel_y = sel_yy - bodyRect.top;
-
-    } else if (document.selection) {
-
-        txt = document.selection.createRange().text;
-
-    }
-	
-	console.log("Position X: " + sel_x + " - Y: " + sel_y);
-
-    return $.trim(txt.toString());
-}
-
-function showTooltipEn(synonymsJSON) {
-
-    var synonyms = JSON.parse(synonymsJSON);
+    //var synonyms = JSON.parse(synonymsJSON);
     var tooltipDiv = $("<div class='tooltip'></div>");
     $(tooltipDiv).css("top", sel_y);
     $(tooltipDiv).css("left", sel_x);
@@ -149,6 +160,8 @@ function showErrorTooltipEn() {
     var tooltipDiv = $("<div class='tooltip'></div>");
     $(tooltipDiv).css("top", sel_y);
     $(tooltipDiv).css("left", sel_x);
+	var superTitle = $("<h2></h2>").text('Synonyms of "' + word + '"');
+	$(tooltipDiv).append(superTitle);
     $(tooltipDiv).append(error_paragraph_en);
     $(tooltipDiv).append(help_paragraph_en);
     $('body').append(tooltipDiv);

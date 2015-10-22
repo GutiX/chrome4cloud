@@ -68,10 +68,12 @@ chrome.runtime.onMessage.addListener(
 					console.log("Words received: " + xhttp.responseText);
                     callback(xhttp.responseText);
                 }
-            } else {
-                if (xhr.status == 404) {
-                    callback("error_404");
-                }
+				else
+				{
+					var error = {};
+					error.error = xhttp.status;
+					callback(JSON.stringify(error));
+				}
             }
         };
         /*xhttp.onload = function() {

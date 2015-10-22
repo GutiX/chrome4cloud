@@ -13,6 +13,8 @@ html[ts="x-large"], html[ts="x-large"] > body {
   font-size: 35px !important;
 }
 
+a[hc] span{background-color: transparent !important;}
+
 html[hc = 'bw'] {
   -webkit-filter: grayscale(100%);
 }
@@ -25,8 +27,8 @@ html[hc = 'bw'] {
 div[hc = 'bw'], span[hc = 'bw'], p[hc = 'bw'], ul[hc = 'bw'], li[hc = 'bw'],
 h1[hc = 'bw'], h2[hc = 'bw'], h3[hc = 'bw'], h4[hc = 'bw'], h5[hc = 'bw'],
 table[hc = 'bw'], th[hc = 'bw'], tr[hc = 'bw'], td[hc = 'bw'], pre[hc = 'bw'], code[hc = 'bw'], header[hc='bw'],
-dt[hc='bw'], dl[hc='bw'] {
-  background: white !important;
+dt[hc='bw'], dl[hc='bw'], footer[hc='bw'], header[hc='bw'], strong[hc='bw'] {
+  background-color: white !important;
   color: black !important;
   text-shadow: none !important;
 }
@@ -82,8 +84,8 @@ html[hc = 'wb'] {
 div[hc = 'wb'], span[hc = 'wb'], p[hc = 'wb'], ul[hc = 'wb'], li[hc = 'wb'],
 h1[hc = 'wb'], h2[hc = 'wb'], h3[hc = 'wb'], h4[hc = 'wb'], h5[hc = 'wb'],
 table[hc = 'wb'], th[hc = 'wb'], tr[hc = 'wb'], td[hc = 'wb'], pre[hc = 'wb'], code[hc = 'wb'], header[hc='wb'],
-dt[hc='wb'], dl[hc='wb'] {
-  background: black !important;
+dt[hc='wb'], dl[hc='wb'], footer[hc='wb'], header[hc='wb'], strong[hc='wb'] {
+  background-color: black !important;
   color: white !important;
   text-shadow: none !important;
 }
@@ -142,8 +144,8 @@ div[hc = 'yb'], span[hc = 'yb'], p[hc = 'yb'], ul[hc = 'yb'], li[hc = 'yb'],
 h1[hc = 'yb'], h2[hc = 'yb'], h3[hc = 'yb'], h4[hc = 'yb'], h5[hc = 'yb'],
 table[hc = 'yb'], th[hc = 'yb'], tr[hc = 'yb'], td[hc = 'yb'], pre[hc = 'yb'], code[hc = 'yb'],
 article[hc='yb'], nav[hc='yb'], section[hc='yb'], header[hc='by'], 
-dl[hc='yb'], dt[hc='yb'] {
-  background: black !important;
+dl[hc='yb'], dt[hc='yb'], footer[hc='yb'], header[hc='yb'], strong[hc='yb'] {
+  background-color: black !important;
   color: yellow !important;
   text-shadow: none !important;
 }
@@ -197,8 +199,8 @@ div[hc = 'by'], span[hc = 'by'], p[hc = 'by'], ul[hc = 'by'], li[hc = 'by'],
 h1[hc = 'by'], h2[hc = 'by'], h3[hc = 'by'], h4[hc = 'by'], h5[hc = 'by'],
 table[hc = 'by'], th[hc = 'by'], tr[hc = 'by'], td[hc = 'by'], pre[hc = 'by'], code[hc = 'by'],
 article[hc='by'], nav[hc='by'], section[hc='by'], header[hc='by'],
-dl[hc='by'], dt[hc='by'] {
-  background: yellow !important;
+dl[hc='by'], dt[hc='by'], footer[hc='by'], strong[hc='by'] {
+  background-color: yellow !important;
   color: black !important;
   text-shadow: none !important;
 }
@@ -244,7 +246,7 @@ button[hc='by'] {
 div[ts='large'], span[ts='large'], p[ts='large'], ul[ts='large'], 
 h5[ts='large'], dt[ts='large'], a[ts='large'],
 table[ts='large'], th[ts='large'], tr[ts='large'], td[ts='large'], pre[ts='large'], code[ts='large'],
-article[ts='large'], nav[ts='large'], section[ts='large'] {
+article[ts='large'], nav[ts='large'], section[ts='large'], footer[ts='large'], header[ts='large'] {
   font-size: 1rem !important;
   line-height: normal;
   /*line-height: 1.3em !important;*/
@@ -287,7 +289,7 @@ h4[ts='large'] {
 div[ts='x-large'], span[ts='x-large'], p[ts='x-large'], ul[ts='x-large'], 
 h5[ts='x-large'], a[ts='x-large'],
 table[ts='x-large'], th[ts='x-large'], tr[ts='x-large'], td[ts='x-large'], pre[ts='x-large'], code[ts='x-large'],
-article[ts='x-large'], nav[ts='x-large'], section[ts='x-large'] {
+article[ts='x-large'], nav[ts='x-large'], section[ts='x-large'], footer[ts='x-large'], header[ts='x-large'] {
   font-size: 1rem !important;
   line-height: normal;
   /*line-height: 1.3em !important;*/
@@ -406,7 +408,7 @@ input[cs="x-large"], label[cs="x-large"][for]{cursor : url(images/hand_icon_x_la
 .tooltip {
   /*position: fixed;   */
   position: absolute;
-  z-index: 10;
+  z-index: 99999;
   background: black !important;
   color: white !important;
   border-radius: 6px;
